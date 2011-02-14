@@ -13,7 +13,7 @@ Dojos
 
 * :ref:`dojo.js <dojo/index>`
 
-  The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, class-based programming, and a package system that makes getting access taso the rest of Dojo a snap.test2
+  The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, class-based programming, and a package system that makes getting access taso the rest of Dojo a snap.sdfasdf
 t
 * :ref:`Dojo Core <dojo/index>`
 
