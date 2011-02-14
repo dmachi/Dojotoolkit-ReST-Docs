@@ -7,9 +7,9 @@ Dojo Toolkit Reference Guide
    :depth: 2
 
 
-====
-Dojo
-====
+=====
+Do
+=====
 
 * :ref:`dojo.js <dojo/index>`
 
