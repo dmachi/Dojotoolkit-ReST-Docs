@@ -40,7 +40,7 @@ DojoX stands for Dojo eXtensions and contains many useful sub-projects and varyi
 DojoC
 =====
 
-DojoC is an external svn repository used by DojoCampus for a variety of widgets, tutorials, sandbox, and other demos. You are welcome to explore and contribute, though absolutely nothing is guaranteed to work. DojoC is meant as a community workshop, and code comes and goes frequently, often times 'promoted' to :ref:`DojoX projects <dojox>`.
+DojoC is an external svn repository used by DojoCampus for a variety of widgets, tutorials, sandbox, and other demos. You are welcome to explore and contribute, though absolutely nothing is guaranteed to work. DojoC is meant as a community workshop, and code comes and goes frequently, often times 'promoted' to :ref:`DojoX projects <dojox>`.a
 
 * :ref:`More about DojoC <dojoc/index>`
 
