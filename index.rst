@@ -8,7 +8,7 @@ Dojo Toolkit Reference Guide
 
 
 =====
-Dojo
+Dojos
 =====
 
 * :ref:`dojo.js <dojo/index>`
