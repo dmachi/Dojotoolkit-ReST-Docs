@@ -17,7 +17,7 @@ Introduction
 
 dijit._Widget is the base class for all widgets in dijit, and in general is the base class for all dojo based widgets. Usually widgets also extend other mixins such as :ref:`dijit._Templated <dijit/_Templated>`.
 
-Note that the underscore in the name implies not that _Widget is a private class, but rather that it's a base class, rather than a widget directly usable.
+Note that the underscore in the name implies not that _Widget is a private class, but rather that it's a base class, rather than a widget directly usable.test
 
 
 =====
