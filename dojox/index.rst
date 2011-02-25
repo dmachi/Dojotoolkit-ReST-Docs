@@ -3,7 +3,7 @@
 DojoX
 =====
 
-DojoX is an area for development of extensions to the Dojo toolkit. It is a repository for more stable and mature extensions and also acts as an incubator for experimental code, a testbed for additions to the main toolkit. Unlike Dojo and Dijit, DojoX is managed by subprojects, each of which has at least one module, a sponsor and a mission statement.test23ddfdf
+DojoX is an area for development of extensions to the Dojo toolkit. It is a repository for more stable and mature extensions and also acts as an incubator for experimental code, a testbed for additions to the main toolkit. Unlike Dojo and Dijit, DojoX is managed by subprojects, each of which has at least one module, a sponsor and a mission statement.test23ddfdfdsf
 
 
 * :ref:`About DojoX <dojox/info>`
