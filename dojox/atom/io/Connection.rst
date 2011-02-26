@@ -14,7 +14,7 @@ dojox.atom.io.Connection
 The *dojox.atom.io.Connection* module is a IO class for performing APP (ATOM Publishing Protocol) styled IO actions with a server.
 
 ============
-Introduction
+Introdaction
 ============
 
 This module simplifies performing APP by handling the configuration of all the necessary xhr parameters as well as selecting the correct xhr method for performing a particular type of ATOM action, from getting a Feed (xhrGet), to publishing a new entry (xhrPut).  This class makes use of the dojox.atom.io.model class as its backing representation of the ATOM document and elements.
