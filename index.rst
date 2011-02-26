@@ -6,7 +6,7 @@ Dojo Toolkit Reference Guide
 .. contents::
    :depth: 2
 
-.. image:: /logodojocdocssmall.png
+.. image:: http://dojotoolkit.org/images/dojo_black_200.png
    :alt: Dojo Documentation
    :class: logowelcome;
 
@@ -130,3 +130,4 @@ Miscellaneous
 
 * :ref:`Developer Notes <developer/index>`
 * :ref:`Styleguides <styleguides/index>` **obsolete**
+
