@@ -542,7 +542,7 @@ Following specialized moveable classes are defined:
 constrainedMoveable
 ~~~~~~~~~~~~~~~~~~~
 
-``dojo.dnd.move.constrainedMoveable`` can be used to constrained a move to a dynamically calculated box. This class is define in the ``dojo.dnd.move`` module. It is based on Moveable_, and accepts following additional parameters during construction:
+``dojo.dnd.move.constrainedMoveable`` can be used to constrained a move to a dynamically calculated box. This class is defined in the ``dojo.dnd.move`` module. It is based on Moveable_, and accepts following additional parameters during construction:
 
 * ``constraints`` --- a function, which is called in the context of this moveable_, with a newly created mover_ object, and returns a rectangle to be used for restrictions. The rectangle is an object, which defines following numeric attributes: ``l`` for left, ``t`` for top, ``w`` for width, and ``h`` for height. All numbers are in pixels.
 * ``within`` --- a Boolean flag. When it is ``true``, the dragged node will be moved only within the defined rectangle, and cannot go outside of it. Otherwise, the restriction applies to the left-top corner of the moved node.
@@ -550,7 +550,7 @@ constrainedMoveable
 boxConstrainedMoveable
 ~~~~~~~~~~~~~~~~~~~~~~
 
-``dojo.dnd.move.boxConstrainedMoveable`` can be used to constrain a move to a predefined box. This class is define in the ``dojo.dnd.move`` module. It is based on constrainedMoveable_ and accepts following additional parameters during construction:
+``dojo.dnd.move.boxConstrainedMoveable`` can be used to constrain a move to a predefined box. This class is defined in the ``dojo.dnd.move`` module. It is based on constrainedMoveable_ and accepts following additional parameters during construction:
 
 * ``box`` --- a rectangle box (see constrainedMoveable_), which defines constraint boundaries.
 * ``within`` --- see constrainedMoveable_ for details.
@@ -558,7 +558,7 @@ boxConstrainedMoveable
 parentConstrainedMoveable
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``dojo.dnd.move.parentConstrainedMoveable`` can be used to constrain the move by the boundaries of the node's parent. This class is define in the ``dojo.dnd.move`` module. It is based on constrainedMoveable_ and accepts following additional parameters during construction:
+``dojo.dnd.move.parentConstrainedMoveable`` can be used to constrain the move by the boundaries of the node's parent. This class is defined in the ``dojo.dnd.move`` module. It is based on constrainedMoveable_ and accepts following additional parameters during construction:
 
 * ``area`` --- a string, which defines constraint boundaries. Valid values are: ``"content"``, ``"padding"``, ``"border"``, and ``"margin"``.
 * ``within`` --- see constrainedMoveable_ for details.

@@ -58,7 +58,7 @@ And that's it.  The editor instance you can reference by 'dijit.byId("editor")' 
 Limitations
 ===========
 
-Something to be aware of is that if you also use the :ref:`dojox.editor.plugin.PrettyPrint <dojox/editor/plugin/PrettyPrint>` plugin is that you will need to reconfigure PrettyPrint to escape more entities.  Otherwise, entity encoding will not be preserved when the value is retrieved from the editor.  This can be done as follows:
+Something to be aware of is that if you also use the :ref:`dojox.editor.plugins.PrettyPrint <dojox/editor/plugins/PrettyPrint>` plugin is that you will need to reconfigure PrettyPrint to escape more entities.  Otherwise, entity encoding will not be preserved when the value is retrieved from the editor.  This can be done as follows:
 
 .. code-block :: html
 
@@ -90,7 +90,7 @@ Basic Usage
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/InsertEntity.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/InsertEntity.css";
     </style>
     
   .. html::

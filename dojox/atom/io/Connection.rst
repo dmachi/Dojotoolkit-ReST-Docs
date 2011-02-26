@@ -14,7 +14,7 @@ dojox.atom.io.Connection
 The *dojox.atom.io.Connection* module is a IO class for performing APP (ATOM Publishing Protocol) styled IO actions with a server.
 
 ============
-Introdiction
+Introduction
 ============
 
 This module simplifies performing APP by handling the configuration of all the necessary xhr parameters as well as selecting the correct xhr method for performing a particular type of ATOM action, from getting a Feed (xhrGet), to publishing a new entry (xhrPut).  This class makes use of the dojox.atom.io.model class as its backing representation of the ATOM document and elements.
@@ -85,7 +85,7 @@ Example 1: Load an ATOM Feed
       function initSimpleAtom () {
         var conn = new dojox.atom.io.Connection();
 
-        conn.getFeed("{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml",
+        conn.getFeed("{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml",
           function(feed) {
            //Emit both the XML (As reconstructed from the Feed object and as a JSON form.
            var xml = dojo.byId("simpleAtomXml");
@@ -136,7 +136,7 @@ Example 2: Update an entry in a Feed
       function initUpdateAtom () {
         var conn = new dojox.atom.io.Connection();
 
-        conn.getFeed("{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml",
+        conn.getFeed("{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml",
           function(feed) {
            //Emit both the XML (As reconstructed from the Feed object and as a JSON form.
            var xml = dojo.byId("simplePristineAtomXml");
@@ -147,7 +147,7 @@ Example 2: Update an entry in a Feed
            var entry = feed.getFirstEntry();
 
            //Make this updateable by pointing it to the app test pho script so it can properly post.
-           entry.setEditHref("{{ dataUrl }}/dojo/dojox/atom/tests/io/app.php");
+           entry.setEditHref("{{dataUrl}}dojox/atom/tests/io/app.php");
            entry.updated = new Date();
            entry.setTitle('<h1>New Editable Title!</h1>', 'xhtml');
            conn.updateEntry(entry, function() {
@@ -192,4 +192,3 @@ See Also
 
 * :ref:`dojox.atom.io.model <dojox/atom/io/model>`: The backing model for the Feed used by this connection API.
 * :ref:`dojox.data.AppStore <dojox/data/AppStore>`: A datastore built ontop of this API.  Provides full APP support.
-

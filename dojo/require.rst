@@ -36,7 +36,7 @@ At first, it may seem painful to require all modules, but Dojo rewards by:
 
 * Loading any dependent scripts for you.
 
-  If :ref:`dijit.form.TextBox <dijit/form/TextBox>` requires :ref:`dojo.math <dojo/math>`, you still need only require dijit.form.TextBox.
+  If :ref:`dijit.form.NumberTextBox <dijit/form/NumberTextBox>` requires :ref:`dojo.number <dojo/number>`, you still need only require dijit.form.NumberTextBox.
 
 * Preventing loading Dojo packages twice.
 

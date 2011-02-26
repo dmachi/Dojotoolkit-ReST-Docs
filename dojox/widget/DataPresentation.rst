@@ -269,8 +269,8 @@ fig 2.
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         .dojoxGrid table {
             margin: 0;

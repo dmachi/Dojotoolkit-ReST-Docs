@@ -35,8 +35,6 @@ Functions always avalable (Dojo 'Base')
 Functions provided by the dojo.fx module
 ----------------------------------------
 
-* :ref:`dojo.fx.easing <dojo/fx/easing>` -  A collection of easing functions that can be used with dojo.animateProperty and its extensions to modify an animation.
-
 * :ref:`dojo.fx.wipeIn <dojo/fx/wipeIn>` -  Wipe in a node (Height 0 to max height of node).
 
 * :ref:`dojo.fx.wipeOut <dojo/fx/wipeOut>` -  Wipe out a node (Max height to 0).
@@ -48,6 +46,8 @@ Functions provided by the dojo.fx module
 * :ref:`dojo.fx.chain <dojo/fx/chain>` -  A helper function that can take two animation instances and combine them into a single animation instance where each of the input animations is run after the other in sequence.
 
 * :ref:`dojo.fx.combine <dojo/fx/combine>` -  A helper function that can take two animation instances and combine them into a single animation instance where each of the input animations are run in parallel.
+
+Additionally, there is a collection of easing functions living in the  :ref:`dojo.fx.easing <dojo/fx/easing>` module.
 
 ========
 See also

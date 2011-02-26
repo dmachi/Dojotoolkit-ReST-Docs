@@ -5,14 +5,27 @@ dojox.form.BusyButton
 
 :Status: Draft
 :Version: Beta
-:Author: Nikolai Onken
+:Project owner: Nikolai Onken
+:Available: since V?
+
+.. contents::
+   :depth: 2
 
 BusyButton is a simple widget which provides implementing more user friendly form submission.
-When a form gets submitted bu a user, many time it is recommended to disable the submit buttons to prevent double submittion.
+
+============
+Introduction
+============
+
+When a form gets submitted by a user, many time it is recommended to disable the submit buttons to prevent double submittion.
 BusyButton provides a simple set of features for this purpose
 
+========
 Examples
---------
+========
+
+Programmatic example
+--------------------
 
 The first example shows you how to create a nifty button programatically
 
@@ -40,9 +53,11 @@ The first example shows you how to create a nifty button programatically
   .. cv:: css
 
     <style type="text/css">
-      @import url({{ dataUrl }}/dojo/dojox/form/resources/BusyButton.css);
+      @import url({{baseUrl}}dojox/form/resources/BusyButton.css);
     </style>
 
+Declarative example
+-------------------
 
 This example show how to use the busy button without internal timeout. Once you receive a server response from the server (than can include a timeout from the server) you can and should change the status of the button.
 
@@ -61,8 +76,11 @@ This example show how to use the busy button without internal timeout. Once you 
   .. cv:: css
 
     <style type="text/css">
-      @import url({{ dataUrl }}/dojo/dojox/form/resources/BusyButton.css);
+      @import url({{baseUrl}}dojox/form/resources/BusyButton.css);
     </style>
+
+Using the built-in timeout
+--------------------------
 
 The following example has a built-in timeout.
 
@@ -81,8 +99,11 @@ The following example has a built-in timeout.
   .. cv:: css
 
     <style type="text/css">
-      @import url({{ dataUrl }}/dojo/dojox/form/resources/BusyButton.css);
+      @import url({{baseUrl}}dojox/form/resources/BusyButton.css);
     </style>
+
+Set a new label
+---------------
 
 In this example we will set a new label by clicking on a button (this can be a server response as well). The first state will not have a timeout, the second state will have a timeout of 2 seconds
 
@@ -106,8 +127,11 @@ In this example we will set a new label by clicking on a button (this can be a s
   .. cv:: css
 
     <style type="text/css">
-      @import url({{ dataUrl }}/dojo/dojox/form/resources/BusyButton.css);
+      @import url({{baseUrl}}dojox/form/resources/BusyButton.css);
     </style>
+
+Disabled BusyButton
+-------------------
 
 The last example uses a little bit of trickery to create a button which is disabled initially and enabled after the timeout. This sort of button is very hand for license agreements or times when you want to be sure the user can't submit a form (usually forcing a user to read the license agreement doesn't work, but its worth a try). The chance is high that the button already is not disabled anymore - just reload the page and scroll to this example real quick.
 
@@ -132,5 +156,12 @@ The last example uses a little bit of trickery to create a button which is disab
   .. cv:: css
 
     <style type="text/css">
-      @import url({{ dataUrl }}/dojo/dojox/form/resources/BusyButton.css);
+      @import url({{baseUrl}}dojox/form/resources/BusyButton.css);
     </style>
+
+
+==============
+Known Problems
+==============
+
+* This Widget doesn't work using Internet Explorer 8. The error is well known and reported as bug `#9075 <http://bugs.dojotoolkit.org/ticket/9075>`_

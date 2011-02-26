@@ -1,3 +1,6 @@
 .. _build/scenario-xDomain:
 
-TODOC
+Building an x-domain Dojo
+=========================
+
+``TODOC``

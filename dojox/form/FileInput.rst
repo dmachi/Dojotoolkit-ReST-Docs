@@ -3,10 +3,8 @@
 dojox.form.FileInput
 ====================
 
-:Status: Draft
-:Version: 1.2
 :Project owner: Peter Higgins
-:Available: since V1.3
+:Since: 1.3.0
 
 .. contents::
    :depth: 2
@@ -33,7 +31,7 @@ There is also a required CSS file. All three widgets share a single sheet of rul
 .. code-block :: html
   :linenos:
 
-    <link rel="stylesheet" href="$dojo/dojox/form/resources/FileInput.css" />
+    <link rel="stylesheet" href="dojo/dojox/form/resources/FileInput.css" />
 
 The three types are described as:
 
@@ -46,4 +44,4 @@ See also
 ========
 
 * :ref:`FileUploader <dojox/form/FileUploader>`
-* :ref:`IFrame IO <dojox/io/frame>`
+* :ref:`IFrame IO <dojo/io/iframe>`

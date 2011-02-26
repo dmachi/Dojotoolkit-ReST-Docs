@@ -25,41 +25,41 @@ Classes defined in the model
 
 When the model file is loaded, several classes are defined that represent ATOM tags.  Please refer to the following table for the class names and a description of what they represent.  Each entry in the class name table also acts as a link to specific documentation about that class and what core functions it provides.
 
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| **Class Name**                                                         | **Description**                                                          |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.AtomItem <dojox/atom/io/model/AtomItem>`     | A generic superclass used to represent specific ATOM details that are    |
-|                                                                        | common for many ATOM tags                                                | 
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Category <dojox/atom/io/model/Category>`     | Model to represent the Category tag of an ATOM document.  Contains all   |
-|                                                                        | Category properties and a toString function for serializing it back to   |
-|                                                                        | XML                                                                      |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Content <dojox/atom/io/model/Content>`       | Model to represent the Content style tags in an ATOM document.  This is  |
-|                                                                        | used to represent Summary, Content, Title, and Subtitle elements in an   |
-|                                                                        | ATOM feed.  In other words, it represents any element that can contain   |
-|                                                                        | Text, HTML, XHTML, etc as content format.  It also has a toString        |
-|                                                                        | function used to generate the corresponding XML tag                      |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Link <dojox/atom/io/model/Link>`             | Atom link element.  Used for representing link attributes.  Handles      |
-|                                                                        | multiple link types (edit, alt, etc.)                                    |     
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Person  <dojox/atom/io/model/Person>`        | Atom person element. Used to represent authors and contributors.         |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Entry <dojox/atom/io/model/Entry>`           | Atom entry element. Represents an Atom entry, including storing the      |
-|                                                                        | authors, contributors, title, content, and so on.                        |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Feed <dojox/atom/io/model/Feed>`             | Atom feed element. Represents an Atom Feed, including the feed elements  |
-|                                                                        | such as the title and author, and also represents the entry list.        |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Generator <dojox/atom/io/model/Generator>`   | Atom generator element                                                   |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Service <dojox/atom/io/model/Service>`       | Atom service element                                                     |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Workspace <dojox/atom/io/model/Workspace>`   | Atom workspace element                                                   |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
-| :ref:`dojox.atom.io.model.Collection <dojox/atom/io/model/Collection>` | Atom collection element                                                  |
-+------------------------------------------------------------------------+--------------------------------------------------------------------------+
+::ref:`dojox.atom.io.model.AtomItem <dojox/atom/io/model/AtomItem>`:
+  A generic superclass used to represent specific ATOM details that are common for many ATOM tags 
+
+::ref:`dojox.atom.io.model.Category <dojox/atom/io/model/Category>`:
+  Model to represent the Category tag of an ATOM document.  Contains all Category properties and a toString function for serializing it back to XML
+
+::ref:`dojox.atom.io.model.Content <dojox/atom/io/model/Content>`:
+  Model to represent the Content style tags in an ATOM document.  This is used to represent Summary, Content, Title, and Subtitle elements in an ATOM
+  feed.  In other words, it represents any element that can contain Text, HTML, XHTML, etc as content format.  It also has a toString function used to 
+  generate the corresponding XML tag
+
+::ref:`dojox.atom.io.model.Link <dojox/atom/io/model/Link>`:
+  Atom link element.  Used for representing link attributes.  Handles multiple link types (edit, alt, etc.)
+
+::ref:`dojox.atom.io.model.Person  <dojox/atom/io/model/Person>`:
+  Atom person element. Used to represent authors and contributors.
+
+::ref:`dojox.atom.io.model.Entry <dojox/atom/io/model/Entry>`:
+  Atom entry element. Represents an Atom entry, including storing the authors, contributors, title, content, and so on.
+
+::ref:`dojox.atom.io.model.Feed <dojox/atom/io/model/Feed>`:
+  Atom feed element. Represents an Atom Feed, including the feed elements such as the title and author, and also represents the entry list. 
+
+::ref:`dojox.atom.io.model.Generator <dojox/atom/io/model/Generator>`:
+  Atom generator element
+
+::ref:`dojox.atom.io.model.Service <dojox/atom/io/model/Service>`:
+  Atom service element
+
+::ref:`dojox.atom.io.model.Workspace <dojox/atom/io/model/Workspace>`:
+  Atom workspace element
+
+::ref:`dojox.atom.io.model.Collection <dojox/atom/io/model/Collection>`:
+  Atom collection element
+
 
 =================
 Utility Functions
@@ -110,7 +110,7 @@ Example 1: Create an ATOM Feed model from an existing ATOM document
       //This function performs some basic dojo initialization and will do the load calling for this example
       function initSimpleAtom () {
         var xhrArgs = { 
-           url: "{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml",
+           url: "{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml",
            preventCache: true,
            handleAs: "xml"
         };
@@ -216,7 +216,7 @@ Example 3: Modify a loaded feed
       //This function performs some basic dojo initialization and will do the load calling for this example
       function initSimpleAtomModified() {
         var xhrArgs = { 
-           url: "{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml",
+           url: "{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml",
            preventCache: true,
            handleAs: "xml"
         };

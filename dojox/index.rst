@@ -222,6 +222,10 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 
     A date-like class representing the Hebrew calendar
 
+  * :ref:`dojox.date.islamic <dojox/date/islamic>`
+
+    A date-like class representing the Islamic or Hijri calendar
+
 * :ref:`dojox.drawing <dojox/drawing>`
 
   Vector graphics drawing editor
@@ -304,7 +308,7 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 
   * :ref:`dojox.form.RangeSlider <dojox/form/RangeSlider>`
 
-    description?
+    A widget that allows a range of values to be selected along a scale
 
   * :ref:`dojox.form.Rating <dojox/form/Rating>`
 
@@ -343,6 +347,10 @@ These sections cover the available projects shipped with the Dojo Toolkit:
     Module to provide scroll-related FX
 
   * :ref:`dojox.fx.wipeTo <dojox/fx/wipeTo>`
+
+* :ref:`dojox.gantt <dojox/gantt>`
+
+  A project and resource management tool
 
 * :ref:`dojox.gfx <dojox/gfx>`
 
@@ -459,17 +467,17 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 
   A query system for JavaScript objects
 
-* :ref:`dojox.lang <dojox/lang>`
+* :ref:`dojox.lang <dojox/lang/index>`
 
-  Implementation of common functional operations, and provisions, aspect-oriented helpers
+  JavaScript language extensions for supporting AOP, FP and other language constructs
 
-  * :ref:`dojox.lang.observable <dojox/lang/observable>`
+  * :ref:`dojox.lang.aspect <dojox/lang/aspect>`
 
-    Provides construction of objects that such that property access and modification can be controlled
+    Provides a framework for aspect-oriented programming.
 
-  * :ref:`dojox.lang.typed <dojox/lang/typed>`
+  * :ref:`dojox.lang.async <dojox/lang/async>`
 
-    Provides type checking for JavaScript classes, enforcing types on properties and method parameters using JSON Schema definitions
+    Provides helpers for event-driven programming.
 
   * :ref:`dojox.lang.docs <dojox/lang/docs>`
 
@@ -478,6 +486,18 @@ These sections cover the available projects shipped with the Dojo Toolkit:
   * :ref:`dojox.lang.functional <dojox/lang/functional>`
 
     Functional language constructs, including currying and lambda
+
+  * :ref:`dojox.lang.observable <dojox/lang/observable>`
+
+    Provides construction of objects such that property access and modification can be controlled, i.e. provides a form of getters/setters
+
+  * :ref:`dojox.lang.oo <dojox/lang/oo>`
+
+    Provides mixers to support traits and mixins for object-oriented programming.
+
+  * :ref:`dojox.lang.typed <dojox/lang/typed>`
+
+    Provides type checking for JavaScript classes, enforcing types on properties and method parameters using JSON Schema definitions.
 
 * :ref:`dojox.layout <dojox/layout>`
 
@@ -531,6 +551,11 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 
   A collection of various advanced math functions
 
+* :ref:`dojox.mobile <dojox/mobile>`
+
+  A collection of utilities to get native look&feel on webapps for iPhone/iPad/Android
+
+* :ref:`dojox.NodeList <dojox/NodeList>` - Additional extensions to :ref:`dojo.NodeList <dojo/NodeList>`
 * :ref:`dojox.off <dojox/off>`
 * :ref:`dojox.presentation <dojox/presentation>`
 * :ref:`dojox.resources <dojox/resources>`
@@ -614,7 +639,7 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 
   * :ref:`dojox.widget.Dialog <dojox/widget/Dialog>`
 
-    An extension to :ref:`dijit.Dialog </dijit/Dialog>` which provides additional sizing options, animations, and styling
+    An extension to :ref:`dijit.Dialog <dijit/Dialog>` which provides additional sizing options, animations, and styling
 
   * :ref:`dojox.widget.DocTester <dojox/widget/DocTester>`
 
@@ -695,10 +720,3 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 * :ref:`dojox.xmpp <dojox/xmpp>`
 
   XMPP (Jabber Client) Service implementation in pure javascript
-
-
-
-
-
-
-

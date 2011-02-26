@@ -78,7 +78,7 @@ Here's a simple example of a widget that creates it's own DOM tree:
   :djConfig: parseOnLoad: false
 
   .. javascript::
-      :label: Define the widget and instantiate programatically
+	:label: Define the widget and instantiate programatically
 
 	<script>
 		dojo.require('dijit._Widget');
@@ -105,7 +105,7 @@ Here's a simple example of a widget that creates it's own DOM tree:
   .. html::
       :label: Nothing to do here
 
-     <!-- Nothing to do here -->
+      <!-- Nothing to do here -->
 
 This widget doesn't do much, but it does show the minimum requirement for a (non-behavioral) widget: create a DOM tree.
 
@@ -358,6 +358,14 @@ or alternately just
 		disabled: "focusNode"
   },
 
+using attributes
+
+.. code-block :: javascript
+
+  attributeMap: {
+		img: {node: "imageNode", type: "attribute", attribute: "src" }
+  },
+
 Both code blocks copy the widget's "disabled" attribute onto the focusNode DOM node in the template.
 
 
@@ -386,7 +394,7 @@ Here's an example of a behavioral widget (it uses the DOM node from the supplied
 				open: true,
 	
 				_setOpenAttr: function(/*Boolean*/ open){
-					this.open = open;
+					this._set("open", open);
 					dojo.style(this.domNode, "display", open ? "block" : "none");
 				}
 			});
@@ -399,12 +407,15 @@ Here's an example of a behavioral widget (it uses the DOM node from the supplied
   .. html::
 
 	<span dojoType="HidePane" open="false" jsId="pane">This pane is initially hidden</span>
-	<button onclick="pane.attr('open', true);">show</button>
-	<button onclick="pane.attr('open', false);">hide</button>
+	<button onclick="pane.set('open', true);">show</button>
+	<button onclick="pane.set('open', false);">hide</button>
 
 Custom setters are quite common. Usually you don't need a custom getter (as the default action
-for attr('foo') is to access Widget.foo), but for something like Editor where it's impractical to constantly
+for get('foo') is to access Widget.foo), but for something like Editor where it's impractical to constantly
 keep Editor.value up to date, writing a custom _getValueAttr() accessor makes sense.
+
+Note in the above example the use of this._set("open", open).    This saves the current value of the
+"open" attribute calling any handlers registered with watch(), to monitor attribute changes.
 
 Life cycle
 ----------
@@ -495,7 +506,7 @@ To see how to do this, let's see how dijit.form.Button does it for clicking. Not
 
 .. code-block :: html
 
- <div class="dijit dijitReset dijitLeft dijitInline"
+  <div class="dijit dijitReset dijitLeft dijitInline"
 	dojoAttachEvent="ondijitclick:_onButtonClick,onmouseenter:_onMouse,onmouseleave:_onMouse,onmousedown:_onMouse"
   ...
 
@@ -515,7 +526,7 @@ In Button.js you'll find:
 	return this.onClick(e);
   },
   onClick: { // nothing here: the extension point!
-   ;
+   
   }
 
 Here's what's going on. In step 1, all onClick events are redirected to the Button widget's plain old js method _onButtonClick. This in turn calls plain old _onClick, which does stuff, which then calls plain old js method onClick.
@@ -579,15 +590,20 @@ These pages list how to make your widgets accessible to people with poor/no visi
 * :ref:`Creating Accessible Widgets <quickstart/writingWidgets/a11y>`
 * :ref:`Testing Widgets for Accessibility <quickstart/writingWidgets/a11yTesting>`
 
-===
-DTL
-===
+============================
+Alternate Templating Engines
+============================
 
 There's an alternate template syntax for widgets which lets you have conditional code in templates and other advanced features.
 
-* `DTL manual from 1.2 <http://dojotoolkit.org/book/dojo-book-0-9/part-5-dojox/dojox-dtl>`_
-* :ref:`DTL <quickstart/writingWidgets/dtl>`  (currently the top page from the above link has been copied to :ref:`DTL_cur <dojox/dtl>`)
+* DTL
 
+  * `DTL manual from 1.2 <http://dojotoolkit.org/book/dojo-book-0-9/part-5-dojox/dojox-dtl>`_
+  * :ref:`DTL <dojox/dtl>`  (currently the top page from the above link has been copied to)
+
+* Mustache
+  
+  * `just a proposal`
 
 ========
 See also

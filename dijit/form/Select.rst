@@ -39,30 +39,17 @@ A simple Select
 
 This example shows a simple Select widget - converted from a select tag.
 
-.. cv-compound::
-  :version: local
+.. code-example::
 
-  .. cv:: javascript
+  .. javascript::
 
     <script>
-      if(dojo.version.toString() < "1.4"){
-          dojo.require("dojox.form.DropDownSelect");
-      }else{
-          dojo.require("dijit.form.Select");
-      }
+        dojo.require("dijit.form.Select");
     </script>
 
-  .. cv:: html
+  .. html::
 
-    <div dojoType="dijit._Widget" style="display:none;">
-        <script type="dojo/method" event="postCreate">
-            // create dijit.form.Select as a simple wrapper to dojox.form.DropDownSelect for Dojo < 1.4
-            if(!dijit.form.Select){
-                dojo.declare("dijit.form.Select", dojox.form.DropDownSelect, {});
-            }
-        </script>
-    </div>
-    <select name="select" dojoType="dijit.form.Select">
+    <select name="select1" dojoType="dijit.form.Select">
         <option value="TN">Tennessee</option>
         <option value="VA" selected="selected">Virginia</option>
         <option value="WA">Washington</option>
@@ -71,35 +58,49 @@ This example shows a simple Select widget - converted from a select tag.
     </select>
 
 
+A simple programmatic Select
+----------------------------
+
+This example shows how you can set up the same select as the previous example, but programmatically.
+
+.. code-example::
+
+  .. javascript::
+
+    <script>
+      dojo.require("dijit.form.Select");
+        
+      dojo.ready(function() {
+        new dijit.form.Select({
+          name: 'select2',
+          options: [
+            { label: 'TN', value: 'Tennessee' },
+            { label: 'VA', value: 'Virginia', selected: true },
+            { label: 'WA', value: 'Washington' },
+            { label: 'FL', value: 'Florida' },
+            { label: 'CA', value: 'California' }
+          ]
+        }).placeAt(dojo.body());
+      });
+    </script>
+
+
 A "styled" Select
 -----------------
 
 When styling the entries of a Select widget, you must use div and span tags, instead of select and option tags - as IE will strip out any HTML within the option tags.
 
-.. cv-compound::
-  :version: local
+.. code-example::
 
-  .. cv:: javascript
+  .. javascript::
 
     <script>
-      if(dojo.version.toString() < "1.4"){
-          dojo.require("dojox.form.DropDownSelect");
-      }else{
           dojo.require("dijit.form.Select");
-      }
     </script>
 
-  .. cv:: html
+  .. html::
 
-    <div dojoType="dijit._Widget" style="display:none;">
-        <script type="dojo/method" event="postCreate">
-            // create dijit.form.Select as a simple wrapper to dojox.form.DropDownSelect for Dojo < 1.4
-            if(!dijit.form.Select){
-                dojo.declare("dijit.form.Select", dojox.form.DropDownSelect, {});
-            }
-        </script>
-    </div>
-    <div name="select" value="AK" dojoType="dijit.form.Select">
+    <div name="select3" value="AK" dojoType="dijit.form.Select">
         <span value="AL"><b>Alabama</b></span>
         <span value="AK"><font color="red">A</font><font color="orange">l</font><font color="yellow">a</font><font color="green">s</font><font color="blue">k</font><font color="purple">a</font></span>
         <span value="AZ"><i>Arizona</i></span>
@@ -113,29 +114,16 @@ Setting Width
 
 By default, the width of the select widget will be to fit the width of the selected item.  However, you can specify a width on the select to force a fixed width.
 
-.. cv-compound::
-  :version: local
+.. code-example::
 
-  .. cv:: javascript
+  .. javascript::
 
     <script>
-      if(dojo.version.toString() < "1.4"){
-          dojo.require("dojox.form.DropDownSelect");
-      }else{
           dojo.require("dijit.form.Select");
-      }
     </script>
 
-  .. cv:: html
+  .. html::
 
-    <div dojoType="dijit._Widget" style="display:none;">
-        <script type="dojo/method" event="postCreate">
-            // create dijit.form.Select as a simple wrapper to dojox.form.DropDownSelect for Dojo < 1.4
-            if(!dijit.form.Select){
-                dojo.declare("dijit.form.Select", dojox.form.DropDownSelect, {});
-            }
-        </script>
-    </div>
     <select jsId="s3" name="s3" id="s3" style="width: 150px;" dojoType="dijit.form.Select">
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -145,3 +133,5 @@ By default, the width of the select widget will be to fit the width of the selec
         <option type="separator"></option>
         <option value="CA">California</option>
     </select>
+
+The above example also demonstrates using type="separator" to get dividing lines between groups of options.

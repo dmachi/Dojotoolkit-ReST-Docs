@@ -20,7 +20,7 @@ Terms
 +---------------+------------------------------+------------------------------------------------------------------------------------------------+
 | data source   | database                     |The place that the raw data comes from. For example, in a CsvStore, the data source would be the|
 |               |                              |.csv formatted file that the store loaded. In general, the data source could be a file, a       |
-|               |                              |databaseserver, a Web service, or something else completely. They can be as simple as flat,     |
+|               |                              |database server, a Web service, or something else completely. They can be as simple as flat,    |
 |               |                              |table-like rows, or as complex as a full hierarchical database with nested details.             |
 +---------------+------------------------------+------------------------------------------------------------------------------------------------+
 | item          | row                          |A data item that has attributes with attribute values.                                          |
@@ -41,7 +41,7 @@ Terms
 |               |                              |name/value pairs as thequery format for consistency between stores.                             |
 +---------------+------------------------------+------------------------------------------------------------------------------------------------+
 | dojo.data.API | JDBC or ODBC                 |The standard set of functions that datastore implements. The dojo.data.api module includes      |
-|               |                              |includes a set of APIs (such as Read and Write) and a datastore can implement one or more of the|
+|               |                              |a set of APIs (such as Read and Write) and a datastore can implement one or more of the         |
 |               |                              |APIs.                                                                                           |
 +---------------+------------------------------+------------------------------------------------------------------------------------------------+
 | internal data |                              |The private data structures that a datastore uses to cache data in local memory                 |

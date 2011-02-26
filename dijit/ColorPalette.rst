@@ -29,7 +29,7 @@ Widget Construction Parameters
 Return Values
 =============
 
-As with all dijit widgets, the selected value can be obtained through the widget *attr("value")* function.  The return type is an instance of :ref:`dojo.Color <dojo/Color>`.  
+As with all dijit widgets, the selected value can be obtained through the widget *attr("value")* function.  The return type is an instance of :ref:`dojo.Color <dojo/_base/Color>`.  
 
 ========
 Examples

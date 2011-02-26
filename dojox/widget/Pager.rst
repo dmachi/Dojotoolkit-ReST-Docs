@@ -50,7 +50,7 @@ Declarative example: Horizontal Pager
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojo/dojox/widget/Pager/Pager.css";
+        @import "{{baseUrl}}dojox/widget/Pager/Pager.css";
     </style>
 
 
@@ -65,7 +65,7 @@ Declarative example: Horizontal Pager
 
     <!-- the datastore -->
     <div dojoType="dojo.data.ItemFileReadStore" jsId="pagerStore" id="pagerStore" 
-        url="{{ dataUrl }}/dojo/dojox/widget/tests/_pager-data.json"></div>
+        url="{{dataUrl}}dojox/widget/tests/_pager-data.json"></div>
 
     <h2>Horizontal Pager</h2>
 

@@ -333,8 +333,8 @@ The following is a semi-complex example of the write API in action. In this exam
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
       .dojoxGrid table {
         margin: 0;
@@ -353,6 +353,8 @@ This example demonstrates how to use a function such as *deleteItem*. In this ca
 
     <script>
       dojo.require("dojo.data.ItemFileReadStore");
+      dojo.require("dojo.data.ItemFileWriteStore");
+      dojo.require("dijit.form.Button");
       dojo.require("dijit.Tree");
       var storeData2 = { 
         identifier: 'name',
@@ -631,9 +633,8 @@ is displayed in an alert.
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
-
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
       .dojoxGrid table {
         margin: 0;
       }

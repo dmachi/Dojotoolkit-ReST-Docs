@@ -33,7 +33,7 @@ Examples
 Programmatic example using a data store
 ---------------------------------------
 
-To set the default value for a programmatic FilteringSelect, include the *value* attribute (the hidden text value to be submitted) in the attribute list passed to the constructor.
+To set the default value for a programmatic FilteringSelect, include the *value* attribute (the hidden text value to be submitted) in the attribute list passed to the constructor.  To get the current value (the identity of the currently selected store item), get the *value* attribute.  To get the text currently displayed in the textbox (the value of the currently selected store item's attribute indicated by the FilteringSelect's ``searchAttr`` property), get the *displayedValue* attribute.
 
 .. cv-compound::
 
@@ -47,7 +47,7 @@ To set the default value for a programmatic FilteringSelect, include the *value*
     <script type="text/javascript">     
         dojo.addOnLoad(function(){
             var stateStore = new dojo.data.ItemFileReadStore({
-                url: "{{ dataUrl }}/dojo/dijit/tests/_data/states.json"
+                url: "{{dataUrl}}/dijit/tests/_data/states.json"
             });
             var filteringSelect = new dijit.form.FilteringSelect({
                 id: "stateSelect", 
@@ -63,7 +63,8 @@ To set the default value for a programmatic FilteringSelect, include the *value*
 
     <input id="stateSelect">
     <p>
-        <button onClick="alert(dijit.byId('stateSelect').attr('value'))">Get value</button>
+        <button onClick="alert(dijit.byId('stateSelect').get('value'))">Get value</button>
+        <button onClick="alert(dijit.byId('stateSelect').get('displayedValue'))">Get displayed value</button>
     </p>
 
 Declarative markup using native select and option tags
@@ -108,7 +109,7 @@ To set the default value for this example, specify the *value* attribute (the hi
 
     <div dojoType="dojo.data.ItemFileReadStore" 
         jsId="stateStore"
-        url="{{ dataUrl }}/dojo/dijit/tests/_data/states.json"></div>
+        url="{{dataUrl}}/dijit/tests/_data/states.json"></div>
     <input dojoType="dijit.form.FilteringSelect"
         value="KY"
         store="stateStore"
@@ -130,18 +131,15 @@ In this example, the FilteringSelect has been set to display the abbreviations f
     <script type="text/javascript">
         dojo.require("dijit.form.FilteringSelect");
         dojo.require("dojo.data.ItemFileReadStore");
-        dojo.addOnLoad(function(){
-          var stateStore = new dojo.data.ItemFileReadStore({
-              url: "{{ dataUrl }}/dojo/dijit/tests/_data/states.json"
-          });
-          dijit.byId("fs").store = stateStore;
-        });
     </script>
 
   .. cv:: html
 
-    <!--stateStore definition omitted; see above examples-->
+    <div dojoType="dojo.data.ItemFileReadStore" 
+        jsId="stateStore"
+        url="{{dataUrl}}/dijit/tests/_data/states.json"></div>
     <input dojoType="dijit.form.FilteringSelect"
+        store="stateStore"
         value="KY"
         id="fs"
         searchAttr="abbreviation"
@@ -399,7 +397,7 @@ The city ComboBox sets the state FilteringSelect value, and the state FilteringS
 
         new dijit.form.FilteringSelect(
         {   store: new dojo.data.ItemFileReadStore(
-                { url: '{{ dataUrl }}/dojo/dijit/tests/_data/states.json' }
+                { url: '{{dataUrl}}/dijit/tests/_data/states.json' }
             ),
             autoComplete: true,
             style: "width: 150px;",
@@ -436,9 +434,9 @@ This example demonstrates a FilteringSelect populated with 3 items: `Dojo core`,
                 identifier:"name",
                 label:"label",
                 items:[
-                        {name:"Dojo core", label:"<img src='http://www.dojotoolkit.org/sites/all/themes/dtk/img/core-home.png' />"},
-                        {name:"Dijit", label:"<img src='http://www.dojotoolkit.org/sites/all/themes/dtk/img/dijit-home.png' />"},
-                        {name:"Dojox", label:"<img src='http://www.dojotoolkit.org/sites/all/themes/dtk/img/dojox-home.png' />"}
+                        {name:"Dojo core", label:"<img src='http://o.dojotoolkit.org/sites/all/themes/dtk/img/core-home.png' />"},
+                        {name:"Dijit", label:"<img src='http://o.dojotoolkit.org/sites/all/themes/dtk/img/dijit-home.png' />"},
+                        {name:"Dojox", label:"<img src='http://o.dojotoolkit.org/sites/all/themes/dtk/img/dojox-home.png' />"}
                 ]
         };
  
@@ -485,20 +483,16 @@ In this example, the FilteringSelect takes a labelFunc attribute pointing to a f
 		label = label.toLowerCase();
 		return label;
 	}
-        dojo.addOnLoad(function(){
-          var stateStore = new dojo.data.ItemFileReadStore({
-              url: "{{ dataUrl }}/dojo/dijit/tests/_data/states.json"
-          });
-          dijit.byId("fs").store = stateStore;
-        });
-
     </script>
 
   .. cv:: html
 
-    <!--stateStore definition omitted; see above examples-->
+    <div dojoType="dojo.data.ItemFileReadStore" 
+        jsId="stateStore"
+        url="{{dataUrl}}/dijit/tests/_data/states.json"></div>
     <input dojoType="dijit.form.FilteringSelect"
         id="fs"
+        store="stateStore"
         value="KY"
         searchAttr="name"
         name="state"

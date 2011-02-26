@@ -102,13 +102,13 @@ A simple demo of dojo.back - it's bookmarkable and based on the tests/back.html
 
 dojo.back needs either a local dojo.js or a local iframe_history.html
 
+.. code-example::
 
-.. cv-compound::
+  .. javascript::
 
-  .. cv:: javascript
-
-    <script type="text/javascript">
-            dojo.require( "dojo.back" );
+        <script type="text/javascript">
+            dojo.require("dojo.back");
+            
             ApplicationState = function(stateData, outputDivId, backForwardOutputDivId, bookmarkValue){
                 this.stateData = stateData;
                 this.outputDivId = outputDivId;
@@ -145,21 +145,19 @@ dojo.back needs either a local dojo.js or a local iframe_history.html
                 dojo.back.addToHistory(appState);
             }
 
+            djConfig.dojoIframeHistoryUrl = "{{dataUrl}}/dojo/back?action=AttachFile&do=get&target=iframe_history.html";
+            dojo.back.init();
+
             dojo.addOnLoad(function(){
                 var link = unescape( new dojo._Url( document.URL ).fragment || "link0" );
                 var appState = new ApplicationState(data[ link ], "output", "dataOutput");
                 appState.showStateData( "initial state" );
                 dojo.back.setInitialState(appState);
             });
-    </script>
-
-  .. cv:: html
-
-        <script type="text/javascript" src="{{ baseUrl }}dojo/dojo.xd.js"
-    djConfig="parseOnLoad: true, dojoIframeHistoryUrl:'iframe_history.html'">
         </script>
-        <script type="text/javascript" src="{{ baseUrl }}dojo/back.js" ></script>
-        <script type="text/javascript">dojo.back.init();</script>
+
+  .. html::
+
         <div style="padding-bottom: 20px; width: 100%; border-bottom: 1px solid gray">
             <h3>dojo.back test</h3>
         </div>

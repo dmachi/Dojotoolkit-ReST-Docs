@@ -1,15 +1,13 @@
 .. _dojox/fx/ext-dojo/reverse:
 
+dojox.fx.ext-dojo.reverse
+=========================
 
 :Status: Up to date
 :Version: 1.5
 :Project owner: Mike Wilcox
 :Author: Mike Wilcox
 :Available: since 1.5
-
-=========================
-dojox.fx.ext-dojo.reverse
-=========================
 
 Basic Description
 -----------------

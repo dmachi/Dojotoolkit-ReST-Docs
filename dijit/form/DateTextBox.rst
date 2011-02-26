@@ -23,6 +23,8 @@ Introduction
 * validates against locale-specific :ref:`i18n <quickstart/internationalization/index>` rules
 * also validates against developer-provided ``constraints`` like ``min``, ``max``, valid days of the week, etc.
 
+:ref:`Options defined by the dojo.date package <quickstart/numbersDates>` to alter the way dates are formatted and parsed can be specified in the DateTextBox ``constraints`` object.
+
 Standard Date Format
 --------------------
 
@@ -35,6 +37,7 @@ Another problem is that your application may interact with various users in diff
 ISO formatted date values sort properly as strings and are lighter-weight than Javascript Date objects, which make them convenient for programming.
 
 The DateTextBox widget uses a hidden form element with the *NAME* of the original tag to submit the ISO data; the form element provided for user interaction is an additional form element instantiated only for this purpose.  When you access the DateTextBox value attribute programmatically from the widget using JavaScript, you must use a native Javascript Date object, e.g. new Date(2007, 11, 25) The time portion of the Date object is ignored.
+
 
 ========
 Examples
@@ -65,7 +68,7 @@ Alternate Date Format to/from a Server
 
 Ideally, your server application will send and receive dates in the ISO standard format.  Dojo recommends it as a best practice, but your data may not conform.  For example when Oracle database processes dates, by default it insists on dd-MMM-yyyy format in English, as in 01-APR-2006.  Perhaps you do not control the database or cannot write a shim to convert the dates server side.  How do you get around it?  
 
-To accept dates from the server in this format (but continue to work with dates on the client using local conventions), you can create your own widget class which overrides the postMixInProperties and serialize methods of DateTextBox. (See :ref:`dijit <dijit>` for details on creating your own widgets). Here's an example:
+To accept dates from the server in this format (but continue to work with dates on the client using local conventions), you can create your own widget class which overrides the postMixInProperties and serialize methods of DateTextBox. (See :ref:`Dijit <dijit/index>` for details on creating your own widgets). Here's an example:
 
 .. cv-compound::
 
@@ -159,6 +162,14 @@ Sometimes you may want to input and display years in a format with only 2-digit 
 Accessibility
 =============
 
+Version 1.6
+-----------
+As of 1.6, full keyboard support has been added to the Calendar dropdown used by the DateTextBox.  See the Accessibility Section in :ref:`dijit.Calendar <dijit/Calendar>` for the keyboard commands to navigate the Calendar drop down. To navigate the DateTextBox with the JAWS 12 screen reader, JAWS must be in virtual cursor off mode. With focus on the DateTextBox field JAWS will announce the DateTextBox as an edit combo.  The user presses the down arrow key to open the Calendar and set focus onto the date specified in the text box.  Use table navigation to navigate through the Calendar.
+
+
+Previous to 1.6
+---------------
+
 See the Accessibility Section in :ref:`dijit.form.ValidationTextBox <dijit/form/ValidationTextBox>`
 
-The calendar popup associated with the DateTextBox is not yet keyboard accessible.  However, the DateTextBox will still meet accessibility requirments as long as the developer provides the validation parameters promptMessage and invalidMessage when creating the DateTextBox.  [TODO: there are default messages; this should not be required]  These messages are implemented in a format that is accessible to all users.   
+The calendar popup associated with the DateTextBox is not yet keyboard accessible.  However, the DateTextBox will still meet accessibility requirments as long as the developer provides the validation parameters promptMessage and invalidMessage when creating the DateTextBox (note that there is a default invalidMessage but not a promptMessage).  These messages are implemented in a format that is accessible to all users.   

@@ -3,8 +3,6 @@
 dojo.fadeIn
 ===========
 
-:Status: Draft
-:Version: 1.0
 :Authors: Peter Higgins, Nikolai Onken, Marcus Reimann, Jared Jurkiewicz
 :Developers: Bryan Forbes, Peter Higgins, Eugene Lazutkin, Bill Keese, Adam Peller, Alex Russell, Dylan Schiemann, sjmiles
 :Available: since V1.0
@@ -20,24 +18,7 @@ Parameters
 
 The *dojo.fadeIn* takes an object as its parameter.  This object defines what dom node to act on, how long the fade in should take (in milliseconds, and an optional easing function.  As with all dojo apis, refer to the API docs for the most up to date information on parameters.  These are listed for convenience.
 
-+-------------------------------+--------------------------------------------------------------------------------------------+
-+**Parameter**                  |**Description**                                                                             |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| node                          |The domNode or node id to fade in.                                                          |
-|                               |                                                                                            |
-|                               |**required**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| duration                      |How long, in milliseconds, should the fade take.  The default is 350 milliseconds           |
-|                               |(.3 seconds).                                                                               |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| easing                        |An easing function to apply to the effect, such as exponential fade in, bouncing fade in,   |
-|                               |etc.  Dojo provides a number of easing functions in module                                  |
-|                               |:ref:`dojo.fx.easing <dojo/fx/easing>`                                                      |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
+`FIXME: just inline API signature`
 
 ============
 Return value

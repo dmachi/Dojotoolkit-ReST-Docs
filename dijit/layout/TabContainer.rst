@@ -32,8 +32,9 @@ First, we'll demonstrate a programatic TabContainer creation.
 Note that the tabs all have a fixed height.
 
 .. code-example::
-  :type: dialog
+  :type: inline
   :toolbar: versions, themes, dir
+  :width: 400
  
   .. javascript::
 
@@ -65,7 +66,7 @@ Note that the tabs all have a fixed height.
 
   .. html::
 
-    <div style="width: 350px; height: 300px">
+    <div style="width: 350px; height: 290px">
         <div id="tc1-prog"></div>
     </div>
 
@@ -248,7 +249,7 @@ This will add the new remote pane after the first pane (0).
 Closing A Tab 
 -------------
 
-A common action for ``closable`` tabs is to register an ``onClose`` function on the child, returning true or false to indicate weather or not the closing should take place:
+A common action for ``closable`` tabs is to register an ``onClose`` function on the child, returning true or false to indicate whether or not the closing should take place:
 
 .. code-example::
 
@@ -292,7 +293,7 @@ A common action for ``closable`` tabs is to register an ``onClose`` function on 
 TabContainer Events
 -------------------
 
-There are two methods of observing TabContainer *shenanigans*. The first, by using :ref:`dojo.subscribe </dojo/subscribe>`. Each TabContainer :ref:`publishes </dojo/publish>` notices based on the *id* of the Container. Several different actions are tracked this way:
+There are two methods of observing TabContainer *shenanigans*. The first, by using :ref:`dojo.subscribe <dojo/subscribe>`. Each TabContainer :ref:`publishes <dojo/publish>` notices based on the *id* of the Container. Several different actions are tracked this way:
 
 .. code-block :: javascript
   :linenos:
@@ -310,7 +311,7 @@ There are two methods of observing TabContainer *shenanigans*. The first, by usi
       console.log("Child is gone: ", child); // but not destroyed!
   });
 
-the -selectChild subscription will not execute if the selected child is already the visible Pane. It will only publish when a *different* child is selected. Notice how this differs from our other method of wiring up TabContainer events, via :ref:`dojo.connect </dojo/connect>`:
+the -selectChild subscription will not execute if the selected child is already the visible Pane. It will only publish when a *different* child is selected. Notice how this differs from our other method of wiring up TabContainer events, via :ref:`dojo.connect <dojo/connect>`:
 
 .. code-block :: javascript
   :linenos:
@@ -366,6 +367,8 @@ Action                                        Key
 ==========================================    =================================================
 Navigate to next tab button                   Right arrow
 Navigate to previous tab button               Left arrow
+Navigate to first tab button                  Home
+Navigate to last tab button                   End
 Navigate into page                            Tab
 Navigate to next page                         Ctrl + page down, ctrl + tab (FF and IE6 only)
 Navigate to previous page                     Ctrl + page up, ctrl + shift + tab (FF and IE6 only)

@@ -111,6 +111,9 @@ dojo.xhrGet supported object properties
 |                  |without having to put a lot of logic into your load function to check for error conditions.  The first parameter passed to  |
 |                  |the error function is a JavaScript Error object indicating what the failure was.                                            |
 |                  |                                                                                                                            |
+|                  |  **Note:** If you cancel the XHR, the error callback will be triggered, think about it if you handle errors with a "try    |
+|                  |  again" mechanism, since you may reschedule a canceled request                                                             |
+|                  |                                                                                                                            |
 |                  |**This parameter is optional**                                                                                              |
 +------------------+----------------------------------------------------------------------------------------------------------------------------+
 |**handle**        |Sometimes you want to do something regardless of whether a call completes or fails.  Thats where handle comes it, it will be|
@@ -168,7 +171,7 @@ Example 1: dojo.xhrGet call to fetch the dojo license.
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE",
+          url: "{{dataUrl}}dojo/LICENSE",
           handleAs: "text",
           load: function(data){
             //Replace newlines with nice HTML tags.
@@ -210,7 +213,7 @@ Example 2: dojo.xhrGet call to fetch the dojo license with preventCache.
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE",
+          url: "{{dataUrl}}dojo/LICENSE",
           handleAs: "text",
           preventCache: true,
           load: function(data){
@@ -253,7 +256,7 @@ Example 3: dojo.xhrGet call that errors.
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/NoSuchFile",
+          url: "{{dataUrl}}dojo/NoSuchFile",
           handleAs: "text",
           preventCache: true,
           load: function(data){
@@ -291,7 +294,7 @@ Example 4: Alternate way to pass callbacks.
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE",
+          url: "{{dataUrl}}dojo/LICENSE",
           handleAs: "text",
           preventCache: true
         }
@@ -339,7 +342,7 @@ Example 5: dojo.xhrGet call with 'content' (query params).
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE",
+          url: "{{dataUrl}}dojo/LICENSE",
           handleAs: "text",
           preventCache: true,
           content: {
@@ -385,7 +388,7 @@ Example 6: dojo.xhrGet call and checking the xhr 'status' code
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE",
+          url: "{{dataUrl}}dojo/LICENSE",
           handleAs: "text",
           preventCache: true,
           load: function(data, ioargs){
@@ -421,7 +424,7 @@ Example 7: dojo.xhrGet call and checking the xhr 'status' code in error handler
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE_NOT_THERE",
+          url: "{{dataUrl}}dojo/LICENSE_NOT_THERE",
           handleAs: "text",
           preventCache: true,
           load: function(data, ioargs){
@@ -473,7 +476,7 @@ Example 8: dojo.xhrGet call with headers
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE",
+          url: "{{dataUrl}}dojo/LICENSE",
           handleAs: "text",
           preventCache: true,
           headers: {
@@ -521,7 +524,7 @@ Example 9: dojo.xhrGet call and checking the xhr 'status' code in 'handle'
         
         //The parameters to pass to xhrGet, the url, how to handle it, and the callbacks.
         var xhrArgs = {
-          url: "{{ dataUrl }}/dojo/dojo/LICENSE_NOT_THERE",
+          url: "{{dataUrl}}dojo/LICENSE_NOT_THERE",
           handleAs: "text",
           preventCache: true,
           handle: function(error, ioargs){

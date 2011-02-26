@@ -10,7 +10,6 @@ Dijit is Dojo's UI Library, and lives as a separate namespace ``dijit``. Dijit r
 
 * :ref:`About Dijit <dijit/info>`
 
-
 =======
 Widgets
 =======
@@ -18,15 +17,16 @@ Widgets
 * :ref:`dijit._Templated <dijit/_Templated>`
 * :ref:`dijit._Widget <dijit/_Widget>`
 
-  * :ref:`a11y  <dijit-a11y>`
+  * :ref:`a11y  <dijit/a11y/index>`
 
-    * :ref:`a11y Strategy <dijit-a11y-strategy>`
-    * :ref:`a11y Resources <dijit-a11y-resources>`
+    * :ref:`a11y Strategy <dijit/a11y/strategy>`
+    * :ref:`a11y Resources <dijit/a11y/resources>`
     * :ref:`Creating Accessible Widgets <quickstart/writingWidgets/a11y>`
     * :ref:`Testing for Accessibility <quickstart/writingWidgets/a11yTesting>`
-    * :ref:`a11y Requirements <dijit-a11y-req>`
-    * :ref:`a11y Statement <dijit-a11y-statement>`
+    * :ref:`a11y Requirements <developer/a11y-requirements>`
+    * :ref:`a11y Statement <dijit/a11y/statement>`
 
+* :ref:`dijit._CssStateMixin <dijit/_CssStateMixin>`
 * :ref:`dijit.Calendar <dijit/Calendar>`
 * :ref:`dijit.ColorPalette <dijit/ColorPalette>`
 * :ref:`dijit.Declaration <dijit/Declaration>`

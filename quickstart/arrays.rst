@@ -15,6 +15,11 @@ Dojo comes with a bunch of useful methods to deal with arrays, a few more than y
 dojo.indexOf
 ============
 
+.. code-block :: javascript
+
+  dojo.indexOf(array, valueToFind, fromIndex, findLast)
+
+
 dojo.indexOf lets you easily determine the index of an element in an array. It locates the first index of the provided value in the passed array. If the value is not found, -1 is returned.
 
 .. cv-compound::
@@ -48,7 +53,14 @@ dojo.indexOf lets you easily determine the index of an element in an array. It l
 dojo.lastIndexOf
 ================
 
+.. code-block :: javascript
+
+  dojo.lastIndexOf(array, valueToFind, fromIndex)
+
+
 dojo.lastIndexOf lets you easily determine the last index of an element in an array. It locates the last index of the provided value in the passed array. If the value is not found, -1 is returned.
+
+**Note**: Calling `indexOf` with the `findLast` parameter set to true is the same as calling `lastIndexOf`.
 
 .. cv-compound::
 
@@ -80,6 +92,10 @@ dojo.lastIndexOf lets you easily determine the last index of an element in an ar
 ============
 dojo.forEach
 ============
+
+.. code-block :: javascript
+
+  dojo.forEach(array, callback, fromIndex)
 
 This is a heavylifter you will use a lot when writing your apps using Dojo. dojo.forEach lets you iterate over arrays, node lists and provides you with ways to filter your results. Lets take a look at a very basic example.
 Note the "i" variable which returns the current position of an iteration
@@ -134,10 +150,55 @@ Now lets use dojo.forEach with a list of dom nodes we retrieve using dojo.query.
 
     </ul>
 
+To break the forEach-Loop you should use dojo.some
+
+.. cv-compound::
+
+  .. cv :: javascript
+
+    <script type="text/javascript">
+	dojo.require("dijit.form.Button");
+
+	function arrayLoopTest() {
+		var myArray = [0,1,2,3,4,5,6,7,8,9];
+		var count;
+		
+		//lets iterate ALL entrys of myArray
+		count = 0;
+		dojo.forEach(myArray, function(entry){
+			count++;
+		});
+		
+		alert("iterated "+count+" entrys (dojo.forEach)"); //will show "iterated 10 entrys"
+		
+		//lets only iterate the first 4 entrys of myArray
+		count = 0;
+		dojo.some(myArray, function(entry){
+
+			if(count >= 4)
+			{
+				return false;
+			}
+			
+			count++;
+		});
+		
+		alert("iterated "+count+" entrys (dojo.some)"); //will show "iterated 4 entrys"
+	}
+    </script>
+
+  .. cv :: html
+
+    <button dojoType="dijit.form.Button" onClick="arrayLoopTest()" type="button">Start Testloops</button>
+
 
 ===========
 dojo.filter
 ===========
+
+.. code-block :: javascript
+
+  dojo.filter(array, callback, thisObject)
 
 There are many cases when you have an array and want to filter it by a certain condition, say you have an array of people with a last name. You would like to filter those having a certain last name. Lets take a look at anexample
 
@@ -198,6 +259,10 @@ There are many cases when you have an array and want to filter it by a certain c
 dojo.map
 ========
 
+.. code-block :: javascript
+
+  dojo.map(array, callback, thisObject)
+
 Another great function provided by Dojo is dojo.map. dojo.map lets you run a function on all elements of an array and returns a new array with the changed values. A very good example is the "Give all my employees a 10% salary rise":
 
 .. cv-compound::
@@ -251,6 +316,10 @@ For complete documentation and more examples please check the :ref:`dojo.map doc
 dojo.some
 =========
 
+.. code-block :: javascript
+
+  dojo.some(array, callback, thisObject);
+
 Imagine you are a manager of a famous bank. A client of you comes and visits your office asking for another million dollars as a credit.
 Now your bank policies only allows you to give each client one credit over 1 million, not two, not three - though you may have several smaller credits. Even 3 credits a 500.000 - weird bank.. anyways. dojo.some is the perfect function to tell you whether an array has some of the asked values:
 
@@ -288,6 +357,10 @@ Now your bank policies only allows you to give each client one credit over 1 mil
 ==========
 dojo.every
 ==========
+
+.. code-block :: javascript
+
+  dojo.every(array, callback, thisObject);
 
 Lets get back to our bank manager. A client wants another credit, but you only allow a credit if every income transfer is at least 3000,-
 An example:

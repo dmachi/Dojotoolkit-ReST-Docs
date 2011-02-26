@@ -82,7 +82,7 @@ Basic Usage
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/Preview.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/Preview.css";
     </style>
     
   .. html::
@@ -132,7 +132,7 @@ Applying styles to preview content
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/Preview.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/Preview.css";
     </style>
     
   .. html::
@@ -183,14 +183,14 @@ Applying stylesheets to preview content
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/Preview.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/Preview.css";
     </style>
     
   .. html::
 
     <b>Enter whatever you like in the editor, then press the 'Preview' button.  A new window will open with the contents.</b>
     <br>
-    <div dojoType="dijit.Editor" height="250px"id="input" extraPlugins="[{name: 'preview', stylesheets: ['{{ dataUrl }}/dojox/editor/plugins/tests/testContentSheet.css']}]">       
+    <div dojoType="dijit.Editor" height="250px"id="input" extraPlugins="[{name: 'preview', stylesheets: ['{{dataUrl}}dojox/editor/tests/testBodySheet.css', '{{dataUrl}}dojox/editor/tests/testContentSheet.css']}]">       
     <div>
     <p>
     blah blah & blah!

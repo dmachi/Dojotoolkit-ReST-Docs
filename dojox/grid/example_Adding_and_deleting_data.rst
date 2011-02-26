@@ -19,7 +19,8 @@ Since DataGrid is "DataStoreAware", changes made to the store will be reflected 
   .. cv:: html
 
     <span dojoType="dojo.data.ItemFileWriteStore" 
-        jsId="store3" url="{{ dataUrl }}/dojo/dijit/tests/_data/countries.json">
+        jsId="store3"
+        url="{{ dataUrl }}dijit/tests/_data/countries.json">
     </span>
 
 
@@ -81,6 +82,6 @@ Since DataGrid is "DataStoreAware", changes made to the store will be reflected 
   .. cv:: css
 
     <style type="text/css">
-	@import "{{ dataUrl }}/dojo/dijit/themes/nihilo/nihilo.css";
-	@import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+	@import "{{ baseUrl }}dijit/themes/nihilo/nihilo.css";
+	@import "{{ baseUrl }}dojox/grid/resources/nihiloGrid.css";
     </style>

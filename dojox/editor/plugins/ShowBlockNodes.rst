@@ -76,7 +76,7 @@ Basic Usage
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/ShowBlockNodes.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/ShowBlockNodes.css";
     </style>
     
   .. html::

@@ -38,7 +38,7 @@ Now you are set and the rating widget should render and be useable.
 .. codeviewer::
   
   <style type="text/css">
-    @import "{{ dataUrl }}/dojo/dojox/form/resources/Rating.css"; 
+    @import "dojox/form/resources/Rating.css"; 
   </style>
   <script type="text/javascript">
     dojo.require("dojox.form.Rating");
@@ -57,7 +57,7 @@ This example shows how to use additional attributes to customize the widget. The
 .. codeviewer::
   
   <style type="text/css">
-    @import "{{ dataUrl }}/dojo/dojox/form/resources/Rating.css"; 
+    @import "dojox/form/resources/Rating.css"; 
   </style>
   <script type="text/javascript">
     dojo.require("dojox.form.Rating");
@@ -74,7 +74,7 @@ The following shows what events you can connect to and how to do this using inli
 .. codeviewer::
   
   <style type="text/css">
-    @import "{{ dataUrl }}/dojo/dojox/form/resources/Rating.css"; 
+    @import "dojox/form/resources/Rating.css"; 
   </style>
   <script type="text/javascript">
     dojo.require("dojox.form.Rating");
@@ -102,7 +102,7 @@ The next example shows how you can do the same as above, just using the default 
 .. codeviewer::
   
   <style type="text/css">
-    @import "{{ dataUrl }}/dojo/dojox/form/resources/Rating.css"; 
+    @import "dojox/form/resources/Rating.css"; 
   </style>
   <script type="text/javascript">
     dojo.require("dojox.form.Rating");
@@ -130,7 +130,7 @@ Inside a dojo form
 .. codeviewer::
   
   <style type="text/css">
-    @import "{{ dataUrl }}/dojo/dojox/form/resources/Rating.css"; 
+    @import "dojox/form/resources/Rating.css"; 
   </style>
   <script type="text/javascript">
     dojo.require("dojox.form.Rating");
@@ -159,9 +159,9 @@ Customized stars
 .. codeviewer::
   
   <style type="text/css">
-    @import "{{ dataUrl }}/dojo/dojox/form/resources/Rating.css";
+    @import "dojox/form/resources/Rating.css";
     #myRating .dojoxRatingStar{
-      background-image:url({{ dataUrl }}/dojo/dijit/themes/tundra/images/dndCopy.png);
+      background-image:url(dijit/themes/tundra/images/dndCopy.png);
       background-position:center center;
       background-repeat:no-repeat;
       background-color:lightgrey;
@@ -171,10 +171,10 @@ Customized stars
     }
 		
     #myRating .dojoxRatingStarChecked {
-      background-image:url({{ dataUrl }}/dojo/dijit/themes/tundra/images/dndNoMove.png);
+      background-image:url(dijit/themes/tundra/images/dndNoMove.png);
     }
     #myRating .dojoxRatingStarHover {
-      background-image:url({{ dataUrl }}/dojo/dijit/themes/tundra/images/dndNoMove.png);
+      background-image:url(dijit/themes/tundra/images/dndNoMove.png);
     }
 
   </style>

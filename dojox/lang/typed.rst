@@ -3,10 +3,8 @@
 dojox.lang.typed
 ================
 
-:Status: Draft
-:Version: 1.0
 :Authors: Kris Zyp
-:Developers: Kris Zyp
+:Project owner: Kris Zyp
 :Available: since V1.3
 
 .. contents::
@@ -73,3 +71,10 @@ You can also run dojox.lang.typed.typeCheckAllClasses() to add type checking to 
  		...
 
 All classes declared with dojo.declare from this point on can have schema definitions for typing purposes.
+
+
+========
+See also
+========
+
+* :ref:`dojox.lang.docs <dojox/lang/docs>`

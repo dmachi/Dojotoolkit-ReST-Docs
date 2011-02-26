@@ -39,7 +39,7 @@ The above models have the following functions:
 
   * handle "writes" from the Tree back to the data store, by DnD.  DnD could be of items within the tree, or items dropped from an external location.
 
-The full API for a model is document at `dijit.tree.model <http://api.dojotoolkit.org/jsdoc/HEAD/dijit.tree.model>`_.
+The full API for a model is documented at `dijit.tree.model <http://api.dojotoolkit.org/jsdoc/HEAD/dijit.tree.model>`_.
 
 The most important methods (ie, the ones that you are likely to need to override when using :ref:`dijit.tree.TreeStoreModel <dijit/tree/TreeStoreModel>` or :ref:`dijit.tree.ForestStoreModel <dijit/tree/ForestStoreModel>`) are:
 
@@ -52,7 +52,7 @@ reference their parent rather than vice-versa.
 mayHaveChildren()
 -----------------
 For efficiency reasons, Tree doesn't want to query for the children of an item until it needs to display them.
-It doesn't want to query for children just to see if it should draw an exando (+) icon or not.
+It doesn't want to query for children just to see if it should draw an expando (+) icon or not.
 
 Thus, the method mayHaveChildren() returning true indicates that either:
 

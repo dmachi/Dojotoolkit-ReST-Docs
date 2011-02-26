@@ -82,7 +82,7 @@ Basic Usage
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/Save.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/Save.css";
     </style>
     
   .. html::
@@ -155,7 +155,7 @@ Customizing a save
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/Save.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/Save.css";
     </style>
     
   .. html::

@@ -34,7 +34,7 @@ Usage
    });
  </script>
 
-After creating a Dialog, the Dialog (and the underlay) moves itself right behind the <body> element within the DOM, so it can overlay the entire webpage. With this move no other elements parent the Dialog.domNode. Therefore you have to add a ``class="tundra"`` attribute (or some other applicable :ref:`theme name <dijit-themes>`) to your <body> tag, in order to show the Dialog with the right styles:
+After creating a Dialog, the Dialog (and the underlay) moves itself right behind the <body> element within the DOM, so it can overlay the entire webpage. With this move no other elements parent the Dialog.domNode. Therefore you have to add a ``class="tundra"`` attribute (or some other applicable :ref:`theme name <dijit/themes>`) to your <body> tag, in order to show the Dialog with the right styles:
 
 .. code-block :: html
 
@@ -231,7 +231,6 @@ To simply close the dialog, click the Cancel button, which calls the hide() func
 
         dojo.addOnLoad(function(){	
             formDlg = dijit.byId("formDialog");
-            // connect to the button so we display the dialog on click:
             dojo.connect(dijit.byId("buttonThree"), "onClick", formDlg, "show");
         });
 
@@ -247,12 +246,145 @@ To simply close the dialog, click the Cancel button, which calls the hide() func
         }
     </script>
 
+If you want to handle the onSubmit event like a traditional <form> element, you will need to employ a <form> either as a traditional HTML element or as a ''dijit.form.Form''.  This example shows a Dialog with an embedded Form which handles the onSubmit event, validation, and an xhrPost to the server.
+
+.. cv-compound::
+
+  
+  .. cv:: html
+
+    <div dojoType="dijit.Dialog" id="formDialog2" title="Form Dialog" style="display: none">
+        <form dojoType="dijit.form.Form">
+            <script type="dojo/event" event="onSubmit" args="e">
+                dojo.stopEvent(e); // prevent the default submit
+                if (!this.isValid()) { window.alert('Please fix fields'); return; }
+
+                window.alert("Would submit here via xhr");
+                // dojo.xhrPost( {
+                //      url: 'foo.com/handler',
+                //      content: { field: 'go here' },
+                //      handleAs: 'json'
+                //      load: function(data) { .. },
+                //      error: function(data) { .. }
+                //  });
+            </script>
+            <div class="dijitDialogPaneContentArea">
+
+                <label for='foo'>Foo:</label><div dojoType="dijit.form.ValidationTextBox" required="true"></div>
+            </div>
+            <div class="dijitDialogPaneActionBar">
+                    <button dojoType="dijit.form.Button" type="submit">OK</button>
+                    <button dojoType="dijit.form.Button" type="button"
+                        onClick="dijit.byId('formDialog2').hide();">Cancel</button>
+            </div>
+         </form>
+    </div>
+
+    <p>When pressing this button the dialog will popup:</p>
+    <button id="buttonThree" dojoType="dijit.form.Button" type="button">Show me!</button>
+
+  .. cv:: javascript
+    :label: The javascript, arranges for the dialog to appear
+
+    <script type="text/javascript">
+        dojo.require("dijit.form.Form");
+        dojo.require("dijit.form.Button");
+        dojo.require("dijit.Dialog");
+        dojo.require("dijit.form.TextBox");
+        dojo.require("dijit.form.DateTextBox");
+        dojo.require("dijit.form.TimeTextBox");
+
+        dojo.addOnLoad(function(){	
+            var formDlg = dijit.byId("formDialog2");
+            dojo.connect(dijit.byId("buttonThree"), "onClick", formDlg, "show");
+        });
+
+    </script>
+
+Terms and Conditions Dialog
+----------------------------------
+
+This example shows a Dialog that will ask the user to accept or decline the terms and conditions.
+
+.. cv-compound::
+
+  
+  .. cv:: html
+
+    <div dojoType="dijit.Dialog" id="formDialog" title="Accept or decline agreement terms" execute="alert('submitted w/args:\n' + dojo.toJson(arguments[0], true));">
+        <h1>Agreement Terms</h1>
+	
+         <div dojoType="dijit.layout.ContentPane" style="width:400px; border:1px solid #b7b7b7; background:#fff; padding:8px; margin:0 auto; height:150px; overflow:auto; ">
+                Dojo is available under *either* the terms of the modified BSD license *or* the Academic Free License version 2.1. As a recipient of Dojo, you may choose which license to receive this code under (except as noted in per-module LICENSE files). Some modules may not be the copyright of the Dojo Foundation. These modules contain explicit declarations of copyright in both the LICENSE files in the directories in which they reside and in the code itself. No external contributions are allowed under licenses which are fundamentally incompatible with the AFL or BSD licenses that Dojo is distributed under. The text of the AFL and BSD licenses is reproduced below. ------------------------------------------------------------------------------- The "New" BSD License: ********************** Copyright (c) 2005-2010, The Dojo Foundation All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+         </div>
+	
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <input type="radio" dojoType="dijit.form.RadioButton" name="agreement" id="radioOne" value="accept" onclick="accept"/>
+                    <label for="radioOne">
+                        I accept the terms of this agreement
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" dojoType="dijit.form.RadioButton" name="agreement" id="radioTwo" value="decline" onclick="decline"/>
+                    <label for="radioTwo">
+                        I decline 
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p>
+        When pressing this button the dialog will popup:
+    </p>
+		
+    <label id="decision" style="color:#FF0000;">
+        Terms and conditions have not been accepted.
+    </label>
+    <button id="termsButton" dojoType="dijit.form.Button" type="button">
+        View terms and conditions to accept
+    </button>
+
+  .. cv:: javascript
+    :label: The javascript, put this wherever you want the dialog creation to happen
+
+    <script type="text/javascript">
+        dojo.require("dijit.form.Button");
+        dojo.require("dijit.Dialog");
+        dojo.require("dijit.form.RadioButton");
+
+        dojo.addOnLoad(function() {
+            formDlg = dijit.byId("formDialog");
+            dojo.connect(dijit.byId("termsButton"), "onClick", formDlg, "show");
+        });
+			
+        function accept(){
+            dojo.byId("decision").innerHTML = "Terms and conditions have been accepted.";
+            dojo.style("decision", "color", "#00CC00");
+            dijit.byId("formDialog").hide();
+        }
+			
+        function decline(){
+            dojo.byId("decision").innerHTML = "Terms and conditions have not been accepted.";
+            dojo.style("decision", "color", "#FF0000");
+            dijit.byId("formDialog").hide();
+        }
+			
+    </script>
+
 External Dialog content using HREF attribute
 --------------------------------------------
 
 You can also load dialog content from another page by setting HREF attribute for the widget. Note that the Dialog doesn't execute script tags inline external content. However, it parses the page for widgets, so you can add functionality to widgets by connecting into widget extension points using declarative markup (DojoML; e.g. ``<script type="dojo/method" event="onClick">``). Other options for executing scripts are `iFrame <http://www.dojotoolkit.com/forum/dijit-dijit-0-9/dijit-support/loading-external-url-dijit-dialog>`_ and `dojox.layout.ContentPane <http://www.dojotoolkit.org/forum/dijit-dijit-0-9/dijit-support/javascript-ignored-when-loading-dijit-dialog-url>`_.
 
 .. cv-compound::
+
+
+  :height: 500
 
   .. cv:: javascript
 
@@ -263,7 +395,7 @@ You can also load dialog content from another page by setting HREF attribute for
 
   .. cv:: html
 
-    <div id="external" dojoType="dijit.Dialog" title="My external dialog" href="http://dojotoolkit.org" style="width: 500px; height: 400px;">
+    <div id="external" dojoType="dijit.Dialog" title="My external dialog" href="{{dataUrl}}dojo/resources/LICENSE" style="overflow:auto; width: 400px; height: 200px;">
     </div>
 
     <p>When pressing this button the dialog will popup loading the dialog content using an XHR call.</p>
@@ -371,11 +503,11 @@ Known Issues
   * JAWS 9 does not speak "dialog" when the dialog is opened in Firefox or IE 8.
   * In Firefox 2 even though the focus is on the first focusable item in the dialog, the information about that item is also not spoken.
   * In Firefox 3 with JAWS 9 the dialog is also not announced but the information about the item in the dialog which gets focus is spoken. The issue has been fixed in JAWS 10 with Firefox 3.
-  * In IE 8 with JAWS 10 the dialog information and title is not spoken. This is due to the fact that IE 8 does not support the ARIA labelledby property that is used to assign the title to the dialog.  
-
+  * In IE 8 with JAWS 10 and JAWS 11 the dialog information and title is not spoken. This is due to the fact that IE 8 does not support the ARIA labelledby property that is used to assign the title to the dialog.  
 * There are focus issues when the dialog is created via an href. Due to timing issues focus may not be properly set nor properly trapped
-  in the dialog. For accessibility reasons, dialogs created via href are not recommended. This issue will be addressed in a future release.
+  in the dialog. For accessibility reasons, dialogs created via href are not recommended. This issue has been addressed in the 1.5 release.
 * When loading Dialog content with the href property, there can be issues with scrolling in IE7: If the loaded content contains dijit.layout elements and the Dialog content is larger than the size of the dialog, the layout dijits do not scroll properly in IE7. The workaround for this issue is to set the 'position:relative' style to the dialog.containerNode: 
+* Dialogs with an iframe as the contents will cause a focus trap and are not supported. This because the dialog code can not traverse within the iframe contents to find all of the focusable elements to know the first and last focusable element within the contents.
 * Dialogs with no focusable items cause problems for screen readers.  If the dialog has no focusable items, set the tabindex="0" on the container element of the text.  This will set focus to that container when the dialog is opened and will cause JAWS to speak the title of the dialog and the user will know that a dialog has been opened.
 
 .. code-block :: javascript

@@ -11,46 +11,13 @@ Starting with V1.3 each new feature needs a proper documentation at docs.dojocam
 The following pages need more love:
 
 
-=====================
-Top priority: dojo.js
-=====================
-
-* :ref:`dojo.Animation <dojo/Animation>` ``peller, slightlyoff, dante``
-
-  needed: full page
-
-* :ref:`dojo.anim <dojo/anim>`
-
-  needed: full page
-
-* :ref:`dojo.eval <dojo/eval>`
-
-  needed: review
-
-* :ref:`dojo.provide <dojo/provide>`
-
-  needed: review necessary
-
-* :ref:`dojo.moduleUrl <dojo/moduleUrl>`
-
-  needed: review necessary
-
-
-=====================
-Priority 2: Dojo Core
-=====================
+=========
+Dojo Core
+=========
 
 * :ref:`dojo.AdapterRegistry <dojo/AdapterRegistry>`
 
   needed: full page
-
-* :ref:`dojo.colors <dojo/colors>`
-
-  needed: full page
-
-* :ref:`dojo.cookie <dojo/cookie>`
-
-  needed: review
 
 * :ref:`dojo.currency <dojo/currency>`
 
@@ -64,14 +31,10 @@ Priority 2: Dojo Core
 
   needed: full page
 
-* :ref:`dojo.rpc.RpcService <dojo/rpc/RpcService>`
 
-  needed: full page
-
-
-=================
-Priority 3: Dijit
-=================
+=====
+Dijit
+=====
 
 * :ref:`dijit._HasDropDown <dijit/_HasDropDown>`
 
@@ -81,18 +44,10 @@ Priority 3: Dijit
 
   needed: full page
 
-* :ref:`dijit.layout.LinkPane <dijit/layout/LinkPane>`
 
-  needed: full page
-
-
-=================
-Priority 4: DojoX
-=================
-
-* :ref:`dojox.analytics <dojox/analytics>` ``dmachi, phiggins``
-
-  needed: examples or subpages?
+=====
+DojoX
+=====
 
 * :ref:`dojox.atom.widget.FeedViewer <dojox/atom/widget/FeedViewer>`
 
@@ -118,10 +73,6 @@ Priority 4: DojoX
 
   needed: full page
 
-* :ref:`dojox.DataGrid <dojox/DataGrid>` ``bforbes, toonetown``
-
-  needed: Introduction, Grid 1.2 Changes, Usage, Parameter "selection mode", Example "sorting data at the server", Example "Large datasets", Tips
-
 * :ref:`dojox/data/QueryReadStore/example <dojox/data/QueryReadStore/example>`
 
   This example is unfinished, should we delete it?
@@ -135,10 +86,6 @@ Priority 4: DojoX
   needed: full page
 
 * :ref:`dojox.form.MultiComboBox <dojox/form/MultiComboBox>`
-
-  needed: full page
-
-* :ref:`dojox.form.RangeSlider <dojox/form/RangeSlider>`
 
   needed: full page
 
@@ -157,7 +104,6 @@ Priority 4: DojoX
 * :ref:`dojox.html.styles <dojox/html/styles>`
 
   needed: full page
-
 
 * :ref:`dojox.image.Badge <dojox/image/Badge>`
 
@@ -205,7 +151,7 @@ Priority 4: DojoX
 
 * :ref:`dojox.layout.ExpandoPane <dojox/layout/ExpandoPane>`
 
-  needed: full page
+  needed: programmatic example
 
 * :ref:`dojox.layout.GridContainer <dojox/layout/GridContainer>`
 
@@ -220,6 +166,10 @@ Priority 4: DojoX
   needed: full page
 
 * :ref:`dojox.layout.ToggleSplitter <dojox/layout/ToggleSplitter>`
+
+  needed: full page
+
+* :ref:`dojox.mdnd <dojox/mdnd>`
 
   needed: full page
 
@@ -269,3 +219,4 @@ We're working on documentation for how to use Dojo with various servers and othe
 * ( ) Palm Pre
 * ( ) Vodafone widgets
 * ( ) Facebook apps
+* (erin.stanfill) Asp.net

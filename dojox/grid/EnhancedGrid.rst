@@ -23,6 +23,7 @@ EnhancedGrid (dojox.grid.EnhancedGrid) provides a rich set of features that enha
 * Selecting multiple rows or columns by swiping
 * Moving multiple rows or columns with drag-n-drop
 
+
 EnhancedGrid features are implemented as plugins which can be loaded on demand. As a result, the required features must first declared before they can be used.
 
 .. code-example::
@@ -33,17 +34,7 @@ EnhancedGrid features are implemented as plugins which can be loaded on demand. 
 
   .. javascript::
 
-    <script type="text/javascript" src="{{ dataUrl }}/dojo/dojo.js.uncompressed.js"></script> 
     <script type="text/javascript">
-
-	var _dr = dojo.require;
-	dojo.require = function(module) {
-		if(module == "dijit.Editor") return ;
-		_dr(module);
-	}
-
-	dojo.require("dojox.grid.cells.dijit");
-
 	dojo.require("dojox.grid.EnhancedGrid");
 	dojo.require("dojox.grid.enhanced.plugins.DnD");
 	dojo.require("dojox.grid.enhanced.plugins.Menu");
@@ -53,7 +44,7 @@ EnhancedGrid features are implemented as plugins which can be loaded on demand. 
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout = [
@@ -66,7 +57,6 @@ EnhancedGrid features are implemented as plugins which can be loaded on demand. 
           var grid = new dojox.grid.EnhancedGrid({
               query: { Title: '*' },
               store: store,
-              clientSort: true,
               rowSelector: '20px',
               structure: layout,
               plugins : {nestedSorting: true, dnd: true, indirectSelection: {name: "Selection", width:"70px", styles:"text-align: center;"}}
@@ -87,10 +77,10 @@ EnhancedGrid features are implemented as plugins which can be loaded on demand. 
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
-		@import "{{ dataUrl }}EnhancedGrid.css";
-		@import "{{ dataUrl }}/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+        @import "{{ baseUrl }}dojo/resources/dojo.css";
+        @import "{{ baseUrl }}dijit/themes/{{ theme }}/{{ theme }}.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -115,8 +105,8 @@ The following steps show a typical usage of EnhancedGrid:
   :linenos:
 
   <style type="text/css">
-      @import "../../../../dijit/themes/tundra/tundra.css";
-      @import "../../enhanced/resources/tundraEnhancedGrid.css";
+      @import "../../../../dijit/themes/claro/claro.css";
+      @import "../../enhanced/resources/claroEnhancedGrid.css";
       ...
   </style>
 
@@ -171,22 +161,13 @@ This feature enhances the single sorting feature of base DataGrid. Nested sortin
   .. javascript::
 
     <script type="text/javascript">
-
-	var _dr = dojo.require;
-	dojo.require = function(module) {
-		if(module == "dijit.Editor") return ;
-		_dr(module);
-	}
-
-	dojo.require("dojox.grid.cells.dijit");
-
 	dojo.require("dojox.grid.EnhancedGrid");
 	dojo.require("dojox.grid.enhanced.plugins.NestedSorting");
         dojo.require("dojox.data.CsvStore");
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout = [
@@ -220,10 +201,8 @@ This feature enhances the single sorting feature of base DataGrid. Nested sortin
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
-        @import "{{ dataUrl }}EnhancedGrid.css";
-        @import "{{ dataUrl }}/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+        @import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+        @import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -354,7 +333,7 @@ This feature provides indirect row selection support either through
   * Radio buttons - for single row selection, and
   * Check boxes - for multiple row selections
 
-Please note indirect selection is completely dependent on the selection mode of EnhancedGrid so check boxes are used for "extended" and "multiple" selection mode ("extended" is the default mode), and radio buttons are used for "single" selection mode. For more details of Grid selection modes, please refer to the `specification of the base Grid :ref:`<dojox/grid>`.
+Please note indirect selection is completely dependent on the selection mode of EnhancedGrid so check boxes are used for "extended" and "multiple" selection mode ("extended" is the default mode), and radio buttons are used for "single" selection mode. For more details of Grid selection modes, please refer to the :ref:`specification of the base Grid <dojox/grid>`.
 
 .. code-example::
   :toolbar: themes, versions, dir
@@ -364,24 +343,14 @@ Please note indirect selection is completely dependent on the selection mode of 
 
   .. javascript::
 
-    <script type="text/javascript" src="{{ dataUrl }}/dojo/dojo.js.uncompressed.js"></script> 
     <script type="text/javascript">
-
-	var _dr = dojo.require;
-	dojo.require = function(module) {
-		if(module == "dijit.Editor") return ;
-		_dr(module);
-	}
-
-	dojo.require("dojox.grid.cells.dijit");
-
 	dojo.require("dojox.grid.EnhancedGrid");
 	dojo.require("dojox.grid.enhanced.plugins.IndirectSelection");
         dojo.require("dojox.data.CsvStore");
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout = [
@@ -415,10 +384,8 @@ Please note indirect selection is completely dependent on the selection mode of 
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
-		@import "{{ dataUrl }}EnhancedGrid.css";
-		@import "{{ dataUrl }}/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -526,8 +493,8 @@ Keyboard Support
 +===========================+================================================================================+
 | UP/Down arrow keys        | Navigate keyboard focus across cells that contain radio buttons or check boxes |
 +---------------------------+--------------------------------------------------------------------------------+
-| SPACE key                 | - Radio button - select a row                                                  |
-|                           | - Check box - select or de-select a row.                                       |
+| SPACE key	            | -	Radio button - select a row                                                  |
+|                           | -	Check box - select or de-select a row.                                       |
 +---------------------------+--------------------------------------------------------------------------------+
 | SHIFT + Click             | Select or de-select a range of rows                                            |
 | SHIFT + SPACE key         |                                                                                |
@@ -583,7 +550,25 @@ Tips
   :linenos:
 
   dijit.byId('grid').selection.selected[rowIndex] // returns true or false
+
+* It's also possible to make some styling customizations for the indirect selection column.
+
+.. code-block :: javascript
+  :linenos:
+
+  <div id="grid" dojoType="dojox.grid.EnhancedGrid" plugins="{indirectSelection:{name:'Selection',width:'70px',styles:'text-align:right;'}}" ...></div>
     
+or 
+
+.. code-block :: javascript
+  :linenos:
+
+  <script>
+    var grid = new dojox.grid.EnhancedGrid({id:"grid", plugins:{indirectSelection:{name:"Selection",width:"70px",styles:"text-align:center;"}, ...}, dojo.byId('gridDiv'));
+  </script>
+
+  
+
 ========================
 Declarative Context Menu
 ========================
@@ -594,6 +579,8 @@ With this new feature, users can add context menus either through declarative HT
 * Cell menu
 * Row menu
 
+...with HTML markup
+
 .. code-example::
   :toolbar: themes, versions, dir
   :version: local
@@ -602,27 +589,14 @@ With this new feature, users can add context menus either through declarative HT
 
   .. javascript::
 
-    <script type="text/javascript" src="{{ dataUrl }}/dojo/dojo.js.uncompressed.js"></script> 
     <script type="text/javascript">
-
-	var _dr = dojo.require;
-	dojo.require = function(module) {
-		if(module == "dijit.Editor") return ;
-		_dr(module);
-	}
-
-	dojo.require("dojox.grid.cells.dijit");
-
 	dojo.require("dojox.grid.EnhancedGrid");
-	dojo.require("dojox.grid.enhanced.plugins.DnD");
 	dojo.require("dojox.grid.enhanced.plugins.Menu");
-	dojo.require("dojox.grid.enhanced.plugins.NestedSorting");
-	dojo.require("dojox.grid.enhanced.plugins.IndirectSelection");
         dojo.require("dojox.data.CsvStore");
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout = [
@@ -681,10 +655,107 @@ With this new feature, users can add context menus either through declarative HT
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
-		@import "{{ dataUrl }}EnhancedGrid.css";
-		@import "{{ dataUrl }}/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+
+        .dojoxGrid table {
+            margin: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+
+...with Javascript
+
+.. code-example::
+  :toolbar: themes, versions, dir
+  :version: local
+  :width: 480
+  :height: 300
+
+  .. javascript::
+
+    <script type="text/javascript">
+	dojo.require("dojox.grid.EnhancedGrid");
+	dojo.require("dojox.grid.enhanced.plugins.Menu");
+        dojo.require("dojox.data.CsvStore");
+    
+        dojo.addOnLoad(function(){
+          // our test data store for this example:
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
+
+          // set the layout structure:
+          var layout = [
+              { field: 'Title', name: 'Title of Movie', width: '200px' },
+              { field: 'Year', name: 'Year', width: '50px' },
+              { field: 'Producer', name: 'Producer', width: 'auto' }
+          ];
+
+	   //programmatic menus
+		var menusObject = {
+			headerMenu: new dijit.Menu(),
+			rowMenu: new dijit.Menu(),
+			cellMenu: new dijit.Menu(),
+			selectedRegionMenu: new dijit.Menu()
+		};
+		menusObject.headerMenu.addChild(new dijit.MenuItem({label: "Header Menu Item 1"}));
+		menusObject.headerMenu.addChild(new dijit.MenuItem({label: "Header Menu Item 2"}));
+		menusObject.headerMenu.addChild(new dijit.MenuItem({label: "Header Menu Item 3"}));
+		menusObject.headerMenu.addChild(new dijit.MenuItem({label: "Header Menu Item 4"}));
+		menusObject.headerMenu.startup();
+		
+		menusObject.rowMenu.addChild(new dijit.MenuItem({label: "Row Menu Item 1"}));
+		menusObject.rowMenu.addChild(new dijit.MenuItem({label: "Row Menu Item 2"}));
+		menusObject.rowMenu.addChild(new dijit.MenuItem({label: "Row Menu Item 3"}));
+		menusObject.rowMenu.addChild(new dijit.MenuItem({label: "Row Menu Item 4"}));
+		menusObject.rowMenu.startup();
+		
+		menusObject.cellMenu.addChild(new dijit.MenuItem({label: "Cell Menu Item 1"}));
+		menusObject.cellMenu.addChild(new dijit.MenuItem({label: "Cell Menu Item 2"}));
+		menusObject.cellMenu.addChild(new dijit.MenuItem({label: "Cell Menu Item 3"}));
+		menusObject.cellMenu.addChild(new dijit.MenuItem({label: "Cell Menu Item 4"}));
+		menusObject.cellMenu.startup();
+		
+		menusObject.selectedRegionMenu.addChild(new dijit.MenuItem({label: "Action 1 for Selected Region"}));
+		menusObject.selectedRegionMenu.addChild(new dijit.MenuItem({label: "Action 2 for Selected Region"}));
+		menusObject.selectedRegionMenu.addChild(new dijit.MenuItem({label: "Action 3 for Selected Region"}));
+		menusObject.selectedRegionMenu.addChild(new dijit.MenuItem({label: "Action 4 for Selected Region"}));
+		menusObject.selectedRegionMenu.startup();
+		
+	      
+          // create a new grid:
+          var grid = new dojox.grid.EnhancedGrid({
+              query: { Title: '*' },
+              store: store,
+              clientSort: true,
+              rowSelector: '20px',
+              structure: layout,
+              plugins : {menus: menusObject}
+          }, document.createElement('div'));
+
+          // append the new grid to the div "gridContainer4":
+          dojo.byId("gridDiv").appendChild(grid.domNode);
+
+          // Call startup, in order to render the grid:
+          grid.startup();
+        });
+    </script>
+
+  .. html::
+
+	<div id="gridDiv" style="width: 100%; height: 100%;">
+
+	</div>
+
+  .. css::
+
+    <style type="text/css">
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+		@import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -735,7 +806,7 @@ Usage
       </div>
   </div>
 
-... with JavaScript
+... with JavaScript (using a markup menu)
     
 .. code-block :: javascript
   :linenos:
@@ -773,17 +844,7 @@ As noted above, swipe-select is also possible when the check box mode of Indirec
 
   .. javascript::
 
-    <script type="text/javascript" src="{{ dataUrl }}/dojo/dojo.js.uncompressed.js"></script> 
     <script type="text/javascript">
-
-	var _dr = dojo.require;
-	dojo.require = function(module) {
-		if(module == "dijit.Editor") return ;
-		_dr(module);
-	}
-
-	dojo.require("dojox.grid.cells.dijit");
-
 	dojo.require("dojox.grid.EnhancedGrid");
 	dojo.require("dojox.grid.enhanced.plugins.DnD");
 	dojo.require("dojox.grid.enhanced.plugins.NestedSorting");
@@ -791,7 +852,7 @@ As noted above, swipe-select is also possible when the check box mode of Indirec
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout = [
@@ -825,10 +886,8 @@ As noted above, swipe-select is also possible when the check box mode of Indirec
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
-        @import "{{ dataUrl }}EnhancedGrid.css";
-        @import "{{ dataUrl }}/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+        @import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+        @import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -967,17 +1026,7 @@ Note:
 
   .. javascript::
 
-    <script type="text/javascript" src="{{ dataUrl }}/dojo/dojo.js.uncompressed.js"></script> 
     <script type="text/javascript">
-
-	var _dr = dojo.require;
-	dojo.require = function(module) {
-		if(module == "dijit.Editor") return ;
-		_dr(module);
-	}
-
-	dojo.require("dojox.grid.cells.dijit");
-
 	dojo.require("dojox.grid.EnhancedGrid");
 	dojo.require("dojox.grid.enhanced.plugins.DnD");
 	dojo.require("dojox.grid.enhanced.plugins.NestedSorting");
@@ -985,7 +1034,7 @@ Note:
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout = [
@@ -1019,10 +1068,8 @@ Note:
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
-        @import "{{ dataUrl }}EnhancedGrid.css";
-        @import "{{ dataUrl }}/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+        @import "{{ baseUrl }}dojox/grid/enhanced/resources/{{ theme }}EnhancedGrid.css";
+        @import "{{ baseUrl }}dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
 
         .dojoxGrid table {
             margin: 0;

@@ -141,7 +141,7 @@ Here's an example of dojoAttachPoint and dojoAttachEvent:
 waiRole and waiState
 --------------------
 
-These attributes are for accessibility, and define the role of DOM nodes such as "tree". See :ref:`Creating Accessible Widgets <writingWidgets/a11y>` for more information.
+These attributes are for accessibility, and define the role of DOM nodes such as "tree". See :ref:`Creating Accessible Widgets <quickstart/writingWidgets/a11y>` for more information.
 
 
 containerNode

@@ -240,10 +240,11 @@ Example 1: Programmatic instantiation and querying of ATOM Feeds.
 
     <script>
       dojo.require("dojox.data.AppStore");
+      dojo.require("dijit.form.Button");
 
       //This function performs some basic dojo initialization and will do the fetch calling for this example
       function initSimple () {
-        var appStore = new dojox.data.AppStore({url:"{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml"});
+        var appStore = new dojox.data.AppStore({url:"{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml"});
 
         dojo.connect(dijit.byId("simpleFetchButton"), "onClick", function() {
           function gotEntries(items, request) {
@@ -286,10 +287,11 @@ Example 2: Programmatic instantiation and querying of ATOM Feed Entry titles.
 
     <script>
       dojo.require("dojox.data.AppStore");
+      dojo.require("dijit.form.Button");
 
       //This function performs some basic dojo initialization and will do the fetch calling for this example
       function initSimple2 () {
-        var appStore = new dojox.data.AppStore({url:"{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml"});
+        var appStore = new dojox.data.AppStore({url:"{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml"});
 
         dojo.connect(dijit.byId("simpleFetchButton2"), "onClick", function() {
           function gotEntries(items, request) {
@@ -365,7 +367,7 @@ Example 3: Connecting AppStore to DataGrid
 
   .. cv :: html 
 
-    <div dojoType="dojox.data.AppStore" jsId="appStore" url="{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml"></div>
+    <div dojoType="dojox.data.AppStore" jsId="appStore" url="{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml"></div>
     <div jsId="grid" dojoType="dojox.grid.DataGrid" store="appStore" query="{}" structure="layout" style="width: 600px; height: 200px;"></div>
     <br>
     <br>
@@ -375,8 +377,8 @@ Example 3: Connecting AppStore to DataGrid
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
       .dojoxGrid table {
         margin: 0;
@@ -404,7 +406,7 @@ Example 4: Write example: Changing Title and showing in DataGrid
       ];
 
       function initGrid() {
-          grid.resize();
+          thegrid.resize();
           dojo.connect(dijit.byId("changeTitleButton"), "onClick", function(){
              function gotAllItems(items, request){
                if(items){
@@ -414,7 +416,7 @@ Example 4: Write example: Changing Title and showing in DataGrid
                    appStore2.setValue(items[i], "title", "This is new title #" + i);
                  }
                  //Requery to reload grid.  This is needed as this store does not currently implement the notification API.
-                 grid2.setQuery({});
+                 thegrid.setQuery({});
                }
              }
              appStore2.fetch({onComplete: gotAllItems});
@@ -426,8 +428,8 @@ Example 4: Write example: Changing Title and showing in DataGrid
 
   .. cv :: html 
 
-    <div dojoType="dojox.data.AppStore" jsId="appStore2" url="{{ dataUrl }}/dojo/dojox/atom/tests/widget/samplefeedEdit.xml"></div>
-    <div jsId="grid2" dojoType="dojox.grid.DataGrid" store="appStore2" query="{}" structure="layout2" style="width: 600px; height: 200px;"></div>
+    <div dojoType="dojox.data.AppStore" jsId="appStore2" url="{{dataUrl}}dojox/atom/tests/widget/samplefeedEdit.xml"></div>
+    <div jsId="thegrid" dojoType="dojox.grid.DataGrid" store="appStore2" query="{}" structure="layout2" style="width: 600px; height: 200px;"></div>
     <br>
     <br>
     <button id="changeTitleButton" dojoType="dijit.form.Button">Change all titles!</button> 
@@ -435,8 +437,8 @@ Example 4: Write example: Changing Title and showing in DataGrid
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
       .dojoxGrid table {
         margin: 0;

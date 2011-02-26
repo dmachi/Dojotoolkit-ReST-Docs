@@ -158,6 +158,7 @@ The Event object is the same as Dojo's normalized event when using dojo.connect.
 
 This example prevents the form from submitting and instead uses Ajax to send the data to the form's ``action=""`` url in an unobtrusive manner.
 
+An event delegation API is provided in :ref:`dojox.NodeList.delegate <dojox/NodeList/delegate>`
 
 ==================
 Extending NodeList
@@ -195,7 +196,18 @@ To keep the Base size to a minimum, some NodeList functionality is provided by e
     dojo.query(".readyToFade").fadeIn().play();
   });
 
-The NodeList animations do *not* return the NodeList instance. Instead, they return the created :ref:``Animation`` object, which you have to explictly call ``.play()`` on.
+The NodeList animations do *not* return the NodeList instance. Instead, they return the created ``Animation`` object, which you have to explictly call ``.play()`` on.
+
+Additional Extensions
+---------------------
+
+  * :ref:`dojo.NodeList-data <dojo/NodeList-data>` - provides ``data`` and ``removeData`` APIs
+  * :ref:`dojo.NodeList-traverse <dojo/NodeList-traverse>` - provides a variety of DOM Traversal APIs, like ``parents`` and ``closest``
+  * :ref:`dojo.NodeList-manipulate <dojo/NodeList-manipulate>` - additional DOM Manipulation APIs
+  * :ref:`dojo.NodeList-fx <dojo/NodeList-fx>` - Provides :ref:`dojo.Animation <dojo/Animation>` support to NodeLists
+  * :ref:`dojo.NodeList-html <dojo/NodeList-html>` - Advanced content-setter functionality (with :ref:`dojo.parser <dojo/parser>` support. 
+  * :ref:`dojox.NodeList.delegate <dojox/NodeList/delegate>` - Event delegation for dojo.NodeList
+
 
 ===========
 API Details
@@ -205,7 +217,7 @@ Array Methods
 -------------
 
 :at:
-  Returns one (or more) elements from the list in a new ``NodeList`` based on integer index. This is a fast way to wrap elements in a ``NodeList``, exposing all the manipulation and DOM conveniences easily (can be chained):
+  Returns one (or more) elements from the list in a new ``NodeList`` based on integer index. This is a fast way to wrap elements in a ``NodeList``, exposing all the manipulation and DOM conveniences easily (can be chained). 
 
 .. code-block :: javascript
   :linenos:
@@ -216,6 +228,25 @@ Array Methods
   // get the 3rd and 5th elements:
   var ofInterest = dojo.query(".stories").at(2, 4);
 
+.. code-block :: javascript
+  :linenos:
+  
+  // new in Dojo 1.5, .at() can accept negative indices
+  dojo.query("a").at(0, -1).onclick(fn); 
+  
+Incidentally, you can .end() out of a NodeList returned from .at, providing you access to the original NodeList before filtering.
+
+.. code-block :: javascript
+  :linenos:
+  
+  dojo.query("a")
+      .at(0)
+         .onclick(function(e){ ... })
+      .end() // back to main <a> list
+      .forEach(function(n){
+            makePretty(n);
+      });
+    
 :forEach:
   like `dojo.forEach <dojo/forEach>`_ but with current list as the first parameter. Has the same API as `Array.forEach <https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/forEach>`_ in browsers that support it. Returns the source NodeList (can be chained).
 
@@ -411,39 +442,79 @@ Click on a method name to see a documentation page for it.
 
 ::ref:`attr <dojo/NodeList/attr>`:
   Attribute getter/setter for this list of nodes. Mimics :ref:`dojo.attr <dojo/attr>`, excluding the node passed.
+
 ::ref:`removeAttr <dojo/NodeList/removeAttr>`:
   **New in 1.4** - Forcefully remove the passed attribute from a node. Mimics :ref:`dojo.removeAttr <dojo/removeAttr>`.
 
 :style:
   Get or set styles to the nodes in this list. For more information see :ref:`dojo.style <dojo/style>`
+
 :addClass:
   Add the passed class to the nodes in this list. For more information see :ref:`dojo.addClass <dojo/addClass>`
+
 :removeClass:
   Remove the passed class to the nodes in this list. For more information see :ref:`dojo.removeClass <dojo/removeClass>`
+
 :toggleClass:
   Add the passed class to the nodes in this list, if the class is not present, otherwise removes it. For more information see :ref:`dojo.toggleClass <dojo/toggleClass>`
+
 :place:
   TODOC
+
 :orphan:
   TODOC
+
 :adopt:
   TODOC
+
 :addContent:
   TODOC
-:empty:
-  TODOC
-:coords:
-  TODOC
 
+:empty:
+  Empties the content of the nodes in this list, leaving the nodes in place. see :ref:`dojo.empty <dojo/empty>`
+
+:coords:
+  Partially "deprecated", using NodeList.position is recommended in Dojo 1.4 and higher. Returns the coordinate values
+  of all the nodes in this list. 
+
+:position:
+  Returns the coordinate values of all the nodes in this list. 
 
 Event Methods
 -------------
 
 :connect:
-  TODOC
+  Connect to an event of all the nodes in this list. Follows the pattern of :ref:`dojo.connect <dojo/connect>`, though assumes each node in the list to be the target to connect to.
+  
+.. code-block :: javascript
+  :linenos:
+  
+  dojo.query("a.external").connect("onclick", function(e){
+    // `this` here refers to the node, as we've not explicitly set the context to something
+  });
+  
+  dojo.query("form").connect("onsubmit", function(){});
+  
+As a convenience, several common events are mapped as direct function calls. For example, the two following query() calls have identical results:
 
-Other events methods that do what you think: ``onblur``, ``onfocus``, ``onchange``, ``onclick``, ``onerror``, ``onkeydown``, ``onkeypress``, ``onkeyup``, ``onload``, ``onmousedown``, ``onmouseenter``, ``onmouseleave``, ``onmousemove``, ``onmouseout``, ``onmouseover``, ``onmouseup``, and ``onsubmit``.
+.. code-block :: javascript
+  :linenos:   
+  
+  var fn = function(e){ console.warn(e.target); }
+  dojo.query("a").onclick(fn);
+  dojo.query("a").connect("onclick", fn);
 
+The full list of methods that are mapped in this way are: ``onblur``, ``onfocus``, ``onchange``, ``onclick``, ``onerror``, ``onkeydown``, ``onkeypress``, ``onkeyup``, ``onload``, ``onmousedown``, ``onmouseenter``, ``onmouseleave``, ``onmousemove``, ``onmouseout``, ``onmouseover``, ``onmouseup``, and ``onsubmit``.
+
+It is also possible to manipulate the scope of the callback, just as :ref:`dojo.connect <dojo/connect>` would:
+
+.. code-block :: javascript
+  :linenos:
+  
+  // both call obj.method(e) in context of obj onclick:
+  dojo.query("a").onclick(obj, "method"); 
+  dojo.query("a").onclick(obj, obj.method);
+  
 Animation
 ---------
 

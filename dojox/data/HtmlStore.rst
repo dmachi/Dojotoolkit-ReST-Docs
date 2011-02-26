@@ -12,7 +12,7 @@ dojox.data.HtmlStore
   :depth: 2
 
 
-HtmlStore is an improved version of the older :ref:`dojox.data.HtmlTableStore <dojox.data.HtmlTableStore>`. It is a simple read-only store provided by Dojo and contained in the DojoX project. HtmlTableStore is a read interface to work with HTML tables, Lists, and collections of DIV and SPAN tags with a generally set format. HTML tables, lists and DIV collections are common ways for Web data to be displayed. In Ajax applications they also remain extremely useful as an alternate representation of data that is displayed in a charting, dynamic grid, or gauge widget. This store was created so that widgets, that can use dojo.data data stores, can read their input from existing HTML structures (data islands) in the current page or in a remote page URL. 
+HtmlStore is an improved version of the older :ref:`dojox.data.HtmlTableStore <dojox/data/HtmlTableStore>`. It is a simple read-only store provided by Dojo and contained in the DojoX project. HtmlTableStore is a read interface to work with HTML tables, Lists, and collections of DIV and SPAN tags with a generally set format. HTML tables, lists and DIV collections are common ways for Web data to be displayed. In Ajax applications they also remain extremely useful as an alternate representation of data that is displayed in a charting, dynamic grid, or gauge widget. This store was created so that widgets, that can use dojo.data data stores, can read their input from existing HTML structures (data islands) in the current page or in a remote page URL. 
 
 
 ===========
@@ -20,7 +20,7 @@ API Support
 ===========
 
 * :ref:`dojo.data.api.Read <dojo/data/api/Read>`
-* :ref:`dojo.data.api.Identity <dojo/data/api.Identity>`
+* :ref:`dojo.data.api.Identity <dojo/data/api/Identity>`
 
 
 ==================
@@ -146,6 +146,10 @@ The constructor for HtmlTableStore takes the following possible parameters in it
 |              |true HtmlStore ignores that whitespace (strips it off), when it indexes the attribute     |                      |
 |              |headers and when it retrieves values.  The default is false for backwards compatibility.  |                      |
 +--------------+------------------------------------------------------------------------------------------+----------------------+
+|fetchOnCreate |**New to Dojo 1.6** Pre 1.6, the store populated itself on creation.  This cause issues   | boolean              |
+|              |the target node was in a dialog.  So population was deferred to later.  This flag allows  |                      |
+|              |to get the old behavior back if they need it.                                             |                      |
++--------------+------------------------------------------------------------------------------------------+----------------------+
 
 
 ===============
@@ -227,7 +231,7 @@ Connecting HtmlStore to dijit.form.ComboBox
     </table>
 
     <b>Combo lookup of isbn</b><br> 
-    <div dojoType="dojox.data.HtmlStore" dataId="myData" jsId="comboStore"></div>
+    <div dojoType="dojox.data.HtmlStore" dataId="myData" jsId="comboStore" trimWhitespace="true"></div>
     <div dojoType="dijit.form.ComboBox" store="comboStore" searchAttr="isbn"></div>
 
 
@@ -295,7 +299,7 @@ Connecting HtmlStore to dojox.grid.DataGrid
     <br>
 
     <b>dojox.grid.DataGrid connected to the above table:</b><br> 
-    <div dojoType="dojox.data.HtmlStore" dataId="myData2" jsId="gridStore"></div>
+    <div dojoType="dojox.data.HtmlStore" dataId="myData2" jsId="gridStore" trimWhitespace="true"></div>
     <div style="width: 400px; height: 200px;">
       <div id="grid" 
         dojoType="dojox.grid.DataGrid" 
@@ -309,8 +313,8 @@ Connecting HtmlStore to dojox.grid.DataGrid
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
       .dojoxGrid table {
         margin: 0;
@@ -328,6 +332,7 @@ Connecting HtmlStore with List to dijit.form.ComboBox
     <script>
       dojo.require("dojox.data.HtmlStore");
       dojo.require("dojox.grid.DataGrid");
+      dojo.require("dijit.form.ComboBox");
     </script>
 
   .. cv :: html 
@@ -349,7 +354,7 @@ Connecting HtmlStore with List to dijit.form.ComboBox
     <br>
 
     <b>dijit.form.ComboBox connected to the above list:</b><br> 
-    <div dojoType="dojox.data.HtmlStore" dataId="myList2" jsId="comboStore2"></div>
+    <div dojoType="dojox.data.HtmlStore" dataId="myList2" jsId="comboStore2" trimWhitespace="true"></div>
     <div dojoType="dijit.form.ComboBox" store="comboStore2" searchAttr="name"></div>
 
 
@@ -363,6 +368,7 @@ Connecting HtmlStore with DIV collection to dijit.form.ComboBox
     <script>
       dojo.require("dojox.data.HtmlStore");
       dojo.require("dojox.grid.DataGrid");
+      dojo.require("dijit.form.ComboBox");
     </script>
 
   .. cv :: html 
@@ -384,5 +390,5 @@ Connecting HtmlStore with DIV collection to dijit.form.ComboBox
     <br>
 
     <b>dijit.form.ComboBox connected to the above list:</b><br> 
-    <div dojoType="dojox.data.HtmlStore" dataId="divList2" jsId="comboStore3"></div>
+    <div dojoType="dojox.data.HtmlStore" dataId="divList2" jsId="comboStore3" trimWhitespace="true"></div>
     <div dojoType="dijit.form.ComboBox" store="comboStore3" searchAttr="name"></div>

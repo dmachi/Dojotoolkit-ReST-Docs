@@ -95,7 +95,7 @@ This example shows a very simplistic Portlet, with just a simple PortletSettings
   .. css::
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/widget/Portlet/Portlet.css"
+      @import "{{ baseUrl }}dojox/widget/Portlet/Portlet.css"
     </style>
 
 Basic Feed Portlet
@@ -139,7 +139,7 @@ The FeedPortlet displays the titles of the feed items, and shows the contents of
   .. css::
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/widget/Portlet/Portlet.css"
+      @import "{{ baseUrl }}dojox/widget/Portlet/Portlet.css"
     </style>
 
 
@@ -186,7 +186,7 @@ This example also shows the dojox.widget.PortletFeedSettings widget being used w
   .. css::
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/widget/Portlet/Portlet.css"
+      @import "{{ baseUrl }}dojox/widget/Portlet/Portlet.css"
     </style>
 
 Portlets In A Grid Container
@@ -214,9 +214,9 @@ This examples shows Portlets as they are intended to be used, inside a dojox.lay
   .. css::
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/widget/Portlet/Portlet.css";
-      @import "{{ dataUrl }}/dojox/layout/resources/GridContainer.css";
-      @import "{{ dataUrl }}/dojox/widget/Calendar/Calendar.css";
+      @import "{{ baseUrl }}dojox/widget/Portlet/Portlet.css";
+      @import "{{ baseUrl }}dojox/layout/resources/GridContainer.css";
+      @import "{{ baseUrl }}dojox/widget/Calendar/Calendar.css";
 
       .dndDropIndicator {
         border: 2px dashed #99BBE8;

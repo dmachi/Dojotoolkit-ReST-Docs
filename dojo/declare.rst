@@ -28,26 +28,26 @@ Basic Usage
 ==========  ====================  ==================================================
 Parameter   Type                  Description
 ==========  ====================  ==================================================
-className   String|null           The optional name of the Class to declare. 
+className   String|null           The optional name of the Class to declare.
 
                                   The className will be used as a global name for a
                                   created constructor.
 
-                                  If you don't specify it, the class is assumed to 
-                                  be anonymous (new since V1.4). 
+                                  If you don't specify it, the class is assumed to
+                                  be anonymous (new since V1.4).
 
                                   If you specify it, the name will be stored in the
                                   property "declaredClass" in the created prototype.
-superclass  null|Object|Object[]  This parameter is either 
+superclass  null|Object|Object[]  This parameter is either
 
-                                  * null (no base class), 
-                                  * an object (a base class) or 
-                                  * an array of objects (multiple inheritance). 
+                                  * null (no base class),
+                                  * an object (a base class) or
+                                  * an array of objects (multiple inheritance).
 props       Object                An object whose properties are copied (mixed in)
                                   to the created prototype after all other inheritance
                                   has been solved.
 
-                                  You can add an instance-initialization function 
+                                  You can add an instance-initialization function
                                   by making it a property named "constructor".
 ==========  ====================  ==================================================
 
@@ -164,7 +164,7 @@ In pure JavaScript, this is handled by a prototype function named after the clas
 Arrays and Objects as member variables
 ======================================
 
-If your class contains arrays or other objects, they should be declared in the constructor so that each instance gets it's own copy. Simple types (literal strings and numbers) are fine to declare in the class directly.
+If your class contains arrays or other objects, they should be declared in the constructor so that each instance gets its own copy. Simple types (literal strings and numbers) are fine to declare in the class directly.
 
 
 .. code-block :: javascript
@@ -176,7 +176,7 @@ If your class contains arrays or other objects, they should be declared in the c
     strItem : "string", // one per bar
 
     constructor: function() {
-      this.someData = [ ]; // better, each bar has it's own array
+      this.someData = [ ]; // better, each bar has its own array
       this.expensiveResource = new expensiveResource(); // one per bar
     }
   });
@@ -342,7 +342,7 @@ Suppose, for example, you have a class called ``VanillaSoftServe``, and classes 
   new Blizzard();
 
 
-This will first print "mixing in Vanilla" on the debug console because VanillaSoftServe is the superclass of Blizzard. In fact, VanillaSoftServe is the *only* superclass of Blizzard - the first class in the array of dependencies is used as a true super class (there are some exception, see :ref:`Inheritance` for more info). Next the constructors of other classes (the mixins) are called, so "mixing in MandMs" will appear.  Then "A blizzard with plain M and Ms and medium chunks of cookie dough." will appear.
+This will first print "mixing in Vanilla" on the debug console because VanillaSoftServe is the superclass of Blizzard. In fact, VanillaSoftServe is the *only* superclass of Blizzard - the first class in the array of dependencies is used as a true super class (there are some exception, see `Inheritance` for more info). Next the constructors of other classes (the mixins) are called, so "mixing in MandMs" will appear.  Then "A blizzard with plain M and Ms and medium chunks of cookie dough." will appear.
 
 Mixins are used a lot in defining Dijit classes, with most classes extending ``dijit._Widget`` and mixing in ``dijit._Templated``.
 
@@ -619,7 +619,7 @@ Every constructor created by ``dojo.declare`` defines some convenience methods.
 extend
 ~~~~~~
 
-This constructor method adds new properties to the constructor's prototype the same way as :ref:`dojo.extend <dojo/extend>` works. The difference is that it annotates function properties them the same way ``dojo.declare`` does. These changes will be propagated to all classes and object where this class constructor was a superclass.
+This constructor method adds new properties to the constructor's prototype the same way as :ref:`dojo.extend <dojo/extend>` works. The difference is that it annotates function properties the same way ``dojo.declare`` does. These changes will be propagated to all classes and object where this class constructor was a superclass.
 
 The method has one argument: an object to mix in. It returns the constructor itself, which can be used for chained calls.
 
@@ -628,11 +628,11 @@ Example:
 .. code-block :: javascript
   :linenos:
 
-  var A = dojo.declare(null,
+  var A = dojo.declare(null, {
     m1: function(){
       // ...
     }
-  };
+  });
 
   A.extend({
     m1: function(){
@@ -649,6 +649,79 @@ Example:
   a.m2();
 
 Internally this method uses :ref:`dojo.safeMixin <dojo/safeMixin>`.
+
+**Important note:** Do not forget that ``dojo.declare`` uses mixins to build a constructor from several bases. Remember that only the first base is inherited, the rest is mixed in by copying properties. It means that if you ``extend`` a constructor's prototype that was already used as a mixin and its methods became top methods in the chain of inheritance, these top methods would not be replaced because they are already copied.
+
+Example:
+
+.. code-block :: javascript
+  :linenos:
+
+  var A = dojo.declare(null, {
+    m1: function(){ console.log("A org"); },
+    m2: function(){ console.log("A org"); }
+  });
+
+  var B = dojo.declare(null, {
+    m2: function(){ this.inherited(arguments); console.log("B org"); },
+    m3: function(){ this.inherited(arguments); console.log("B org"); }
+  });
+
+  var C = dojo.declare(null, {
+    m3: function(){ this.inherited(arguments); console.log("C org"); },
+    m4: function(){ this.inherited(arguments); console.log("C org"); }
+  });
+
+  var ABC = dojo.declare([A, B, C], {});
+
+  // now A is the true base, B and C are mixed in
+
+  var abc = new ABC();
+
+  abc instanceof A; // true
+  abc instanceof B; // false
+  abc instanceof C; // false
+
+  // use isInstanceOf() to check if you include
+  // proper mixins
+
+  // let's list top methods:
+  // m1 comes from A (inherited)
+  // m2 comes from B (copied)
+  // m3 comes from C (copied)
+  // m4 comes from D (copied)
+
+  abc.m1(); // A org
+  abc.m2(); // A org, B org
+  abc.m3(); // B org, C org
+  abc.m4(); // C org
+
+  // let's extend() all prototypes
+
+  A.extend({
+    m1: function(){ console.log("A new"); },
+    m2: function(){ console.log("A new"); }
+  });
+
+  B.extend({
+    m2: function(){ this.inherited(arguments); console.log("B new"); },
+    m3: function(){ this.inherited(arguments); console.log("B new"); }
+  });
+
+  C.extend({
+    m3: function(){ this.inherited(arguments); console.log("C new"); },
+    m4: function(){ this.inherited(arguments); console.log("C new"); }
+  });
+
+  // observe that top copied methods are not changed
+
+  abc.m1(); // A new
+  abc.m2(); // A new, B org
+  abc.m3(); // B new, C org
+  abc.m4(); // C org
+
+You can see that copied methods were not replaced in ``ABC`` and ``abc``.
+
 
 Class methods
 -------------
@@ -894,7 +967,7 @@ All meta-information is a subject to change and should not be used in the course
 Every constructor produced with ``dojo.declare`` carries a meta-information required for internal plumbing and for introspection. It is implemented as a property called :ref:``meta`` on a constructor. :ref:``meta`` has following properties:
 
 bases
-  List of all superclasses produced by the C3 linearization algorithm (see Inheritance for more details). The very first item in the list is the class itself.
+  List of all superclasses produced by the C3 linearization algorithm (see Inheritance_ for more details). The very first item in the list is the class itself.
 
 hidden
   Copy of all own properties and methods of the class. It is the third argument (or the second argument, if class name was omitted) of ``dojo.declare``.
@@ -909,7 +982,7 @@ Additionally a prototype has a special property named ``declaredClass``, if the 
 
 Every instance created by ``dojo.declare``'d class has a special property called :ref:``inherited``, which is used to speed up :ref:`inherited()` calls. Please don't touch it.
 
-Every method mixed in by ``dojo.declare`` or :ref:`dojo.safeMethod <dojo/safeMethod>` is annotated: a special property called ``nom`` is added. It contains a name of the method in question and used by :ref:`inherited()` and :ref:`getInherited()` to deduce the name of a superclass method. See :ref:`dojo.safeMixin <dojo/safeMixin>` for more details.
+Every method mixed in by ``dojo.declare`` or :ref:`dojo.safeMixin <dojo/safeMixin>` is annotated: a special property called ``nom`` is added. It contains a name of the method in question and used by :ref:`inherited()` and :ref:`getInherited()` to deduce the name of a superclass method. See :ref:`dojo.safeMixin <dojo/safeMixin>` for more details.
 
 ========
 See Also

@@ -60,25 +60,29 @@ A simple rolling list pulling data from a read store
   .. cv :: javascript
 
     <script>
+    
       dojo.require("dojo.data.ItemFileWriteStore");
       dojo.require("dojox.widget.RollingList");
-
-      dojo.declare("dojox.widget.RollingStore", dojo.data.ItemFileWriteStore, {
-          getLabel: function(item){
-              return this.inherited(arguments) + " (" + this.getValue(item, "type") + ")";
-          }
-      });
+      // alert("stall");
+      //dojo.ready(function(){
+          
+      //    dojo.declare("dojox.widget.RollingStore", dojo.data.ItemFileWriteStore, {
+      //        getLabel: function(item){
+      //            return this.inherited(arguments) + " (" + this.getValue(item, "type") + ")";
+       //       }
+      //    });
+      //});
     </script>
 
   .. cv :: html
   
-    <div dojoType="dojox.widget.RollingStore" jsId="continentStore"
-        url="{{ dataUrl }}/dojo/dijit/tests/_data/countries.json"></div>
+    <div dojoType="dojo.data.ItemFileWriteStore" jsId="continentStore"
+        url="{{dataUrl}}dijit/tests/_data/countries.json"></div>
     <div dojoType="dojox.widget.RollingList" jsId="myList" id="myList" store="continentStore"
         query="{type:'continent'}" style="height:150px;"></div>
 
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/widget/RollingList/RollingList.css";
+      @import "{{baseUrl}}dojox/widget/RollingList/RollingList.css";
     </style>

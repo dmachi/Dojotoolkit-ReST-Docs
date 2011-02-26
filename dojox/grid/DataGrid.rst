@@ -35,7 +35,7 @@ Grids are familiar in the client/server development world. Basically a grid is a
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store4 = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store4 = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout4 = [
@@ -68,8 +68,8 @@ Grids are familiar in the client/server development world. Basically a grid is a
   .. css::
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -135,6 +135,8 @@ get
   A JavaScript function that is called which returns the value to be shown in the cell.  The function is passed two parameters.  The first is the row index in the DataGrid.  The second is the DataStore record/item.  Given these two parameters, the function is expected to know what to return.  It should *not* be a dijit Widget as that is not parsed.  Care should be taken that the ``item`` parameter is not null.  Tests have shown that the function may be called more often than it should be and this is highlighted with an ``item = null``.
 hidden
   This boolean property can be used to hide a column in the table.  If its value is ``true`` the column is hidden.  If ``false`` the column is displayed.
+sortInfo
+  A numerical value indicating what column should be sorted in the grid.  e.g. "1" would mean "first column, ascending order.  "-2" would mean "second column, descending order".  Note that this replaces the alternative approach of providing queryOptions to the store's fetch() invocation.  Defined on dojox.grid._Grid.
 
 The value of the text between a ``<th>`` and ``</th>`` is used as the header label for the column.
 
@@ -203,7 +205,9 @@ columnReordering
 headerMenu
   A menu can be associated with a header.  This attribute names a ``dijit.Menu`` which is displayed when the header is clicked.
 autoHeight
-  A value that defines the height of the table in rows.
+  If true, automatically expand grid's height to fit data. If numeric, defines the maximum rows of data displayed (if the grid contains less than **autoHeight** rows, it will be shrunk).
+autoWidth
+  Automatically set width depending on columns width
 singleClickEdit
   A boolean value that defines whether a single or double click is needed to enter cell editing mode.
 loadingMessage
@@ -341,7 +345,7 @@ filter
 sort
   TBD
 canSort
-  TBD
+  canSort is called by the grid to determine if each column should be sortable.  It takes a single integer argument representing the column index, which is positive for ascending order and negative for descending order, and should return true if that column should be sortable in that direction, and false if not.  For example, to only allow the second column to be sortable, in either direction: "function canSort(col) { return Math.abs(col) === 2; }"
 getSortProps
   TBD
 removeSelectedRows
@@ -408,7 +412,7 @@ This example shows how to create a simple Grid declaratively.
   .. cv:: html
 
     <span dojoType="dojox.data.CsvStore" 
-        jsId="store1" url="{{ dataUrl }}/dojox/grid/tests/support/movies.csv">
+        jsId="store1" url="{{ dataUrl }}dojox/grid/tests/support/movies.csv">
     </span>
 
     <table dojoType="dojox.grid.DataGrid"
@@ -431,8 +435,8 @@ This example shows how to create a simple Grid declaratively.
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -462,7 +466,7 @@ This example shows how to create a simple Grid programmatically.
     
         dojo.addOnLoad(function(){
           // our test data store for this example:
-          var store4 = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojox/grid/tests/support/movies.csv' });
+          var store4 = new dojox.data.CsvStore({ url: '{{ dataUrl }}dojox/grid/tests/support/movies.csv' });
 
           // set the layout structure:
           var layout4 = [
@@ -495,8 +499,8 @@ This example shows how to create a simple Grid programmatically.
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -534,7 +538,7 @@ To get the current selected rows of the grid, you can use the method yourGrid.se
   .. cv:: html
 
     <span dojoType="dojox.data.CsvStore" 
-        jsId="store2" url="{{ dataUrl }}/dojox/grid/tests/support/movies.csv">
+        jsId="store2" url="{{ dataUrl }}dojox/grid/tests/support/movies.csv">
     </span>
 
     <p class="info">
@@ -595,8 +599,8 @@ To get the current selected rows of the grid, you can use the method yourGrid.se
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -651,7 +655,7 @@ First, you have to set a editor for each cell, you would like to edit:
   .. cv:: html
 
     <span dojoType="dojo.data.ItemFileWriteStore" 
-        jsId="store3" url="{{ dataUrl }}/dijit/tests/_data/countries.json">
+        jsId="store3" url="{{ dataUrl }}dijit/tests/_data/countries.json">
     </span>
 
     <p class="info">
@@ -683,7 +687,7 @@ First, you have to set a editor for each cell, you would like to edit:
   .. cv:: css
 
     <style type="text/css">
-	@import "{{ dataUrl }}Grid.css";
+	@import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         html, body {
             width: 100%;
@@ -717,7 +721,7 @@ Since DataGrid is "DataStoreAware", changes made to the store will be reflected 
   .. cv:: html
 
     <span dojoType="dojo.data.ItemFileWriteStore" 
-        jsId="store3" url="{{ dataUrl }}/dijit/tests/_data/countries.json">
+        jsId="store3" url="{{ dataUrl }}dijit/tests/_data/countries.json">
     </span>
 
     <p class="info">
@@ -780,7 +784,7 @@ Since DataGrid is "DataStoreAware", changes made to the store will be reflected 
   .. cv:: css
 
     <style type="text/css">
-	@import "{{ dataUrl }}Grid.css";
+	@import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         html, body {
             width: 100%;
@@ -820,7 +824,7 @@ The Grid offers a filter() method, to filter data from the current query (client
     <span dojoType="dojox.data.CsvStore" 
         // We use the store from the examples above.
         // Please uncomment this line, if you need your own store:
-        // jsId="store2" url="{{ dataUrl }}/dojox/grid/tests/support/movies.csv">
+        // jsId="store2" url="{{ dataUrl }}dojox/grid/tests/support/movies.csv">
     </span>
 
     <p class="info">
@@ -867,7 +871,7 @@ The Grid offers a filter() method, to filter data from the current query (client
   .. cv:: css
 
     <style type="text/css">
-	@import "{{ dataUrl }}Grid.css";
+	@import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         html, body {
             width: 100%;
@@ -904,7 +908,7 @@ To use it, you just have to override default behavior by yours.
   .. cv:: html
 
     <span dojoType="dojo.data.ItemFileWriteStore" 
-        jsId="store3" url="{{ dataUrl }}/dijit/tests/_data/countries.json">
+        jsId="store3" url="{{ dataUrl }}dijit/tests/_data/countries.json">
     </span>
 
     <table dojoType="dojox.grid.DataGrid"
@@ -948,7 +952,7 @@ To use it, you just have to override default behavior by yours.
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}Grid.css";
+        @import "{{ baseUrl }}dojox/grid/resources/{{ theme }}Grid.css";
 
         .dojoxGrid table {
             margin: 0;
@@ -995,9 +999,9 @@ There are times when you may wish to update the content of the grid. For example
   var grid = dijit.byId("gridId");
   grid.setStore(newStore);
 
-====================
-Accessibility in 1.3
-====================
+===============================
+Accessibility in 1.3 and Beyond
+===============================
 
 Keyboard
 --------
@@ -1016,25 +1020,28 @@ Focus editable cells				  With focus on an editable cell, pressing tab will move
 Invoke an onrowclick event	                  If the grid row has an onrowclick event, it can be invoked by pressing enter with focus on a cell in the row.
 Select a row				          With focus on a cell in a row, press the space bar.
 Select contiguous rows			          Select a row, hold down the shift key and arrow up or down to a new row, press the space bar to select the rows between the original row and the new row.
-Select discontinuous rows		          Select a row,  hold down the control key and use the arrow keys to navigate to a new row,  continue holding the control key and press the space bar to add the new row to the selection. 
+Select discontinuous rows		          Select a row,  hold down the control key and use the arrow keys to navigate to a new row,  continue holding the control key and press the space bar to add the new row to the selection.
+Change column size (1.4)                          Set focus to a column header, hold shift+control and press the left or right arrow key so change the column size.
 ==============================================    ===============================================
 
 Known Issues
 ------------
 
-The DataGrid is still not completely accessible.
+The basic DataGrid is accessible however, some advanced features are not.  
 
 Keyboard
 ~~~~~~~~
 
-* There is currently no keyboard mechanism to change column size in 1.3. This has been fixed as of the April 11, 2009 build.  Set focus to a column header, hold shift+control and press the left or right arrow key so change the column size.
-* Keyboard navigation does NOT skip hidden columns. This has been fixed as of the April 18, 2009 build.  Hidden colummns are now skipped when arrowing through the column headers and data.
+* There is no keyboard mechanism to change column size in 1.3. This was added in 1.4.  
+* Keyboard navigation does NOT skip hidden columns in 1.3. This was fixed in 1.4. Hidden colummns are now skipped when arrowing through the column headers and data.
 * There is no keyboard support for drag and drop. If you rely on drag and drop to reorder columns, you must provide an alternative keyboard mechanisism (dialog box, context menu, etc.) to perform the same function. 
+* Tree Grids are not supported for Accessibility.
+* Developers who add additional features via scripting, such as hidden rows, are responsible for the accessibility of the added feature(s).
+* Invoking links within cells via the keyboard is not supported.  
 
 Screen Reader
 ~~~~~~~~~~~~~
-
-The JAWS 10 screen reader will announce the column headers and will speak the contents of cells.  However, it does not yet announce sorting order nor does it indicate whether or not a cell is editable. Accessibility work is continuing on the grid. 
+The DojoX DataGrid is a complicated widget created via Scripting.  It has been enabled with `WAI-ARIA <http://www.w3.org/WAI/intro/aria>`_  properties, but unfortunately the current browsers (Firefox 3.5+ and IE 8) and screen readers (JAWS 11) do not fully support all of those properties.  Thus, information about the grid readonly, row selection and column sort status are not spoken by the screen reader.  There is still additional work on the part of the screen reader for information about row and column headers to be correctly spoken as the user traverses the data cells. Better support is expected in future versions of the browsers and screen readers and the Dojox DataGrid will be updated, as necessary, to take advantage of the additional ARIA support.  
 
 
 ========

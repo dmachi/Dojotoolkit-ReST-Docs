@@ -46,6 +46,10 @@ Here is an up to date list of dojox.widget components. Note: Some of these are n
 
   An extension to :ref:`dijit.Dialog <dijit/Dialog>`
 
+* :ref:`dojox.widget.DialogSimple <dojox/widget/DialogSimple>`
+
+  Base class for :ref:`dojox.widget.Dialog <dojox/widget/Dialog>`
+
 * :ref:`dojox.widget.DocTester <dojox/widget/DocTester>`
 
   A widget to run DocTests inside an HTML page
@@ -109,6 +113,10 @@ Here is an up to date list of dojox.widget components. Note: Some of these are n
 * :ref:`dojox.widget.Toaster <dojox/widget/Toaster>`
 
   A message display system, showing warnings, errors and other messages unobtrusively
+
+* :ref:`dojox.widget.TitleGroup <dojox/widget/TitleGroup>`
+  
+  A lightweight container widgets which manages the state of children :ref:`TitlePane <dijit/TitlePane>` widgets. Similar to an :ref:`AccordionContainer <dijit/layout/AccordionContainer>` though has variable height panes.  
 
 * :ref:`dojox.widget.Wizard <dojox/widget/Wizard>`
 

@@ -74,9 +74,9 @@ Links
 
 If you want to link to wiki internal pages use following syntax::
 
-  :ref:`Your text <path/to/wiki/page>`
+  :ref:`Some Link text <dijit/Dialog>`
 
-Will create following link: :ref:`Your text <path/to/wiki/page>`
+Will create following link: :ref:`Some Link text <dijit/Dialog>`
 
 When you want to use the same link location twice you would do it like this::
 
@@ -368,7 +368,7 @@ To fix this, at this moment you can use following parameters within the template
 +---------------+
 |   Parameter   |
 +===============+
-| {{ dataUrl }} |
+| {{ baseUrl }} |
 +---------------+
 | {{ theme }}   |
 +---------------+
@@ -382,7 +382,7 @@ An example if this in action (simply change the version and you will see what it
   .. html::
     :label: This is the HTML of the example
 
-    <p>Current Dojo baseUrl: <strong>{{ dataUrl }}</strong></p>
+    <p>Current Dojo baseUrl: <strong>{{ baseUrl }}</strong></p>
     <p>Current Dojo theme: <strong>{{ theme }}</strong></p>
 
 CodeGlass style

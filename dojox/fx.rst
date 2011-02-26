@@ -24,7 +24,7 @@ These are the animations provided by calling ``dojo.require("dojox.fx");``
 * dojox.fx.highlight - highlights a node for a short timespan
 * dojox.fx.fadeTo - fade a node to a defined opacity
 
-Additionally, dojox.fx requires the Dojo Core :ref:`animations <dojo/fx>`, and creates aliases to them in the dojox.fx namespace. For instance:
+Additionally, dojox.fx includes the Dojo Core :ref:`animations <dojo/fx>`, and creates aliases to them in the dojox.fx namespace. For instance:
 
 .. code-block :: javascript
 
@@ -44,9 +44,11 @@ The DojoX FX project also contains additional functions, group by role.
   * dojox.fx.removeClass
   * dojox.fx.toggleClass 
 
+* dojox.fx.easing - **deprecated**, module moved to :ref:`dojo.fx.easing <dojo/fx/easing>` in Dojo 1.3
 * dojox.fx.flip - An experimental simulated 3d effect API
 * dojox.fx.split - A series of animations for breaking nodes into parts, and transitioning them
 * dojox.fx.text - An extension of fx.split, which works exclusively on text nodes. 
+* :ref:`dojox.fx.Timeline <dojox/fx/Timeline>` - An advanced *dojo._Line* replacement
 
 NodeList Supplements
 --------------------
@@ -65,4 +67,12 @@ Additionally, a module in dojox.fx also provides the dojox.fx.style APIs to :ref
  
   dojo.require("dojox.fx.ext-dojo.NodeList-style");
 
-Read more about CSS morphing at :ref:`dojox.fx.style docs <dojox/fx/style/>`
+Read more about CSS morphing at :ref:`dojox.fx.style docs <dojox/fx/style>`
+
+Base Dojo Extensions
+--------------------
+
+A few modules mix into the :ref:`dojo <dojo/index>` namespace, as denoted by their module names:
+
+* :ref:`dojox.fx.ext-dojo.complex <dojox/fx/ext-dojo/complex>`
+* :ref:`dojox.fx.ext-dojo.reverse <dojox/fx/ext-dojo/reverse>`

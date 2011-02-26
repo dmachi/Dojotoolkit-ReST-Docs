@@ -41,7 +41,7 @@ The doLayout attribute currently only works for top tabs, left/bottom/right tabs
 
 Right Tabs
 ----------
-Tabs at the right, no strip 
+Tabs at the right, no strip.  Note that right tabs don't work in conjunction with doLayout=false.
 
 .. cv-compound::
 
@@ -70,7 +70,7 @@ Tabs at the right, no strip
 
 Left Tabs
 ---------
-Tabs at the left, with a strip 
+Tabs at the left, with a strip.  Note that left tabs don't work in conjunction with doLayout=false.
 
 .. cv-compound::
 
@@ -99,7 +99,7 @@ Tabs at the left, with a strip
 
 Bottom Tabs
 -----------
-Tabs at the bottom,with a strip 
+Tabs at the bottom,with a strip.   Note that bottom tabs don't work in conjunction with doLayout=false.
 
 .. cv-compound::
 

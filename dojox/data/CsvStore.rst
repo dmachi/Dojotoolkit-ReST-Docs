@@ -202,8 +202,8 @@ Connecting CsvStore to dojox.grid.DataGrid
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojox/grid/resources/tundraGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/tundraGrid.css";
     </style>
 
 Connecting CsvStore to dojox.grid.DataGrid where the data used a different separator
@@ -254,6 +254,6 @@ Connecting CsvStore to dojox.grid.DataGrid where the data used a different separ
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojox/grid/resources/tundraGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}/dojox/grid/resources/tundraGrid.css";
     </style>

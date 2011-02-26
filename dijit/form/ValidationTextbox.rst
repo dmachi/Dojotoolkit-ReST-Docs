@@ -16,7 +16,7 @@ Introduction
 
 A ValidationTextBox is an <input>-like widget that checks to make sure the user's input is valid (according to a specified criterion).  It flags invalid input by changing the box color, showing an icon, and displaying a tooltip detailing the error.  
 
-Note that a ValidationTextBox by itself *will not* prevent invalid entries from submission. To ensure they're not, simply surround your form with a :ref:`dijit.form.Form <dijit.form.Form>` widget.
+Note that a ValidationTextBox by itself *will not* prevent invalid entries from submission. To ensure they're not, simply surround your form with a :ref:`dijit.form.Form <dijit/form/Form>` widget.
 
 
 =====
@@ -30,7 +30,7 @@ Parameter        Type           Description
 ===============  =============  ======================================================================
 required                        Whether the field is required or not. false by default.
 promptMessage                   Tooltip text that appears when the text box is empty and on focus. Null by default.
-invalidMessage                  Tooltip text that appears when the content of the text box is invalid. Null by default. 
+invalidMessage                  Tooltip text that appears when the content of the text box is invalid. 
 constraints                     TBC.
 regExp                          Regular expression pattern to be used for validation. If this is used, do not use regExpGen.
 regExpGen                       TBC. If this is used, do not use regExp.

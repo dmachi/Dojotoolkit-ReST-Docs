@@ -12,10 +12,10 @@ Browser support
 
 The following browsers are supported. If a browser is not supported, it still may work, but no effort is taken to test unsupported browsers and any specific fix for an unsupported browser is likely not to be done:
 
-* Firefox 2 support dropped. Firefox V3 and V3.5 supported.
-* Latest Safari (Safari v4) and latest Chrome (Chrome v3) supported, but not previous versions.
+* Firefox 2 support dropped. Firefox 3.0 through 3.6 supported.
+* Safari 4 and Chrome 3/Chrome 4, but not previous versions.
 * IE6, IE7, IE8 all supported.
-* Latest Opera (Opera v10) (Dojo core only).
+* Latest Opera (Opera 10) (Dojo core only).
 * Keyboard now supported in all supported browsers (previously it didn't work on Safari and on Chrome)
 
 ====
@@ -59,8 +59,8 @@ dojo.contentHandlers
 * Exposed previously "private" dojo._contentHandlers as a public way to write custom XHR handleAs functions
 * See also :ref:`dojo.contentHandlers <dojo/contentHandlers>`
 
-dojo.coord
-----------
+dojo.coords
+-----------
 
 * This method in Dojo Base has been deprecated in Dojo 1.4. The returned object is a mixin of :ref:`dojo.position <dojo/position>` and :ref:`dojo.marginBox <dojo/marginBox>`. Because the x/y position is based on the border-box and the (w)idth/(h)eight attributes represent the margin-box, there was considerable confusion on correctly using the returned object. The new method :ref:`dojo.position <dojo/position>` performs much faster. Users needing the l/t/w/h attributes from this method can continue to use :ref:`dojo.marginBox <dojo/marginBox>`.
 * See also :ref:`dojo.position <dojo/position>`
@@ -207,6 +207,7 @@ dijit.Dialog
 
 * Multiple dialogs can now be shown (with one dialog launching over another).
 * Dialog supports aria-describedby to make it more accessible to screen readers.
+* Dialog now hides via ``display: none`` rather than using visibility and positioning.  While this should not cause problems within Dijit itself, it is possible it may lead to surprises in any custom code that may have relied on computed position of elements within a hidden Dialog.
 * See also :ref:`dijit.Dialog <dijit/Dialog>`
 
 dijit.Menu
@@ -276,7 +277,7 @@ Most dijit.form widgets fire the onChange event after a value change has been de
 attr("value", val, false)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-attr() (as a setter) has been enhanced to take optional arguments.   The most common case for this is attr("value", val, false) which sets the value of a form widget without calling onChange().   (The third argument is called priorityChange.)
+attr() (as a setter) has been enhanced to take optional arguments.   The most common case for this is attr("value", val, false) which sets the value of a form widget without calling onChange().   (The third argument is called priorityChange.) When priorityChange is true (default), onChange() will fire only when the new value is different than the value that the previous onChange() reported.
 
 dijit.form.Button
 ~~~~~~~~~~~~~~~~~

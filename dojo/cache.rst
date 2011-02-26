@@ -41,14 +41,17 @@ Usage
 
 Here is the definition of arguments:
 
-===========  =============  ==============================================================================
+===========  =============  ======================================================================
 Parameter    Type           Description
-===========  =============  ==============================================================================
+===========  =============  ======================================================================
 module       String|Object  Can be a String or an Object. 
 
-                            If a String, the module name to use for the base part of the URL, similar to module argument to :ref:`dojo.moduleUrl <dojo/moduleUrl>`. 
+                            If a String, the module name to use for the base part of the URL, similar to module argument to `dojo.moduleUrl 
+                            <dojo/moduleUrl>`_. 
                             
-                            If an Object, something that has a .toString() method that generates a valid path for the cache item. For example, a dojo._Url object.
+                            If an Object, something that has a .toString() method that generates a valid path for the cache item. For example, a
+                            dojo._Url object
+
 url          String         The rest of the path to append to the path derived from the module argument. 
 
                             If "module" is an object, then this second argument should be the "configValue" argument instead.
@@ -64,7 +67,7 @@ configValue  String|Object  Can be a String or an Object.
                             The configValue argument or the value property on the configValue argument are usually only used by the build system as it inlines cache content.
                             
                             Usually your code will only specify the sanitize property to true if you want the sanitize behavior. Otherwise, you normally leave off the cacheValue argument in the call.
-===========  =============  ==============================================================================
+===========  =============  ======================================================================
 
 
 ========

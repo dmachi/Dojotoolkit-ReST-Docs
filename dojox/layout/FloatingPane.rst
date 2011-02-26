@@ -46,8 +46,8 @@ Programmatic example
   .. cv:: css
 
      <style type="text/css">
-       @import "{{ dataUrl }}/dojo/dojox/layout/resources/FloatingPane.css";
-       @import "{{ dataUrl }}/dojo/dojox/layout/resources/ResizeHandle.css";
+       @import "{{baseUrl}}dojox/layout/resources/FloatingPane.css";
+       @import "{{baseUrl}}dojox/layout/resources/ResizeHandle.css";
      </style>
 
   .. cv:: javascript
@@ -87,8 +87,8 @@ Declarative example
   .. cv:: css
 
      <style type="text/css">
-       @import "{{ dataUrl }}/dojo/dojox/layout/resources/FloatingPane.css";
-       @import "{{ dataUrl }}/dojo/dojox/layout/resources/ResizeHandle.css";
+       @import "{{baseUrl}}dojox/layout/resources/FloatingPane.css";
+       @import "{{baseUrl}}dojox/layout/resources/ResizeHandle.css";
      </style>
 
   .. cv:: javascript

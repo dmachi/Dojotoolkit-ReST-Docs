@@ -85,7 +85,7 @@ Create the LightboxNano on an <img> element:
       dojo.require("dojox.image.LightboxNano");
     
       dojo.addOnLoad(function(){
-          new LightboxNano({
+          new dojox.image.LightboxNano({
               href: "/path/to/large/image.jpg"
           }, "myImg");
       });
@@ -103,7 +103,7 @@ Create the LightboxNano on an <a> element:
       dojo.require("dojox.image.LightboxNano");
     
       dojo.addOnLoad(function(){
-          new LightboxNano({}, "myLink");
+          new dojox.image.LightboxNano({}, "myLink");
       });
   </script>
  
@@ -121,8 +121,8 @@ Standard way to declaratively create the LightboxNano
  
  <script src="/path/to/dojo.js" type="text/javascript"></script>
  <script type="text/javascript">
-     dojo.require("dojo.parser");
      dojo.require("dojox.image.LightboxNano");
+     dojo.require("dojo.parser");
  </script>
  
  <a dojoType="dojox.image.LightboxNano" href="/path/to/large/image.jpg">
@@ -136,8 +136,8 @@ Should you want to destroy the LightboxNano, you'll need to use the jsid. You ca
  
  <script src="/path/to/dojo.js" type="text/javascript"></script>
  <script type="text/javascript">
-     dojo.require("dojo.parser");
      dojo.require("dojox.image.LightboxNano");
+     dojo.require("dojo.parser");
  </script>
  
  <a dojoType="dojox.image.LightboxNano" jsid="myLightboxNano" href="/path/to/large/image.jpg">

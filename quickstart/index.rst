@@ -10,15 +10,15 @@ Getting started
    :alt: Dojo Documentation
    :class: logowelcome;
 
-* :ref:`Getting started with some simple steps <quickstart/gettingstarted>`
+* :ref:`Getting started fast <quickstart/gettingstarted>`
 
 ============
 Installation
 ============
 
-* :ref:`How to Install the Dojo Toolkit <quickstart/install>`
-* :ref:`Configuring Dojo <djConfig>`
+* :ref:`Configuring Dojo with the djConfig variable <djConfig>`
 * :ref:`Using Dojo from a CDN <quickstart/cross-domain>`
+* :ref:`Local installation guide <quickstart/install>`
 
 
 ==================
@@ -28,24 +28,22 @@ Base Functionality
 JavaScript Extensions
 ---------------------
 
-* :ref:`Functions used *everywhere* <quickstart/dojo-basics>`
-* :ref:`Browser Sniffing <quickstart/browser-sniffing>`
+* :ref:`Dojo basics <quickstart/dojo-basics>`
 * :ref:`Arrays <quickstart/arrays>`
+* :ref:`Browser Sniffing <quickstart/browser-sniffing>`
 * :ref:`Parsing, Formatting and Validating Numbers and Dates <quickstart/numbersDates>`
-* Todo: classes
-* Todo: inheritance
-* Todo: mixins
+* :ref:`OOP with dojo.declare() <quickstart/oop>`
 
 AJAX
 ----
 
 * :ref:`AJAX <quickstart/ajax>`
-* :ref:`Back buttons <quickstart/back>`
+* :ref:`Back button and history integration <quickstart/back>`
 
 DOM Manipulation & CSS Queries
 ------------------------------
 
-* :ref:`DOM Manipulation and dojo.query() <quickstart/dom>`
+* :ref:`dojo.query() and other DOM magic <quickstart/dom>`
 
 Events
 ------
@@ -70,7 +68,7 @@ Widgets
 
 * :ref:`Dijit, Dojo's widget Library <dijit/info>`
 * :ref:`UI Development <quickstart/interfacedesign>`
-* :ref:`Themes and Theming <dijit-themes>`
+* :ref:`Themes and Theming <dijit/themes>`
 * :ref:`DojoX Widgets <dojox/widget>`
 
 Widget developers notes:
@@ -116,8 +114,8 @@ Testing, Debugging and Tuning
 Testing
 -------
 
-* Unit Testing:  Using :ref:`D.O.H, the Dojo Objective Harness <quickstart/doh>`
-* doh.robot tutorials `part 1 <http://blog.dojotoolkit.org/2008/08/11/doh-robot-automating-web-ui-unit-tests-real-user-events>`_ and `part 2 <http://blog.dojotoolkit.org/2008/10/31/doh-robot-part-2-automating-acceptance-tests-and-user-stories>`_
+* Unit Testing:  Using :ref:`D.O.H, the Dojo Objective Harness <util/doh>`
+* Automated keyboard/mouse tests using :ref:`DOH robot <util/dohrobot>`
 
 Debugging
 ---------

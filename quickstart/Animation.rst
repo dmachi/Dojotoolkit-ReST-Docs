@@ -9,14 +9,13 @@ Animations and Effects with Dojo
 .. contents::
    :depth: 2
 
-Dojo provides several layers of Animation helpers, starting with Base Dojo (dojo.js), and adding in levels of incremental additions through the module system. All Animations in Dojo revolve around a single class: dojo._Animation. The underscore denotes a private constructor, and is not meant to be created directly, but rather used as the underlying control mechanism for the flexible FX API Dojo provides.
+Dojo provides several layers of Animation helpers, starting with Base Dojo (dojo.js), and adding in levels of incremental additions through the module system. All Animations in Dojo revolve around a single class: dojo.Animation, which acts as the underlying control mechanism for the flexible FX API Dojo provides.
 
+==============================
+Getting to know dojo.Animation
+==============================
 
-===============================
-Getting to know dojo._Animation
-===============================
-
-As mentioned, dojo._Animation is the foundation class for all Dojo animations. It provides several simple methods good for controlling your animation, such as `play`, `pause`, `stop`, and `gotoPercent`. The most simple method which is required of all animations is `play`:
+As mentioned, dojo.Animation is the foundation class for all Dojo animations. It provides several simple methods good for controlling your animation, such as `play`, `pause`, `stop`, and `gotoPercent`. The most simple method which is required of all animations is `play`:
 
 .. code-block :: javascript
 	:linenos:
@@ -48,43 +47,30 @@ Animation Properties
 
 The standard set of properties for specifying animation settings (via the Object parameter to the animation function) are:
 
-+-------------------------------+--------------------------------------------------------------------------------------------+
-|**Property**                   |**Description**                                                                             |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| node                          |The domNode reference or string id of a node to apply the animation effects to.             |
-|                               |                                                                                            |
-|                               |**required**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| delay                         |Delay, in milliseconds, before the animation starts.  The default is 0ms.                   |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| duration                      |How long, in milliseconds, the animation will run.  The default is 350 milliseconds         |
-|                               |(.35 seconds)                                                                               |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| easing                        |An easing (timing) function to apply to the effect, such as exponential curve, bounce,      |
-|                               |etc.  Dojo provides a number of easing functions in module                                  |
-|                               |:ref:`dojo.fx.easing <dojo/fx/easing>`                                                      |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| rate                          |By default dojo runs its animations with 50 frames/second. This can be too fast in certain  |
-|                               |scenarios when want the whole animation to run a lot slower. To change the framerate you use|
-|                               |the rate property which defines the pause/delay between each frame. Ex. if you want 5 frames|
-|                               |per second you should specify a rate of 200 (miliseconds between each frame)                |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| repeat                        |How many times the animation will be played.  Default: 0.                                   |
-|                               |                                                                                            |
-|                               |**optional**                                                                                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| curve                         |An array two values, or an instance of a `dojo._Line`. Used as the start and end points for |
-|                               |a given animation. Typically not used directly by end-users, though allows usage of the     |
-|                               |Animation class outside of Node effects                                                     |
-+-------------------------------+--------------------------------------------------------------------------------------------+
+:node:
+  The domNode reference or string id of a node to apply the animation effects to. **required**
+
+:delay:
+  Delay, in milliseconds, before the animation starts.  The default is 0ms. **optional**
+
+:duration:
+  How long, in milliseconds, the animation will run.  The default is 350 milliseconds (.35 seconds) **optional** 
+
+:easing:
+  An easing (timing) function to apply to the effect, such as exponential curve, bounce, etc.  Dojo provides a number of easing functions in the
+  :ref:`dojo.fx.easing <dojo/fx/easing>` module. **optional**
+
+:rate:
+  By default dojo runs its animations with 50 frames/second. This can be too fast in certain scenarios when want the whole animation to run a lot 
+  slower. To change the framerate you use the rate property which defines the pause/delay between each frame. Ex. if you want 5 frames per second you 
+  should specify a rate of 200 (miliseconds between each frame **optional**
+
+:repeat:
+  How many times the animation will be played.  Default: 0. **optional**
+
+:curve:
+  An array two values, or an instance of a `dojo._Line`. Used as the start and end points for a given animation. Typically not used directly by 
+  end-users, though allows usage of the Animation class outside of Node effects
 
 Animation Events
 ----------------
@@ -335,3 +321,11 @@ Text Effects
 ============
 
 As mentioned above, the dojox/fx module provides additional effects over and beyond these basic animation capabilities.  On of the effects in the dojox package that is especially neat is effects that can operate on text directly, which can allow you to easily do animations such as exploding all the characters in a paragraph all over your page.  Make sure to check out these additional text effects once you understand the basics.
+
+=============================
+Animation in Dojo 1.5 widgets
+=============================
+
+Using the latest in CSS3 along with the Dojo APIs increases the performance of animation and makes it easier for designers to code the animation using CSS3. 
+
+See details on application of animation in specific Digits in :ref:`Themes and theming <dijit/themes>`.

@@ -121,7 +121,7 @@ Example Usage of using AtomReadStore with a DataGrid
 
   .. cv :: html 
 
-    <div dojoType="dojox.data.AtomReadStore" jsId="feedStore" url="{{ dataUrl }}/dojo/dojox/data/tests/stores/atom1.xml"></div>
+    <div dojoType="dojox.data.AtomReadStore" jsId="feedStore" url="{{dataUrl}}dojox/data/tests/stores/atom1.xml"></div>
     <div id="feedGrid" 
       jsId="feedGrid"
       style="width: 750px; height: 300px;"
@@ -135,8 +135,8 @@ Example Usage of using AtomReadStore with a DataGrid
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
       .dojoxGrid table {
         margin: 0;

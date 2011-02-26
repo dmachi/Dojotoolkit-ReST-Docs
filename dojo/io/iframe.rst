@@ -1,7 +1,7 @@
 .. _dojo/io/iframe:
 
-dojo.io.frame
-=============
+dojo.io.iframe
+==============
 
 :Status: Contributed, Draft
 :Version: 1.0

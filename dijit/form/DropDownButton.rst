@@ -91,7 +91,7 @@ Here's one displaying a :ref:`TooltipDialog <dijit/TooltipDialog>`:
       </div>
     </div>
 
-Note that DropDownButton is often used in :ref:`dijit.Toolbar </dijit/Toolbar>`.
+Note that DropDownButton is often used in :ref:`dijit.Toolbar <dijit/Toolbar>`.
 
 
 =============

@@ -13,10 +13,11 @@ This example shows how to create a simple Grid programmatically.
         dojo.require("dojox.grid.DataGrid");
         dojo.require("dojox.data.CsvStore");
 
-        // our test data store for this example:
-        var store4 = new dojox.data.CsvStore({ url: '{{ dataUrl }}/dojo/dojox/grid/tests/support/movies.csv' });
-
         dojo.addOnLoad(function(){
+ 
+            // our test data store for this example:
+            var store4 = new dojox.data.CsvStore({ url: '{{dataUrl}}dojox/grid/tests/support/movies.csv' });
+
             // set the layout structure:
             var layout4 = [
                 { field: 'Title', name: 'Title of Movie', width: '200px' },
@@ -48,8 +49,8 @@ This example shows how to create a simple Grid programmatically.
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+        @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+        @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
         .dojoxGrid table {
             margin: 0;

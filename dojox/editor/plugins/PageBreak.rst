@@ -82,7 +82,7 @@ Basic Usage
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/PageBreak.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/PageBreak.css";
     </style>
     
   .. html::

@@ -105,7 +105,7 @@ Highlight can also be used via the dojox.highlight.processString function
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojox/highlight/resources/highlight.css"
+      @import "{{baseUrl}}dojox/highlight/resources/highlight.css"
     </style>
 
   .. cv:: javascript

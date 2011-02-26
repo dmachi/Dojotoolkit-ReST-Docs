@@ -64,7 +64,7 @@ Available Widgets
 
 * :ref:`dojox.form.RangeSlider <dojox/form/RangeSlider>`
 
-  description?
+  A widget that allows a range of values to be selected along a scale
 
 * :ref:`dojox.form.Rating <dojox/form/Rating>`
 

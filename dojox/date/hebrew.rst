@@ -1,7 +1,7 @@
 .. _dojox/date/hebrew:
 
-dojox.date
-==========
+dojox.date.hebrew
+=================
 
 :Status: Draft
 :Version: 1.0

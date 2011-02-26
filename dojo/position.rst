@@ -63,13 +63,13 @@ This example shows how to center a small DOM node (with background image) over a
 
     <style type="text/css">
       .container {
-          background: url(frame.png) no-repeat;
+          background: url(http://docs.dojocampus.org/dojo/position?action=AttachFile&do=get&target=frame.png) no-repeat;
           width: 237px;
           height: 181px;
       }
 
       .centered {
-          background: url(img.png) no-repeat;
+          background: url(http://docs.dojocampus.org/dojo/position?action=AttachFile&do=get&target=img.png) no-repeat;
           width: 171px;
           height: 121px;
           position: absolute;
@@ -117,7 +117,7 @@ To see the effect of dojo.position's includeScroll boolean parameter, scroll the
     <fieldset style="display:inline;border:15px solid gray;border-width:15px 0 0 15px;margin:0px;padding:0px;font:14px monospace;background-color:white;outline:1px dotted black;">
 	<fieldset style="display:inline;border:0px;border:0px;padding:0px;width:270px;height:165px;overflow:hidden;position:relative;left:-15px;top:-15px;">
 		<div id="testNode" style="display:inline;margin:25px;border:20px solid gray;padding:30px;float:left;position:relative;left:15px;top:15px;" onclick="compareMethods()">
-			<center style="display:block;margin:0px;padding:0px;border:0px;width:120px;height:15px;background-color:gray;color:white;overflow:hidden;">15x120 content</center>
+			<center style="display:block;margin:0px;padding:0px;border:0px;width:120px;height:15px;background-color:gray;color:white;overflow:hidden;">120x15 content</center>
 			<nobr style="position:absolute;left:2px;top:2px;color:black;">padding 30px</nobr>
 			<nobr style="position:absolute;left:-18px;top:-18px;color:white;">border 20px</nobr>
 			<nobr style="position:absolute;left:-43px;top:-43px;color:black;">margin 25px</nobr>

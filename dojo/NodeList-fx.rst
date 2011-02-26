@@ -4,13 +4,13 @@ dojo.NodeList-fx
 ================
 
 :Status: Draft
-:Version: 1.2
+:Since: 1.2
 
 
 .. contents::
    :depth: 2
 
-This module incorporates :ref:`dojo.fx` functionality into :ref:`dojo.query <dojo/query>` by extending the :ref:`dojo.NodeList <dojo/NodeList>` Class. 
+This module incorporates :ref:`dojo.fx <dojo/fx>` functionality into :ref:`dojo.query <dojo/query>` by extending the :ref:`dojo.NodeList <dojo/NodeList>` Class. 
 
 The first most important thing to do is require the module into your page:
 
@@ -41,11 +41,27 @@ To use your newly created functions in NodeList, issue a ``dojo.query()`` call:
         });
      </script>
 
-The most important thing to note is NodeList animations return an instance of a :ref:`dojo._Animation <Animation>`, the foundation for all Dojo FX. This prevents further chaining, as you have to explicitly call ``.play()`` on the returned animation.
+The most important thing to note is `NodeList <dojo/NodeList>` animations return an instance of a :ref:`dojo.Animation <dojo/Animation>`, the foundation for all Dojo FX. This prevents further chaining, as you have to explicitly call ``.play()`` on the returned animation. **New** Dojo 1.4 introduced a way to allow continued chaining with the caveat you cannot obtain a reference to the animations after they have begun. Simply pass the *auto* parameter.
 
-The parameters you can specify to each animation provided are identical to their :ref:`dojo.fx` counterparts, omitting the ``node:`` parameter, as each node in the NodeList is passed for you.
+.. code-block :: javascript
+  :linenos:
 
-There are more NodeList animations provided by the :ref:`dojox.fx.ext-dojo.NodeList <dojox/fx/NodeList>` module, in the :ref:`dojox.fx` project.
+  dojo.require("dojo.NodeList-fx"); 
+  dojo.ready(function(){
+       dojo.query("li.evens")
+           .fadeOut({ 
+              duration:1000, 
+              onEnd: function(){ ... }, 
+              // begin playing immediately, and return the nodeList for further iteration
+              auto:true 
+           })
+           .onclick(doSomething)
+       ;
+  });
+
+The parameters you can specify to each animation provided are identical to their :ref:`dojo.fx <dojo/fx>` counterparts, omitting the ``node:`` parameter, as each node in the NodeList is passed for you.
+
+There are more NodeList animations provided by the :ref:`dojox.fx.ext-dojo.NodeList <dojox/fx/ext-dojo/NodeList>` module, in the :ref:`dojox.fx <dojox/fx>` project.
 
 .. _dojo.fx: dojo/fx
 .. _dojox.fx: dojox/fx

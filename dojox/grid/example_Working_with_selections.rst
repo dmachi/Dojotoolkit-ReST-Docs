@@ -18,7 +18,7 @@ To get the current selected rows of the grid, you can use the method yourGrid.se
   .. cv:: html
 
     <span dojoType="dojox.data.CsvStore" 
-        jsId="store2" url="{{ dataUrl }}/dojo/dojox/grid/tests/support/movies.csv">
+        jsId="store2" url="{{dataUrl}}dojox/grid/tests/support/movies.csv">
     </span>
 
     <div>
@@ -77,8 +77,8 @@ To get the current selected rows of the grid, you can use the method yourGrid.se
   .. cv:: css
 
     <style type="text/css">
-        @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-        @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+        @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+        @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
         .dojoxGrid table {
             margin: 0;

@@ -11,7 +11,7 @@ dojo.data.ItemFileReadStore
 .. contents::
   :depth: 2
 
-Dojo core provides an implementation of a read-only datastore, ItemFileReadStore. This store reads the JSON structured contents from an http endpoint (service or URL), or from an in-memory JavaScript object, and stores all the items in-memory for simple and quick access. ItemFileReadStore is designed to allow for flexibility in how it represents item hierarchy, references, and custom data types. It also provides options for which attribute can act as the unique identifier (for dojo.data.api.Identity), and which attribute can be used as a general label for an item. This store has an expectation that data is provided to in a specific though very flexible, format. All of the examples on this page demonstrate the general format expected.
+Dojo core provides an implementation of a read-only datastore, ItemFileReadStore. This store reads the JSON structured contents from an http endpoint (service or URL), or from an in-memory JavaScript object, and stores all the items in-memory for simple and quick access. ItemFileReadStore is designed to allow for flexibility in how it represents item hierarchy, references, and custom data types. It also provides options for which an attribute can act as the unique identifier (for dojo.data.api.Identity), and which attribute can be used as a general label for an item. This store has an expectation that data is provided to in a specific though very flexible, format. All of the examples on this page demonstrate the general format expected.
 
 **Points of Consideration:**
 
@@ -126,8 +126,8 @@ The first is the the *_reference* structure. The *_reference* structure is a Jav
   {
     "identifier": "name",
     "items": [
-      { "name": "Bob", "spouse": {"_reference":"Sally"),  "children": [ { "_reference":"Nancy"}]},
-      { "name": "Sally", "spouse": {"_reference":"Bob"),  "children": [ { "_reference":"Nancy"}]},
+      { "name": "Bob", "spouse": {"_reference":"Sally"},  "children": [ { "_reference":"Nancy"}]},
+      { "name": "Sally", "spouse": {"_reference":"Bob"},  "children": [ { "_reference":"Nancy"}]},
       { "name": "Nancy"},           
     ]
   }
@@ -580,6 +580,15 @@ Dojo.data defines support for a 'queryOptions' modifier object that affects the 
 Usage Examples
 ==============
 
+How many items are in my store?
+-------------------------------
+
+There is no simple method call to return the number of items, and without digging into private variables (which one should never do) you have to do something like the following:
+
+.. code-block :: javascript
+
+  store.fetch({ onBegin: function(total){ console.log("There are ", total, " items in this store."); } });
+
 Connecting ItemFileReadStore to ComboBox
 ----------------------------------------
 
@@ -1031,7 +1040,7 @@ Reloading/Refreshing ItemFileReadStore from a url (Dojo Toolkit 1.4+)
          dojo.connect(dijit.byId("reloadButton2"), "onClick", function() {
             //Reset the url and call close.  Note this could be a different JSON file, but for this example, just 
             //Showing how you would set the URL.
-            reloadableStore2.url = "{{ dataUrl }}/dojo/dojox/data/tests/stores/countries.json"; 
+            reloadableStore2.url = "{{dataUrl}}/dojox/data/tests/stores/countries.json"; 
             reloadableStore2.close();
          });
       });
@@ -1039,7 +1048,7 @@ Reloading/Refreshing ItemFileReadStore from a url (Dojo Toolkit 1.4+)
 
   .. html::
 
-    <div dojoType="dojo.data.ItemFileReadStore" url="{{ dataUrl }}/dojo/dojox/data/tests/stores/countries.json" jsId="reloadableStore2" urlPreventCache="true" clearOnClose="true"></div>
+    <div dojoType="dojo.data.ItemFileReadStore" url="{{dataUrl}}/dojox/data/tests/stores/countries.json" jsId="reloadableStore2" urlPreventCache="true" clearOnClose="true"></div>
     <div dojoType="dijit.form.ComboBox" store="reloadableStore2" searchAttr="name"></div>
     <div id="reloadButton2" dojoType="dijit.form.Button">Reload DataStore</div>
 
@@ -1049,3 +1058,4 @@ See Also
 ========
 
 * `Refeshing an ItemFileReadStore <http://dojocampus.org/content/2009/01/31/refeshing-an-itemfilereadstore>`_ - 2009-01-31 - How do you clear out the existing Data in a store, and populate it with new Data in Dojo 1.2?
+* Consider :ref:`dojox.data.AndOrReadStore <dojox/data/AndOrReadStore>` if you want an ItemFileReadStore with better querying capabilities, but don't want to use an entirely different flavour of store.

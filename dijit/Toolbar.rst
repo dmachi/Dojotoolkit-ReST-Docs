@@ -3,27 +3,17 @@
 dijit.Toolbar
 =============
 
-:Project owner: Bill Keese
-:Available: since V?
-
 .. contents::
     :depth: 2
 
-
-============
-Introduction
-============
+:Status: Draft
+:Version: 1.2
+:Authors: Bill Keese
 
 Just as dijit.Menu is a container for dijit.MenuItem's, so dijit.Toolbar is a container for buttons. Any button-based Dijit component can be placed on the toolbar, including ComboButtons and DropdownButtons.
 
-
-========
-Examples
-========
-
-Programmatic example
---------------------
-
+Programatic Toolbar
+-------------------
 In this example, we borrow some of the toolbar buttons from the Editor.
 
 .. cv-compound::
@@ -31,34 +21,30 @@ In this example, we borrow some of the toolbar buttons from the Editor.
   .. cv:: javascript
 
     <script type="text/javascript">
-      dojo.require("dijit.Toolbar");
-      dojo.require("dijit.form.Button");
+      dojo.require("dijit.Menu");
 
       var toolbar;
       dojo.addOnLoad(function(){
-	  toolbar = new dijit.Toolbar({}, "toolbar");
-	  dojo.forEach(["Cut", "Copy", "Paste"], function(label){
+	toolbar = new dijit.Toolbar({}, "toolbar");
+	dojo.forEach(["Cut", "Copy", "Paste"], function(label){
 		var button = new dijit.form.Button({
                         // note: should always specify a label, for accessibility reasons.
                         // Just set showLabel=false if you don't want it to be displayed normally
                         label: label,
                         showLabel: false,
                         iconClass: "dijitEditorIcon dijitEditorIcon"+label
-                });
-                toolbar.addChild(button);
-          });
+                    });
+                    toolbar.addChild(button);
+		});
+        });
       });
     </script>
 
   .. cv:: html
 
-    <span id="toolbar"></span>
+    <span id="toolbar">toolbar will show up here</span>
 
 
-Note that iconClass is a CSS class that's been defined by the theme, see :ref:`Themes <dijit-themes>` for details.
-
-Declarative example
--------------------
 
 Creation from markup is even easier.
 
@@ -88,11 +74,8 @@ Creation from markup is even easier.
    </div>
 
 
-==========
-Drop Downs
-==========
-
-By using :ref:`dijit.form.DropDownButton <dijit/form/DropDownButton>` and :ref:`dijit.form.ComboButton <dijit/form/ComboButton>` you can make a toolbar with drop downs.
+Here's a Toolbar that looks like a MenuBar.
+We haven't implemented a MenuBar for dijit yet so some people use the Toolbar as a poor-man's substitute.
 
 .. cv-compound::
 
@@ -100,54 +83,19 @@ By using :ref:`dijit.form.DropDownButton <dijit/form/DropDownButton>` and :ref:`
 
     <script type="text/javascript">
       dojo.require("dijit.Toolbar");
-      dojo.require("dijit.form.DropDownButton");
-      dojo.require("dijit.ColorPalette");
-      dojo.require("dijit.TooltipDialog");
-      dojo.require("dijit.form.TextBox");
+      dojo.require("dijit.form.Button");
     </script>
 
   .. cv:: html
 
-	<div id="fancy" dojoType="dijit.Toolbar">
-		<div dojoType="dijit.form.DropDownButton" iconClass="dijitEditorIcon dijitEditorIconBold" showLabel="false">
-			<span>Color</span>
-			<div dojoType="dijit.ColorPalette"></div>
-		</div>
-		<div dojoType="dijit.form.DropDownButton" iconClass="dijitEditorIcon dijitEditorIconItalic" showLabel="false">
-			<span>Dialog</span>
-			<div dojoType="dijit.TooltipDialog">
-				<label for="first">First name:</label> <input dojoType="dijit.form.TextBox" name="first" id="first"/>
-                                <br/>
-				<label for="last">Last name:</label> <input dojoType="dijit.form.TextBox" name="last" id="last"/>
+	<div id="menubar" dojoType="dijit.Toolbar" class="menuBar">
+		<div dojoType="dijit.form.DropDownButton">
+			<span>File</span>
+			<div dojoType="dijit.Menu">
+				<div dojoType="dijit.MenuItem">New</div>
+				<div dojoType="dijit.MenuItem">Open</div>
+				<div dojoType="dijit.MenuSeparator"></div>
+				<div dojoType="dijit.MenuItem" iconClass="dijitEditorIconSave">Save</div>
+				<div dojoType="dijit.MenuItem">Save As...</div>
 			</div>
 		</div>
-        </div>
-
-(The icons are no good but hopefully convey the idea.)
-
-
-=============
-Accessibility
-=============
-
-Note the use of showLabel="false" above. We've specified a label but then hidden it. This is important for accessibility reasons, so that users that can't see the icon still know what the button does.
-
-Keyboard
---------
-
-===========================================    ==========================
-Action                                         Key
-===========================================    ==========================
-Move focus between widgets in the toolbar      Left and right arrow keys
-===========================================    ==========================
-
-Known Issues
-------------
-In hign contrast mode when a toggle button is checked an html entity charcter (✓) is displayed since the CSS background image icon for the checked state is no longer visible. When the toggle button is part of a toolbar the checkmark character does not display properly in IE6. In IE6 with high contrast mode turned on, a checked toggle button in a toolbar displays as two vertical bars rather than the checkmark character.
-
-
-========
-See also
-========
-
-* :ref:`dijit.MenuBar <dijit/MenuBar>`

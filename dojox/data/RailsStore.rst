@@ -36,6 +36,6 @@ See dojox/data/JsonRestStore for examples of Dojo usage. The attached Ruby code 
 See also
 ========
 
-* `<http://www.sitepen.com/blog/2008/06/13/restful-json-dojo-data/>`_
-* `<http://www.sitepen.com/blog/?p=565>`_
-* :ref:`<dojox/data/JsonRestStore>`
+http://www.sitepen.com/blog/2008/06/13/restful-json-dojo-data/
+http://www.sitepen.com/blog/?p=565
+http://docs.dojocampus.org/dojox/data/JsonRestStore

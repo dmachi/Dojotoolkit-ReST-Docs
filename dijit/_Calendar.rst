@@ -136,7 +136,7 @@ With a local custom template to change the layout (does not work against CDN)
 		//markup in the body tag for BigCalendar, but instead inject it in this
 		//onload handler after BigCalendar is defined.
 		dojo.declare("BigCalendar", dijit._Calendar, {
-				templatePath: "bigCalendar.html",
+				templatePath: "http://docs.dojocampus.org/dijit/_Calendar?action=AttachFile&do=get&target=bigCalendar.html",
 				templateString: null,  /* need this for builds */
 				getClassForDate: function(date){
 					if(!(date.getDate() % 10)){ return "blue"; } // apply special style to all days divisible by 10

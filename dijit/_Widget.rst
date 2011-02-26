@@ -3,7 +3,7 @@
 dijit._Widget
 =============
 
-:Authors: Bill Keese, Nikolai Onken
+:Authors: Bill Keese, Nikolai Onken, Marcus Reimann
 :Project owner: Bill Keese
 :Available: since V0.9
 
@@ -57,7 +57,7 @@ Widgets are classes, created with dojo.declare. All widgets inherit from dijit._
      :ref:`dijit._Templated <dijit/_Templated>` provides an implementation of buildRendering that most times will do what you need. The template is fetched/read, nodes created and events hooked up during buildRendering. The end result is assigned to this.domNode. If you don't mixin :ref:`dijit._Templated <dijit/_Templated>` (and most OOTB dijits do) and want to handle rendering yourself (e.g. to really streamline a simple widget, or even use a different templating system) this is where you'd do it.
 
 - setters are called
-     All attributes listed in attributeMap are applied to the DOM, and attributes for which there are custom setters (see :ref:`attributes <quickstart/writingWidgets/attributes>`, those custom setters are called
+     All attributes listed in attributeMap are applied to the DOM, and attributes for which there are custom setters (see :ref:`attributes <quickstart/writingWidgets>`, those custom setters are called
 
 - postCreate
    This is typically the workhorse of a custom widget. The widget has been rendered (but note that sub-widgets in the containerNode have not!). The widget though may not be attached to the DOM yet so *you shouldn't do any sizing calculations in this method*.
@@ -91,36 +91,45 @@ In all cases its good practice to assume that you are overriding a method that m
 Attributes
 ==========
 
-Perhaps the most important feature of _Widget is the ability to set attributes at widget initialization, or to change their valuse later on in the widget's lifecycle.
+Perhaps the most important feature of _Widget is the ability to set attributes at widget initialization, or to change their values later on in the widget's lifecycle.
 
-dijit._Widget implements the attr() method to do this. For example, this call will set a DateTextBox's value to the current date:
-
-.. code-block:: javascript
-
-   myDateTextBox.attr('value', new Date())
-
-This call will tell us if a TitlePane is opened or closed:
+dijit._Widget has implemented the set() method to do this. For example, this call will set a DateTextBox's value to the current date:
 
 .. code-block:: javascript
 
-   myTitlePane.attr('open')
+   myDateTextBox.set('value', new Date())
 
-attr() makes use of:
+There's also a get() method to retrieve an attribute's value.  This call will tell us if a TitlePane is opened or closed:
 
-  * the attributeMap
-  * custom setters/getters
+.. code-block:: javascript
+
+   myTitlePane.get('open')
+
+Finally, there's a watch() method to detect when attribute values change:
+
+.. code-block:: javascript
+
+   myTitlePane.watch("open", function(attr, oldVal, newVal){
+      console.log("pane is now " + (newVal ? "opened" : "closed"));
+   })
+
+The attributeMap and custom setters/getters
+-------------------------------------------
+
+get()/set() make use of:
+
+* the attributeMap
+* custom setters/getters
 
 The attributeMap specifies a mapping of widget attributes into the DOM tree for the widget. It can map a TitlePane's title to the DOM node listing the title, for example.
 
 The custom setters/getters can perform any needed operation for setting/resetting a value. They are used when attributeMap won't do the job.
 
-For more details on both attributeMap and custom setters/getters, see the Writing Widgets :ref:`quickstart` guide.
+For more details on both attributeMap and custom setters/getters, see the Writing Widgets :ref:`QuickStart <quickstart/writingWidgets>` guide.
 
 
 ========
 See also
 ========
 
-* Writing Widgets :ref:`quickstart`
-
-.. _quickstart: quickstart/writingWidgets
+* :ref:`Writing Widgets <quickstart/writingWidgets>`

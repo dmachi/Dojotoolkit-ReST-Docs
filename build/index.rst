@@ -3,7 +3,7 @@
 Dojo Build System
 =================
 
-:Authors: James Burke, Peter Higgins, Scott Jenkins, Alex Russell, Josh Trutwin
+:Authors: James Burke, Peter Higgins, Scott Jenkins, Alex Russell, Josh Trutwin, Kris Zyp
 :Available: since V1.0
 
 .. contents::
@@ -35,7 +35,7 @@ You load a layer file into your web page using the normal `<script>` tags, simil
   <!-- dojo.js always provides the package system and base utilities -->
   <script type="text/javascript" src="/js/src/dojo/dojo.js"></script>
   
-  <!-- we want dijit.js to be treated like a layer of its own -->
+  <!-- we want to use the stock dijit.js layer which combines base dijit modules -->
   <script type="text/javascript" src="/js/src/dijit/dijit.js"></script>
   
   <!-- include the rest of the modules we need -->
@@ -277,37 +277,63 @@ This illustrates the most important command line parameters to the build system:
 ``action`` 
    The list of actions to perform. The most common one is ``release`` which does the default build magic.  The ``clean`` option removes previous build artifacts.
 
+``htmlFiles`` 
+   A list of html files to use to auto-generate the profile and layers. The files should be comma separated.
+
+``htmlDir`` 
+   A directory of html files to use to auto-generate the profile and layers.
+
 ``version`` 
    Optional. The version number to "bake in" to the build. When you interrogate ``dojo.version``, this is the number that will be reported.
    
 ``releaseName``
     By specifying an empty ``releaseName`` parameter, we over-rid the default of ``dojo``, clobbering the generation of a named sub-directory in the output ``/js/release/`` directory. This makes it somewhat simpler to deal with paths at development time, but if you are creating versioned builds, you may chose to specify something like ``r1234`` to indicate a unique build number which you can then check in. Note that specifying a blank ``releaseName`` does not work in version of Dojo prior to 1.3.
 
-Once we've run the build script, all we need to do to use our new-fangled, much-faster layer file is to change the directory we point our ``<script>`` tags at. Intead of using the source files located in ``/js/src/<modulename>``, we now look for them in ``/js/release/<modulename>``:
+Once we've run the build script, all we need to do to use our new-fangled, much-faster layer file is to change the directory we point our ``<script>`` tags at. Intead of using the source files located in ``/js/src/<modulename>``, we now look for them in ``/js/release/<modulename>``, and request our layer file(s) right after ``dojo.js`` (as layers implicitly omit dojo base):
 
 .. code-block :: html
 
   <!-- dojo.js always provides the package system and base utilities -->
   <script type="text/javascript" src="/js/release/dojo/dojo.js"></script>
   
-  <!-- we want dijit.js to be treated like a layer of its own -->
+  <!-- we want to use the stock dijit.js layer which combines base dijit modules -->
   <script type="text/javascript" src="/js/release/dijit/dijit.js"></script>
   
   <!-- include the rest of the modules we need -->
   <script type="text/javascript" src="/js/release/acme/mylayer.js"></script>
 
 
+=================================
+Auto-generated Profiles from HTML
+=================================
 
-TODOC: everything. outline here:
+The build process can also automatically generate a profile and build layers based on your HTML file or files. This eliminates the need to manually create a profile file. To run a build based on html files, you can use the htmlFiles build parameter to list the html files to base on the build on, or use the htmlDir to base the build on a set of files. The build process will scan your html files for script tags and dojo.require calls, and generate layers based on these. The build will create layer dependencies based on modules/layers that are previously defined in the HTML, so as to avoid code redundancies. For example, if we would had an HTML file:
 
-    * summary
-    * requirements / setup DONE
-    * creating a profile
-    * command line arguments
-    * special builds: * layers * css
-    * file structure
+.. code-block :: html
+    
+  ui.html
+    <html>
+      <head>
+        <script type="text/javascript" src="dojo/dojo.js"
+                djConfig="isDebug: true, parseOnLoad: true">
+        </script>
+        <script type="text/javascript">
+            dojo.require("dijit.dijit");
+            dojo.require("acme.ui");
+        </script>
+      ...
 
-link to full docs to cover:
+We could a build:
+
+.. code-block :: text
+  
+  build htmlFiles=ui.html profile=ui action=release
+
+The build process will then generate a profile with two layers, one for dijit/dijit and one for acme/ui. The acme/ui layer will have a layer dependency defined so that the modules in dijit/dijit are not loaded twice. In this case, because a profile was specified, the generated profile will be written to buildscripts/profile/ui.profile.js (and the build process will continue). This file could be edited/tweaked to later do a manual build process (without HTML-based generation) in the future. If a profile (or profileFile) is not specified, the build process will generate the layers without writing the profile to disk (it will just be generated in memory).
+
+One can control the layers that are generated by which dojo.require (or script tags) are used in the HTML. In this case, we generated two layers because we had to dojo.require calls, but we could generate a single acme/ui layer (that included all dependencies) if we only did a single dojo.require call (dojo.require("acme.ui")).
+
+The HTML-based automated build process is (currently) limited to single rooted directory structures for namespaces, it does not take support namespaces that are registered through dojo.registerModulePath.
 
 =====================
 Advanced Build Topics
@@ -328,9 +354,9 @@ And place the compiler.jar file somewhere you can easily reference. Then use the
 
 .. code-block :: text
 
-  java -classpath ../shrinksafe/js.jar;../closurecompiler/compiler.jar org.mozilla.javascript.tools.shell.Main build.js
+  java -classpath "../shrinksafe/js.jar;../closurecompiler/compiler.jar" org.mozilla.javascript.tools.shell.Main build.js optimize=closure layerOptimize=closure
 
-and place your build arguments on the same line after that text. Change the ../closurecompiler/compiler.jar path to the path where you keep Closure's compiler.jar.
+and place your build arguments on the same line after that text. Change the ../closurecompiler/compiler.jar path to the path where you keep Closure's compiler.jar.  And when setting up a classpath for the JVM, use a semi-colon (;) on Windows and a colon (:) on all other platforms.
 
 If you run into errors, you might want to try downloading rhino from:
 http://www.mozilla.org/rhino/download.html
@@ -340,7 +366,7 @@ Other Advanced Topics
 ---------------------
 The following build topics are for expert users, and not needed for routine builds:
 
-    * conditional inclusion via the :ref:`excludeStart and exludeStop <build/exclude>` pragmas
+    * conditional inclusion via the :ref:`excludeStart and excludeStop <build/exclude>` pragmas
     * prevent inlining of a resource named in a dojo.require with :ref:`keepRequires <build/keepRequires>`
     * layerDependencies
     * discard
@@ -377,7 +403,7 @@ A simple default `release build <build/scenario-release>`_ that creates the basi
 Dojo Base Only Build
 ~~~~~~~~~~~~~~~~~~~~
 
-A small Dojo :ref:`base build <build/scenario-base>` which only builds the Dojo core into a layer, without dijit and the other name spaces: 
+A small Dojo :ref:`base build <build/scenario-base>` which only builds the Dojo core into a layer, without Dijit and the other name spaces. 
 
 Basic Cross Domain Build
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -406,4 +432,16 @@ Micro Build
 
 An absolutely minimal build of Dojo containing just the most essential core elements, suitable for smart phones and other resource-limited hosts:  :ref:`Micro-build <build/scenario-micro>`
 
-* Others?
+
+========
+See Also
+========
+
+* :ref:`Build Profiles <build/profiles>`
+* :ref:`Build Script <build/buildScript>`
+* :ref:`Simple Build System Example <build/simpleExample>`
+
+
+TODOC:
+
+    * special builds: * layers * css

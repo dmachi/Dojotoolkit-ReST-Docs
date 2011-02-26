@@ -15,14 +15,12 @@ Configuring Dojo with djConfig
 Introduction
 ============
 
-Dojo allows developers to override certain global settings that control how the framework operates. Frequently this is unnecessary, but it can be useful in the following situations:
+Dojo allows developers to override certain global settings that control how the framework operates:
 
-* When using the dojo.parser to trigger automatic parsing of dijit objects
+* When using dojo.parser to trigger automatic parsing of dijit objects
 * During the debugging phase of application development
 * When setting specific :ref:`i18n <dojo/i18n>` or localization settings
 * If you rename core dojo components or place dojo resources in non-standard locations
-
-We will first describe the various ways to define the djConfig object, and then explain the various uses listed above.
 
 
 =====
@@ -32,7 +30,7 @@ Usage
 How to Define djConfig
 ----------------------
 
-djConfig is a JavaScript object that is typically created in one of three ways:
+djConfig is a global JavaScript object that is typically created in one of three ways:
 
 * By specifying its properties in the djConfig="..." attribute of the <script> element in which the dojo core gets included in the document (but see the **warning** below)
 * By explicitly creating the djConfig object BEFORE including the dojo core (i.e. dojo.js)
@@ -54,7 +52,7 @@ By far, the easiest and most common way to specify djConfig is via the djConfig=
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Dojo djConfig Tutorial&lt;/title>
       <script type="text/javascript"
-              src="http://o.aolcdn.com/dojo/1.3.2/dojo/dojo.xd.js"
+              src="http://o.aolcdn.com/dojo/1.4.2/dojo/dojo.xd.js"
               djConfig="parseOnLoad: true, isDebug: true"></script>
   </head>
   <body>
@@ -87,7 +85,7 @@ In cases where lots of attributes must be set in the djConfig object, or for dev
               extraLocale: ['ja-jp']
           };
       </script>
-      <script type="text/javascript" src="http://o.aolcdn.com/dojo/1.3.2/dojo/dojo.xd.js"></script>
+      <script type="text/javascript" src="http://o.aolcdn.com/dojo/1.4.2/dojo/dojo.xd.js"></script>
   </head>
   <body>
       <p>...</p>
@@ -131,7 +129,7 @@ debugContainerId: "yourContainerId"
   If specified, when the page is rendered dojo will look for an element with the specified id and will put the Firebug Lite console window inside that element. This allows developers extra control over the display of the console window and to easily reference it in their own scripts. By default the div containing the console window does not have an id associated with it.
 
 debugAtAllCosts: true
-  This setting offers advanced functionality for debugging your own classes. There is much more information here on `this tutorial on debugging with dojo <http://dojotoolkit.org/book/book-dojo/part-4-meta-dojo-making-your-dojo-code-run-faster-and-better/debugging-facilities/deb>`_.
+  This setting offers advanced functionality for debugging your own classes. There is much more information here on `this tutorial on debugging with dojo <http://dojotoolkit.org/book/book-dojo/part-4-meta-dojo-making-your-dojo-code-run-faster-and-better/debugging-facilities/deb>`_. This will break your application, if you pass a variable to dojo.require() instead of a string literal.
 
 Language and Localization Settings in djConfig
 ----------------------------------------------

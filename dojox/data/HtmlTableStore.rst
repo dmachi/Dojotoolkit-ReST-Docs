@@ -232,8 +232,8 @@ Connecting HtmlTableStore to dojox.grid.DataGrid
   .. cv:: css
 
     <style type="text/css">
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/Grid.css";
-      @import "{{ dataUrl }}/dojo/dojox/grid/resources/nihiloGrid.css";
+      @import "{{baseUrl}}dojox/grid/resources/Grid.css";
+      @import "{{baseUrl}}dojox/grid/resources/nihiloGrid.css";
 
       .dojoxGrid table {
         margin: 0;

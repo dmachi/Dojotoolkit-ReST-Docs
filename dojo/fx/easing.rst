@@ -214,6 +214,6 @@ Example: Playing with Easing
 See Also
 ========
 
-* :ref:`dojox.fadeIn <dojox/fadeIn>` - Examples show using the expoOut easing.
+* :ref:`dojo.fadeIn <dojo/fadeIn>` - Examples show using the expoOut easing.
 
-* :ref:`dojox.fadeOut <dojox/fadeOut>` - Examples show using the expoOut easing.
+* :ref:`dojo.fadeOut <dojo/fadeOut>` - Examples show using the expoOut easing.

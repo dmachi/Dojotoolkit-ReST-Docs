@@ -12,7 +12,7 @@ Good news! Dojo's just a bunch of files on disk so it doesn't require any specia
 
 * Install nothing! Use Dojo from AOL's Content Distribution Network (`CDN <http://dev.aol.com/dojo>`_) or from the `CDN of Google <http://code.google.com/apis/ajaxlibs/documentation/index.html#dojo>`_.
 * Install the `latest release <http://download.dojotoolkit.org/current-stable>`_ on your server
-* Install directly from :ref:`source control </install/dojo-releases>` ``FIXME``
+* Install directly from :ref:`source control <developer/svn>`
 
 =================
 Use Dojo from CDN
@@ -26,7 +26,7 @@ Use Dojo from your Own Server
 
 For you traditionalists out there, you can download, install and use Dojo the old fashioned way.
 
-* Download the latest build from `dojo downloads <http://dojotoolkit.org/downloads>`_
+* Download the latest build from `dojo downloads <http://dojotoolkit.org/download>`_
 * Uncompress the files (dojo/, dijit/ dojox/ and possibly util/) into some web-accessible folder. Assuming you install it under the directory /js, when you're done, the file system should look something like this: ``FIXME``
 * With your browser, open ``http://yoursite.com/js/dijit/themes/themeTester.html`` You should see a page like this: ``FIXME``
 

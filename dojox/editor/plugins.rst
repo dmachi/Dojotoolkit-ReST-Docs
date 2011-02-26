@@ -75,11 +75,11 @@ There are currently a small set of nice features that can be plugged into the di
   
   **This plugin is new to the Dojo Toolkit 1.4.**
 
-* :ref:`dojox.editor.plugins.FindReplace <dojox/editor/plugins/FindReplace>` -- **EXPERIMENTAL**
+* :ref:`dojox.editor.plugins.FindReplace <dojox/editor/plugins/FindReplace>` -- **STABLE**
 
-  A plugin that adds a find/replace toolbar that can be toggled to appear underneath the main toolbar.  It provides the capability to find textm replace text, and replace all occurances of some text.  It also allows searching backwards from current cursor position as well as matching case.  This plugin does NOT work on Opera, as it is making use of Browser specific apis, and Opera doesn't provide a mechanism to do native find.
+  A plugin that adds a find/replace toolbar that can be toggled to appear underneath the main toolbar.  It provides the capability to find text, replace text, and replace all occurances of some text.  It also allows searching backwards from current cursor position as well as matching case.  This plugin does NOT work on Opera, as it is making use of Browser specific apis, and Opera doesn't provide a mechanism to do native find.
   
-  **This plugin is new to the Dojo Toolkit 1.4.**
+  **This plugin is updated in Dojo Toolkit 1.6.**
 
 * :ref:`dojox.editor.plugins.CollapsibleToolbar <dojox/editor/plugins/CollapsibleToolbar>` -- **STABLE**
 
@@ -98,6 +98,66 @@ There are currently a small set of nice features that can be plugged into the di
   A plugin that adds a 'paste from word' icon to the toolbar.  It opens a dialog where content from Word or similar programs can be pasted in, then filters are run against the input to remove extraneous HTML that causes the editor difficulty, leaving the injected content cleaner HTML.
   
   **This plugin is new to the Dojo Toolkit 1.5.**
+
+* :ref:`dojox.editor.plugins.InsertAnchor <dojox/editor/plugins/InsertAnchor>` -- **STABLE**
+
+  A plugin that adds an 'insert anchor' icon to the toolbar.  An anchor is a specialized <a> tag used for linking to specific sections of a document.  The plugin highlights (makes visible), via css what is an anchor in the page.  It also allows for double-click editing of anchors.
+  
+  **This plugin is new to the Dojo Toolkit 1.5.**
+
+* :ref:`dojox.editor.plugins.TextColor <dojox/editor/plugins/TextColor>` -- **STABLE**
+
+  A plugin that implements color selectors for text color and background color of test using the dojox.widget.ColorPicker instead of dijit.ColorPalette.
+  
+  **This plugin is new to the Dojo Toolkit 1.5.**
+
+* :ref:`dojox.editor.plugins.NormalizeStyle <dojox/editor/plugins/NormalizeStyle>` -- **EXPERIMENTAL**
+
+  A headless plugin that adds pre and post filters to convert incoming and outgoing editor content into CSS styling (use of span with style attributes), or semantic (use of <b>, </i>, type tags), for common formatting options.  The mode it uses for output is configurable.  The mode it uses for input is determined by browser to try and use the right input mode so that the native browser commands operate reasonably well on the input.
+  
+  **This plugin is new to the Dojo Toolkit 1.5.**
+
+* :ref:`dojox.editor.plugins.StatusBar <dojox/editor/plugins/StatusBar>` -- **EXPERIMENTAL**
+
+  A plugin that adds a new footer bar to the editor that allows users to post status to the editor.  The posting can be done through direct setting of the value attribute of editor.statusBar, or via a topic.  It also has an optional 'resizer' handle for use when the editor is outside of a sizing content pane.
+  
+  **This plugin is new to the Dojo Toolkit 1.5.**
+  
+* :ref:`dojox.editor.plugins.AutoSave  <dojox/editor/plugins/AutoSave>` -- **STABLE**
+
+  A plugin that allows the user to set a time interval after which the editor contents will be automatically saved.
+  
+  **This plugin is new to the Dojo Toolkit 1.6.**
+
+* :ref:`dojox.editor.plugins.InsertImage <dojox/editor/plugins/InsertImage>` -- **STABLE**
+
+  A plugin that allows the user to insert a local or hosted image into the textstream.
+  
+  **This plugin is new to the Dojo Toolkit 1.6.**
+
+* :ref:`dojox.editor.plugins.SpellCheck  <dojox/editor/plugins/SpellCheck>` -- **STABLE**
+
+  A plugin that allows the user to spellcheck editor content either interactively (where unrecognized words are highlighted as they are typed) or as a batch process via a dialog that steps the user through all the content, moving from one unrecognized word to the next. The focus here is on the client-side feature. While a server-side demo is provided, it is expected that a more comprehensive server piece will be deployed.
+  
+  **This plugin is new to the Dojo Toolkit 1.6.**
+
+* :ref:`dojox.editor.plugins.AutoUrlLink  <dojox/editor/plugins/AutoUrlLink>` -- **STABLE**
+
+  A plugin that allows results in properly documented URLs are recognized and presented as links.
+  
+  **This plugin is new to the Dojo Toolkit 1.6.**
+
+* :ref:`dojox.editor.plugins.ColorTableCell  <dojox/editor/plugins/ColorTableCell>` -- **STABLE**
+
+  A plugin that allows the user to set the background of selected table cells.
+  
+  **This plugin is new to the Dojo Toolkit 1.6.**
+
+* :ref:`dojox.editor.plugins.ResizeTableColumn  <dojox/editor/plugins/ResizeTableColumn>` -- **STABLE**
+
+  A plugin that allows the user to resize the width of table columns using drag-drop.
+  
+  **This plugin is new to the Dojo Toolkit 1.6.**
 
 
 ========

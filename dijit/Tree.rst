@@ -89,7 +89,7 @@ Creating a programmatic tree is very simple:
 
       dojo.addOnLoad(function(){
         var store = new dojo.data.ItemFileReadStore({
-            url: "{{ dataUrl }}/dojo/dijit/tests/_data/countries.json" 
+            url: "{{dataUrl}}/dijit/tests/_data/countries.json" 
         });
         
         var treeModel = new dijit.tree.ForestStoreModel({
@@ -128,7 +128,7 @@ A markup tree
   .. cv:: html
 
     <div dojoType="dojo.data.ItemFileReadStore" jsId="continentStore"
-      url="{{ dataUrl }}/dojo/dijit/tests/_data/countries.json"></div>
+      url="{{dataUrl}}/dijit/tests/_data/countries.json"></div>
     <div dojoType="dijit.tree.ForestStoreModel" jsId="continentModel" 
       store="continentStore" query="{type:'continent'}"
       rootId="continentRoot" rootLabel="Continents" childrenAttrs="children"></div>
@@ -218,7 +218,7 @@ Sometimes you don't want that "the world" top level node to show up, especially 
   .. cv:: html
 
     <div dojoType="dojo.data.ItemFileReadStore" jsId="continentStore"
-      url="{{ dataUrl }}/dojo/dijit/tests/_data/countries.json"></div>
+      url="{{dataUrl}}/dijit/tests/_data/countries.json"></div>
     <div dojoType="dijit.tree.ForestStoreModel" jsId="continentModel" 
       store="continentStore" query="{type:'continent'}"
       rootId="continentRoot" rootLabel="Continents" childrenAttrs="children"></div>
@@ -235,7 +235,7 @@ Updating a Tree
 
 People often ask:
 
-  * how do I update a tree (adding or deleting items?
+  * how do I update a tree (adding or deleting items)?
 
 You can't update the tree directly, but rather you need to update the model.   Usually the model is connected to a data store and in that case you need to update the data store.  Thus, you need to use a data store that allows updates (through it's official API), like :ref:`dojo.data.ItemFileWriteStore <dojo/data/ItemFileWriteStore>`.
 
@@ -279,7 +279,7 @@ In addition, to enable DnD on the Tree you must dojo.require("dijit.tree.dndSour
 
       dojo.addOnLoad(function(){
         var store = new dojo.data.ItemFileWriteStore({
-            url: "{{ dataUrl }}/dojo/dijit/tests/_data/countries.json" 
+            url: "{{dataUrl}}/dijit/tests/_data/countries.json" 
         });
         
         var treeModel = new dijit.tree.ForestStoreModel({
@@ -304,6 +304,10 @@ In addition, to enable DnD on the Tree you must dojo.require("dijit.tree.dndSour
 
 You can also specify custom checkAcceptance() and checkItemAcceptance() to accept/reject items to the tree.   (The former function operates at the Tree level, and the latter operates per Tree node, allowing things like rejecting dropping items onto leaf nodes.)
 
+Further examples
+----------------
+
+If you are interested in further examples, please make sure you have glanced at the unit tests. For the 1.5 release, you can find a good example here: http://download.dojotoolkit.org/release-1.5.0/dojo-release-1.5.0/dijit/tests/tree/test_Tree_DnD.html
 
 betweenThreshold
 ----------------
@@ -323,7 +327,7 @@ If between threshold is set to a positive integer value like 5 (which represents
   .. cv:: html
 
     <div dojoType="dojo.data.ItemFileWriteStore" jsId="continentStore5"
-      url="{{ dataUrl }}/dojo/dijit/tests/_data/countries.json"></div>
+      url="{{dataUrl}}/dijit/tests/_data/countries.json"></div>
     
     <div dojoType="dijit.tree.ForestStoreModel" jsId="continentModel5" 
       store="continentStore5" query="{type:'continent'}"
@@ -373,7 +377,7 @@ Tree has no built-in support for context menus, but you can use the Menu widget 
 	</ul>
         
         <div dojoType="dojo.data.ItemFileReadStore" jsId="menuContinentStore"
-             url="{{ dataUrl }}/dojo/dijit/tests/_data/countries.json"></div>
+             url="{{dataUrl}}/dijit/tests/_data/countries.json"></div>
         
         <div dojoType="dijit.tree.ForestStoreModel" jsId="menuContinentModel" 
              store="menuContinentStore" query="{type:'continent'}"
@@ -432,7 +436,7 @@ If you don't want to display the grid lines for a Tree then simply write CSS rul
 Hover effect
 ------------
 
-Due to implementation details, the hover effect for tree nodes is done with a near-transparent image:
+Due to implementation details, on the tundra, soria, and nihilo themes the hover effect for tree nodes is done with a near-transparent image:
 
 .. code-block:: css
 
@@ -448,6 +452,8 @@ So in order to change the hover effect you would need to create a new image (wit
 
 You can also remove the hover effect altogether by just writing a CSS rule that sets background-image to none, overriding the above rule.
 
+On the claro theme, the hover effect is done via a background-color (combined with a white gradient background image), so changing the hover effect just involves changing that background color.
+
 =============
 More examples
 =============
@@ -462,20 +468,27 @@ Accessibility
 Keyboard
 --------
 
-================================    ===============
-Action	                            Key
-================================    ===============
-Navigate to first tree item*        Tab
-Navigate to the next sibling        Down arrow
-Navigate to the previous sibling    Up arrow
-Open a subtree                      Right arrow
-Close a subtree                     Left arrow
-Navigate to open subtree            Right arrow
-Navigate to parent                  Left arrow
-Activate a tree item                Enter
-================================    ===============
+===================================  ===============
+Action	                             Key
+===================================  ===============
+Navigate into tree*                  Tab
+Navigate to the next sibling         Down arrow
+Navigate to the previous sibling     Up arrow
+Open a subtree                       Right arrow
+Close a subtree                      Left arrow
+Navigate to open subtree             Right arrow
+Navigate to parent                   Left arrow
+Activate a tree item                 Enter
+Navigate to first tree node          Home
+Navigate to last visible tree node   End
+===================================  ===============
 
-* Note: The last tree item focused will be in the Tab order.
+* Note: The most recently focused tree item will be in the Tab order.
+
+
+Keyboard searching
+------------------
+Tree items can also be accessed by typing alphanumeric characters.  For example, typing "A" will navigate from the currently focused node to the next node that begins with the letter A (case insensitive).   Typing "Al" will navigate to the next node that starts with "Al".  Only the nodes that are visible are searched, not nodes that are hidden inside a closed node.   The nodes are searched in the order that they appear on the screen, from the focused node downwards and then looping back up to the top of the tree.
 
 Known Issues
 ------------

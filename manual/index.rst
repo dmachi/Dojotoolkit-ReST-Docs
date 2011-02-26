@@ -6,7 +6,7 @@ Dojo Toolkit Reference Guide
 .. contents::
    :depth: 2
 
-.. image:: logodojocdocssmall.png
+.. image:: /logodojocdocssmall.png
    :alt: Dojo Documentation
    :class: logowelcome;
 
@@ -19,9 +19,73 @@ Dojo
 
   The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, class-based programming, and a package system that makes getting access to the rest of Dojo a snap.
 
+.. cv-compound::
+
+  .. cv:: javascript
+
+    <script>
+        dojo.ready(function(){
+            dojo.query("#showMe").onclick(function(e){
+                var node = e.target;
+
+                var a = dojo.anim(node, {
+                    backgroundColor: "#363636",
+                    color: "#f7f7f7"
+                }, 1000);
+
+                dojo.connect(a, "onEnd", function(){
+                    dojo.anim(node, { color: "#363636" }, null, null, function(){
+                        node.innerHTML = "wow, that was easy!";
+                        dojo.anim(node, { color: "white" });
+                    });
+                });
+            });
+        });
+    </script>
+
+  .. cv:: html
+
+    <div id="showMe" style="padding: 10px;">
+        click here to see how it works
+    </div>
+
 * :ref:`Dojo Core <dojo/index>`
 
   Additional stable (but optional) components for advanced animations, I/O, data, Drag and Drop and much more.
+
+.. cv-compound::
+
+  .. cv:: javascript
+
+    <script>
+        dojo.require("dojo.fx");
+        dojo.require("dojo.fx.easing");
+        dojo.ready(function(){
+
+            dojo.query("#showMe2").onclick(function(e){
+                
+                dojo.animateProperty({
+                    node: e.target,
+                    properties:{
+                        marginLeft:200
+                    },
+                    easing: dojo.fx.easing.elasticOut,
+                    duration:1200,
+                    onEnd: function(n){
+                        dojo.anim(n, { marginLeft:2 }, 2000, dojo.fx.easing.bounceOut);
+                    }
+                }).play();
+                
+            });
+            
+        });
+    </script>
+
+  .. cv:: html
+
+    <div id="showMe2" style="padding: 10px; margin-left:2px;">
+         Click to Animate me with built in easing functions.
+    </div>
 
 =====
 Dijit
@@ -44,39 +108,25 @@ DojoX stands for Dojo eXtensions and contains many useful sub-projects and varyi
 DojoC
 =====
 
-DojoC is an external svn repository used by DojoCampus for a variety of widgets, tutorials, sandbox, and other demos. You are welcome to explore and contribute, though absolutely nothing is guaranteed to work. DojoC is meant as a community workshop, and code comes and goes frequently, often times 'promoted' to :ref:`DojoX projects <dojox>`.
+DojoC is an external svn repository used by DojoCampus for a variety of widgets, tutorials, sandbox, and other demos. You are welcome to explore and contribute, though absolutely nothing is guaranteed to work. DojoC is meant as a community workshop, and code comes and goes frequently, often times 'promoted' to :ref:`DojoX projects <dojox/index>`.
 
 * :ref:`More about DojoC <dojoc/index>`
 
 
-================
-Dojo Styleguides
-================
+=========
+Utilities
+=========
 
-* :ref:`Styleguides <styleguides/index>`
+Dojo has a number of utility scripts, including the :ref:`Dojo Build System <build/index>`.
 
-
-===========================
-Utilities and Miscellaneous
-===========================
-
-:ref:`Dojo Build System <build/index>`
----------------------------------------
-
-The Dojo build system is used to create efficient optimized packages of JavaScript and CSS, customized for a given application or website. You can take advantage of this powerful tool to help structure your development and speed up your applications.
-
-:ref:`The Dojo API Doc System <util/doctools>`
------------------------------------------------
-
-Dojo uses a custom inline comment syntax which produces well structured xml, and powers the official `API Docs <http://api.dojocampus.org/>`_ . 
-
-:ref:`ShrinkSafe <shrinksafe/index>`
--------------------------------------
-
-A standalone utility for compressing JavaScript, used by the Dojo Build System as an optional compression step, though can be used on individual files manually.
+* :ref:`More about Util <util/index>`
 
 
-:ref:`Checkstyle <util/checkstyle>`
--------------------------------------
+=============
+Miscellaneous
+=============
 
-A standalone utility for checking JavaScript files for violations of the Dojo style guide. Also includes an online tool for automatically fixing the majority of style guide violations.
+* :ref:`Multiple Versions of Dojo on a Page <quickstart/multiversion>` - Dojo has special configuration and build options to allow you to use different versions of Dojo on the same page.
+
+* :ref:`Developer Notes <developer/index>`
+* :ref:`Styleguides <styleguides/index>` **obsolete**

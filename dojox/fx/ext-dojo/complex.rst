@@ -1,15 +1,14 @@
 .. _dojox/fx/ext-dojo/complex:
 
+dojox.fx.ext-dojo.complex
+=========================
+
 
 :Status: Up to date
 :Version: 1.5
 :Project owner: Mike Wilcox
 :Author: Mike Wilcox
 :Available: since 1.5
-
-=========================
-dojox.fx.ext-dojo.complex
-=========================
 
 Basic Description
 -----------------

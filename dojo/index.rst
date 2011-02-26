@@ -160,8 +160,6 @@ DOM
 
     Destroy a DOM element
 
-  * NodeList.destroy
-
   * :ref:`dojo.empty <dojo/empty>`
 
     Empty the contents of a DOM element
@@ -582,6 +580,11 @@ Dojo Core
 
   Google Gears
 
+* :ref:`dojo.hash <dojo/hash>`
+ 
+  Normalized onhashchange module
+
+
 * :ref:`dojo.html <dojo/html>`
 
   Inserting contents in HTML nodes
@@ -590,9 +593,7 @@ Dojo Core
 
   Utility classes to enable loading of resources for internationalization
 
-* :ref:`dojo.io <dojo/io>`
-
-  Additional AJAX I/O transports
+* Additional AJAX I/O transports (dojo.io)
 
   * :ref:`dojo.io.iframe <dojo/io/iframe>`
 
@@ -603,6 +604,10 @@ Dojo Core
     Sends a JSONP request using a script tag
 
 * :ref:`dojo.jaxer <dojo/jaxer>`
+
+* :ref:`dojo.NodeList-data <dojo/NodeList-data>`
+
+  Adds a .data() and .removeData() API to :ref:`dojo.query <dojo/query>` operations
 
 * :ref:`dojo.NodeList-fx <dojo/NodeList-fx>`
 

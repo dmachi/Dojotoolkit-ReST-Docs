@@ -35,7 +35,7 @@ Limitations
       var editor = dijit.byId("myEditor");
 
       editor .onLoadDeferred.addCallback(function(){
-        editor.atte("value", "<b>This is new content.</b>");
+        editor.attr("value", "<b>This is new content.</b>");
       });
     });
   </script>
@@ -250,7 +250,7 @@ There are several additional editor plugins provided by dijit and are listed out
 +---------------------------------------------+-----------------+----------------------------------------------------------------------+
 |**Plugin**                                   |**Short Name(s)**|**Description**                                                       |
 +---------------------------------------------+-----------------+----------------------------------------------------------------------+
-|dijit._editor.plugins.ToggleDir              |toggleDir        |A toolbar button for toggling the eidtor contents between             |
+|dijit._editor.plugins.ToggleDir              |toggleDir        |A toolbar button for toggling the editor contents between             |
 |                                             |                 |Right-To-Left and Left-ToRight                                        |
 +---------------------------------------------+-----------------+----------------------------------------------------------------------+
 |dijit._editor.plugins.TextColor              |foreColor and    |A plugin that provides two actions for altering text color in the     |
@@ -333,6 +333,26 @@ DojoX (Dojo eXtensions) contains even more plugins for improving the capabilitie
 |                                             |                      |editor.  This plugin is experimental.                                 |
 |                                             |                      |**New to Dojo toolkit 1.4.**                                          |
 +---------------------------------------------+----------------------+----------------------------------------------------------------------+
+|dojox.editor.plugins.PasteFromWord           |pastefromword         |A plugin that provides paste window for content from Microsoft Word   |
+|                                             |                      |and similar formats and tries to filter out bad classnames, styles,   |
+|                                             |                      |and so on.                                                            |
+|                                             |                      |**New to Dojo toolkit 1.5.**                                          |
++---------------------------------------------+----------------------+----------------------------------------------------------------------+
+|dojox.editor.plugins.InsertAnchor            |insertanchor          |A simple plugin for inserting anchors (named hash points) in the page |
+|                                             |                      |**New to Dojo toolkit 1.5.**                                          |
++---------------------------------------------+----------------------+----------------------------------------------------------------------+
+|dojox.editor.plugins.CollapsibleToolbar      |collapsibletoolbar    |A simple plugin for allowing the collapse of the top button tooolbar  |
+|                                             |                      |for more editor space.                                                |
+|                                             |                      |**New to Dojo toolkit 1.5.**                                          |
++---------------------------------------------+----------------------+----------------------------------------------------------------------+
+|dojox.editor.plugins.TextColor               |foreColor             |A varient of the dijit._editor.plugins.TextColor that uses the        |
+|                                             |hiliteColor           |dojox.widget.ColorPicker as the color selector.                       |
+|                                             |                      |**New to Dojo toolkit 1.5.**                                          |
++---------------------------------------------+----------------------+----------------------------------------------------------------------+
+|dojox.editor.plugins.Blockquote              |blockquote            |A plugin for marking a section as a quite by wrapping it in a         | 
+|                                             |                      |blockquote tag.                                                       |
+|                                             |                      |**New to Dojo toolkit 1.5.**                                          |
++---------------------------------------------+----------------------+----------------------------------------------------------------------+
 
 
 =====================
@@ -395,10 +415,14 @@ Move focus to the previous widget in the toolbar	                arrow left in l
 
 The arrow keys will not work within any optional drop down lists such as ComboBox or FilteringSelect in the editor toolbar until the drop down list of choices has been activated. Use the backspace or escape key to clear the current selection in the textbox associated with the drop down. When the list of choices is not activated, the arrow keys will move between toolbar buttons rather than within the combobox or select.
 
+Screen Reader Issues
+--------------------
+
+In order for the screen reader to announce a label for the editor, the developer must include a label element that is associated with the editor using the for attribute.   When the editor is created, Dojo will create a title element for the HTML document within the editor that contains the label text.  The screen reader will announce that title when the editor component gets focus. 
 
 Known Issues
 ------------
 
-* On Firefox, the user must press the Tab key twice before keyboard focus moves to the next widget. This is a permanent restriction on Firefox 2. The reason for this is because Firefox implements usage of the tab key within the editor to indent text and shift-tab to outdent text. There is no keyboard mechanism in Firefox to move focus out of the editor. So, the dijit editor traps the tab key in the editor and sets focus to the editor iframe. From there pressing tab again will move to the next focusable item after the editor. When shift-tab is pressed within the editor, focus is set to the toolbar associated with the editor (currently there is always a toolbar defined for a dijit editor). Even though Firefox 3 now supports the use of the contentEditable attribute to create the editor using a div element, the dijit editor is still implemented using an iframe in Firefox 3 and this tabbing issue remains. Some people are unhappy with the loss of the tab key functionality within the editor. Version 1.2 includes a plug-in option to allow the use of tab and shift-tab within the editor to indent and outdent text.
+* On Firefox, the user must press the Tab key twice before keyboard focus moves to the next widget. This is a permanent restriction on Firefox 2. The reason for this is because Firefox implements usage of the tab key within the editor to indent text and shift-tab to outdent text. There is no keyboard mechanism in Firefox to move focus out of the editor. So, the dijit editor traps the tab key in the editor and sets focus to the editor iframe. From there pressing tab again will move to the next focusable item after the editor. When shift-tab is pressed within the editor, focus is set to the toolbar associated with the editor (currently there is always a toolbar defined for a dijit editor). Even though Firefox 3 now supports the use of the contentEditable attribute to create the editor using a div element, the dijit editor is still implemented using an iframe in Firefox 3 and this tabbing issue remains. Some people are unhappy with the loss of the tab key functionality within the editor. Version 1.2 includes a plug-in option to allow the use of tab and shift-tab within the editor to indent and outdent text. The tabbing issue has been updated for Dojo 1.4.  Two tab key presses are no longer required to interact with the editor in the supported browsers.
 
 * In IE6 or 7 when the editor has been created from a textarea the user must press tab twice to set focus into the editor to begin inserting or editing text. Likewise, with focus within editor text the user must press shift-tab twice to set focus back to the toolbar.

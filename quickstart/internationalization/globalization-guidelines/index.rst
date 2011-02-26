@@ -24,9 +24,9 @@ Dojo addressed the globalization features at the very beginning of its developme
 Use the following guidelines to implement internationalization.
 
 
-=========================================================================================================
+===========================================================================================================
 :ref:`Encoding Guidelines <quickstart/internationalization/globalization-guidelines/encoding-guidelines>`
-=========================================================================================================
+===========================================================================================================
 
 * :ref:`You should always use UTF-8 for encoding settings wherever applicable. <quickstart/internationalization/globalization-guidelines/encoding-guidelines>`
 * :ref:`You should encode all text files in UTF-8. <quickstart/internationalization/globalization-guidelines/encoding-guidelines>`
@@ -37,9 +37,9 @@ Use the following guidelines to implement internationalization.
 * :ref:`You must set Content-Type in an HTTP response header if the response is not encoded in UTF-8. <quickstart/internationalization/globalization-guidelines/encoding-guidelines>`
 
 
-=============================================================================================================================================
+===============================================================================================================================================
 :ref:`Locale and Resource Bundle Guidelines <quickstart/internationalization/globalization-guidelines/locale-and-resource-bundle-guidelines>`
-=============================================================================================================================================
+===============================================================================================================================================
 
 * :ref:`You must set djConfig.locale in all files to the same as the locale used by the server code. <quickstart/internationalization/globalization-guidelines/locale-and-resource-bundle-guidelines>`
 * :ref:`You must always use resource bundle to store the strings displayed to users. <quickstart/internationalization/globalization-guidelines/locale-and-resource-bundle-guidelines>`

@@ -84,7 +84,7 @@ Declarative example
   .. cv:: css
 
    <style>
-    @import "{{ dataUrl }}/dojo/dojox/image/resources/image.css";   
+    @import "{{baseUrl}}dojox/image/resources/image.css";   
    </style>
 
 

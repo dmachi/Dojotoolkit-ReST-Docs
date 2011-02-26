@@ -4,55 +4,43 @@ dojox.form.MultiComboBox
 ========================
 
 :Status: Draft
-:Version: 1.0
-:Project owner: ?--
-:Available: since V?
+:Available: since 1.2
 
 .. contents::
    :depth: 2
-
-TODO: short summary of the component/class/method
-
 
 ============
 Introduction
 ============
 
-TODO: introduce the component/class/method
-
+This widget is an experimental extension to :ref:`ComboBox <dijit/form/ComboBox>` to allow "tag" style input using a datastore using a delimeter. 
 
 =====
 Usage
 =====
 
-TODO: how to use the component/class/method
+The MultiComboBox behaves the same as a plain ComboBox. Pass it a store and searchAttr:
 
 .. code-block :: javascript
  :linenos:
 
  <script type="text/javascript">
-   // your code
- </script>
+    var memberTagStore = new dojo.data.ItemFileReadStore({ url:"countries.json" });
+    var widget = new dojox.form.MultiComboBox({
+	store:memberTagStore,
+	searchAttr:"tag"
+    },"frogin3");
+    widget.startup();
+ </script>			
+		
+No additional CSS is required.
 
-
-
-========
-Examples
-========
-
-Programmatic example
---------------------
-
-TODO: example
-
-Declarative example
--------------------
-
-TODO: example
+A `delimiter` variable can be set to indicate which key triggers a new value. It defaults to "," (comma) but can be any character.
 
 
 ========
 See also
 ========
 
-* TODO: links to other related articles
+  * :ref:`dojox.form <dojox/form>`
+  * :ref:`dijit.form <dijit/form>`

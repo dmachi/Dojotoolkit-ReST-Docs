@@ -83,7 +83,7 @@ Basic Usage
   .. css::
 
     <style>
-      @import "{{ dataUrl }}/dojox/editor/plugins/resources/css/CollapsibleToolbar.css";
+      @import "{{baseUrl}}dojox/editor/plugins/resources/css/CollapsibleToolbar.css";
     </style>
     
   .. html::
