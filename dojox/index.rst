@@ -3,7 +3,7 @@
 DojoX
 =====
 
-DojoX is an area for development of extensions to the Dojo toolkit. It is a repository for more stable and mature extensions and also acts as an incubator for experimental code, a testbed for additions to the main toolkit. Unlike Dojo and Dijit, DojoX is managed by subprojects, each of which has at least one module, a sponsor and a mission statement.test23ddfdfdsfASDljkhasdfasdfasdfasdfasdfatesteadsfasdf
+DojoX is an area for development of extensions to the Dojo toolkit. It is a repository for more stable and mature extensions and also acts as an incubator for experimental code, a testbed for additions to the main toolkit. Unlike Dojo and Dijit, DojoX is managed by subprojects, each of which has at least one module, a sponsor and a mission statement.
 
 
 * :ref:`About DojoX <dojox/info>`
@@ -695,3 +695,4 @@ These sections cover the available projects shipped with the Dojo Toolkit:
 * :ref:`dojox.xmpp <dojox/xmpp>`
 
   XMPP (Jabber Client) Service implementation in pure javascript
+
