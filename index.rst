@@ -13,7 +13,7 @@ Dojo
 
 * :ref:`dojo.js <dojo/index>`
 
-  The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, class-based programming, and a package system that makes getting access taso the rest of Dojo a snap.T23asdf
+  The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, class-based programming, and a package system that makes getting access taso the rest of Dojo a snap.
 
 * :ref:`Dojo Core <dojo/index>`
 
@@ -76,3 +76,4 @@ A standalone utility for compressing JavaScript, used by the Dojo Build System a
 -------------------------------------
 
 A standalone utility for checking JavaScript files for violations of the Dojo style guide. Also includes an online tool for automatically fixing the majority of style guide violations.
+
