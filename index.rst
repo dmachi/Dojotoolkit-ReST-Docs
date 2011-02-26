@@ -9,7 +9,7 @@ Dojo Toolkit Reference Guide
 asdf
 
 =====
-Dojo
+aDojo
 =====
 
 * :ref:`dojo.js <dojo/index>`
@@ -77,6 +77,7 @@ A standalone utility for compressing JavaScript, used by the Dojo Build System a
 -------------------------------------
 
 A standalone utility for checking JavaScript files for violations of the Dojo style guide. Also includes an online tool for automatically fixing the majority of style guide violations.
+
 
 
 
