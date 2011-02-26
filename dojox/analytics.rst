@@ -11,7 +11,7 @@ dojox.analytics
 .. contents::
    :depth: 2
 
-Analytics is an analytics and client monitoring system. Including the base analytics system and any number of plugins enables logging sdof different system data back to the server.
+Analytics is an analytics and client monitoring system. Including the base analytics system and any number of plugins enables logging of different system data back to the server.
 
 
 ============
@@ -122,6 +122,7 @@ See also
 
 * http://www.sitepen.com/blog/2008/03/13/analyze-your-code-errors-interface-and-marketing-effectiveness-with-dojoxanalytics/
 * http://dojocampus.org/content/2009/09/03/profiling-with-dojoxanalytics/
+
 
 
 
