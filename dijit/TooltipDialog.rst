@@ -1,4 +1,4 @@
-.. _dijit/TooltipDialog:
+        .. _dijit/TooltipDialog:
 
 dijit.TooltipDialog
 ===================
@@ -9,7 +9,7 @@ dijit.TooltipDialog
 .. contents::
     :depth: 2
 
-A variant on Dialog Box is dijit.TooltipDialog.
+A variant on Dialog Box is dijit.TooltipDialog.asdf
 
 
 ============
@@ -111,3 +111,5 @@ Close the tooltip dialog                                        escape
 ============================================================    =================================================
 
 See the detailed Keyboard Navigation Notes and Known Issues in :ref:`dijit.Dialog <dijit/Dialog>`
+
+        
