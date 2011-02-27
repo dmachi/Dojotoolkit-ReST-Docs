@@ -9,7 +9,7 @@ dijit.TooltipDialog
 .. contents::
     :depth: 2
 
-A variant on Dialog Box is dijit.TooltipDialog.asdf
+A variant on Dialog Box is dijit.TooltipDialog.
 
 
 ============
