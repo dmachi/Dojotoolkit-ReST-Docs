@@ -1,4 +1,4 @@
-.. _index:
+        .. _index:
 
 Dojo Toolkit Reference Guide
 ============================
@@ -17,7 +17,7 @@ Dojo
 
 * :ref:`dojo.js <dojo/index>`
 
-  The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, class-based programming, and a package system that makes getting access to the rest of Dojo a snap.
+  The base functionality of the Dojo Toolkit, provided by just including ``dojo.js``. This includes tons of features like CSS-based queries, event handling, animations, Ajax, classs-based programming, and a package system that makes getting access to the rest of Dojo a snap.
 
 .. cv-compound::
 
@@ -132,3 +132,5 @@ Miscellaneous
 * :ref:`Styleguides <styleguides/index>` **obsolete**
 
 
+
+        
